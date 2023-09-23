@@ -5,7 +5,9 @@ import java.awt.Color;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
+import Engine.Keyboard;
 import Engine.Screen;
+import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.Map;
 import Maps.CombatMap;
@@ -43,16 +45,27 @@ public class CombatScreen extends Screen {
 
     @Override
     public void update() {
+        
         //Assuming this makes the player character appear or not
-       combatMap.update(null);
-       
+        combatMap.update(null);
+        
 
+        if(!keyLock.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE))
+        {
+            combatItemSelected = currentCombatItemHovered;
+            if(combatItemSelected == 0)
+            {
+                screenCoordinator.setGameState(GameState.LEVEL);
+            }
+        }
 
     }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
-      
+        combatMap.draw(graphicsHandler);
+        goBackButton.draw(graphicsHandler);
+        graphicsHandler.drawRectangle(pointerLocationX, pointerLocationY, 40, 40, new Color(49, 207, 240), 2);
     }
     
 }
