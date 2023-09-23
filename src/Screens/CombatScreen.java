@@ -3,6 +3,8 @@ package Screens;
 import java.awt.Color;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.KeyLocker;
 import Engine.Screen;
 import Game.ScreenCoordinator;
 import Level.Map;
@@ -15,6 +17,9 @@ public class CombatScreen extends Screen {
     protected int currentCombatItemHovered = 0; // current menu item being "hovered" over
     protected int combatItemSelected = -1;
     protected Map combatMap;
+    protected int pointerLocationX, pointerLocationY;
+    protected int keyPressTimer;
+    protected KeyLocker keyLock = new KeyLocker();
 
     //This constructor is used to help change the screens
     public CombatScreen(ScreenCoordinator screenCoordinator)
@@ -29,12 +34,20 @@ public class CombatScreen extends Screen {
         goBackButton.setOutlineColor(Color.black);
         goBackButton.setOutlineThickness(3);
         combatMap = new CombatMap();
+        combatMap.setAdjustCamera(false);
+        keyPressTimer = 0;
+        combatItemSelected = -1;
+        keyLock.lockKey(Key.SPACE);
 
     }
 
     @Override
     public void update() {
+        //Assuming this makes the player character appear or not
+       combatMap.update(null);
        
+
+
     }
 
     @Override
