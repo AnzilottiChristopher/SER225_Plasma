@@ -1,7 +1,7 @@
 package MapEditor;
 
 import Level.Map;
-import Maps.CombatScreen;
+import Maps.CombatMap;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 
@@ -23,7 +23,7 @@ public class EditorMaps {
             case "TitleScreen":
                 return new TitleScreenMap();
             case "CombatScreen":
-                return new CombatScreen();
+                return new CombatMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

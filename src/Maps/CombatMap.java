@@ -4,9 +4,9 @@ import Level.Map;
 import Tilesets.CommonTileset;
 import Utils.Point;
 
-public class CombatScreen extends Map 
+public class CombatMap extends Map 
 {
-    public CombatScreen()
+    public CombatMap()
     {
         super("combat_screen.txt", new CommonTileset());
         this.playerStartPosition = new Point(1, 11);
