@@ -49,12 +49,19 @@ public class CombatScreen extends Screen {
         //Assuming this makes the player character appear or not
         combatMap.update(null);
         
-
+        //This unlocks the key so the key could be pressed
+        if(Keyboard.isKeyUp(Key.SPACE))
+        {
+            keyLock.unlockKey(Key.SPACE);
+        }
+        
+        //This checks if the key has been pressed and then returns to level screen
         if(!keyLock.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE))
         {
             combatItemSelected = currentCombatItemHovered;
             if(combatItemSelected == 0)
             {
+                //This changes screen
                 screenCoordinator.setGameState(GameState.LEVEL);
             }
         }
@@ -65,7 +72,7 @@ public class CombatScreen extends Screen {
     public void draw(GraphicsHandler graphicsHandler) {
         combatMap.draw(graphicsHandler);
         goBackButton.draw(graphicsHandler);
-        graphicsHandler.drawRectangle(pointerLocationX, pointerLocationY, 40, 40, new Color(49, 207, 240), 2);
+        graphicsHandler.drawRectangle(193, 119, 130, 55, new Color(49, 207, 240), 2);
     }
     
 }
