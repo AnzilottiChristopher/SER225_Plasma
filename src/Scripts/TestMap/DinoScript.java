@@ -2,8 +2,8 @@ package Scripts.TestMap;
 
 import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
-//import Game.GameState;
-import Game.ScreenCoordinator;
+//import Game.ScreenCoordinator;
+//import Game.ScreenCoordinator;
 import GameObject.Frame;
 import Level.*;
 import Utils.Direction;
@@ -13,8 +13,6 @@ import Utils.Point;
 // the script is segmented -- it has multiple setups, cleanups, and executions based on its current action
 public class DinoScript extends Script<NPC> {
 
-    //Testing something with ScreenCoordinator
-    protected ScreenCoordinator screenCoordinator;
 
     private int sequence = 0;
     private int amountMoved = 0;
@@ -133,6 +131,7 @@ public class DinoScript extends Script<NPC> {
                 start();
                 if (isTextboxQueueEmpty()) {
                     end();
+                    System.out.println("We are here");
                 }
             }
             // pauses
