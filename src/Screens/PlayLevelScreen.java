@@ -12,7 +12,9 @@ import Utils.Point;
 
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen {
-    protected ScreenCoordinator screenCoordinator;
+
+    //Static so that combatScript can affect this 
+    protected static ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
@@ -20,7 +22,8 @@ public class PlayLevelScreen extends Screen {
     protected FlagManager flagManager;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
-        this.screenCoordinator = screenCoordinator;
+        //Static so that combatScript can affect it but not sure if I like the way it's done
+        PlayLevelScreen.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
@@ -105,6 +108,11 @@ public class PlayLevelScreen extends Screen {
                 winScreen.draw(graphicsHandler);
                 break;
         }
+    }
+
+    public static void combatScreenPopup()
+    {
+        screenCoordinator.setGameState(GameState.COMBATSCREEN);
     }
 
     public PlayLevelScreenState getPlayLevelScreenState() {

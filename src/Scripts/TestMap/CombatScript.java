@@ -3,29 +3,29 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
-import Screens.CombatScreen;
+import Screens.PlayLevelScreen;
 
 public class CombatScript extends Script<NPC>{
 
-    protected CombatScreen combatScreen;
 
     //This runs first and the start
     @Override
     protected void setup() {
         lockPlayer();
-        //combatScreen = new CombatScreen(this);
-
+        PlayLevelScreen.combatScreenPopup();
     }
 
     //This runs at the end
     @Override
     protected void cleanup() {
-        
+        unlockPlayer();
     }
 
     //This constantly runs and needs to use ENUMS to determine if script is still running or not
     @Override
     protected ScriptState execute() {
+        start();
+
         return ScriptState.COMPLETED;
     }
     
