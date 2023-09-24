@@ -2,6 +2,8 @@ package Scripts.TestMap;
 
 import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
+//import Game.GameState;
+import Game.ScreenCoordinator;
 import GameObject.Frame;
 import Level.*;
 import Utils.Direction;
@@ -10,6 +12,9 @@ import Utils.Point;
 // script for talking to dino npc
 // the script is segmented -- it has multiple setups, cleanups, and executions based on its current action
 public class DinoScript extends Script<NPC> {
+
+    //Testing something with ScreenCoordinator
+    protected ScreenCoordinator screenCoordinator;
 
     private int sequence = 0;
     private int amountMoved = 0;
@@ -38,6 +43,7 @@ public class DinoScript extends Script<NPC> {
                 addTextToTextboxQueue("Well, I saw him playing with it and was worried it would\nroll into my garden.");
                 addTextToTextboxQueue("So I kicked it as far as I could into the forest to the left.");
                 addTextToTextboxQueue("Now, if you'll excuse me, I have to go.");
+                //screenCoordinator.setGameState(GameState.COMBATSCREEN);
             }
             else if (sequence == 3) {
                 entity.stand(Direction.RIGHT);
