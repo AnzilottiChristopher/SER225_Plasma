@@ -13,7 +13,6 @@ public class EditorMaps {
         return new ArrayList<String>() {{
             add("TestMap");
             add("TitleScreen");
-            add("TheQuad");
             add("CombatScreen");
         }};
     }
