@@ -3,7 +3,6 @@ package MapEditor;
 import Level.Map;
 import Maps.CombatMap;
 import Maps.TestMap;
-import Maps.TheQuadMap;
 import Maps.TitleScreenMap;
 
 import java.util.ArrayList;
