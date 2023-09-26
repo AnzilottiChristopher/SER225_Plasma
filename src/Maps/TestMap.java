@@ -13,7 +13,8 @@ import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
 import Scripts.TestMap.WalrusScript;
-import Tilesets.CommonTileset;
+//import Tilesets.CommonTileset;
+import Tilesets.TestTileset;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class TestMap extends Map {
 
     public TestMap() {
-        super("test_map.txt", new CommonTileset());
+        super("test_map.txt", new TestTileset());
         this.playerStartPosition = getMapTile(17, 20).getLocation();
     }
 
