@@ -19,7 +19,7 @@ Music ogTrack = new Music();
         showTextbox(); 
 
         // changes what walrus says when talking to him the first time (flag is not set) vs talking to him afterwards (flag is set)
-        if (!isFlagSet("hasTalkedToWalrus")) {
+        if (!isFlagSet("hasTalkedToJukebox")) {
             addTextToTextboxQueue( "Starting music!");
             ogTrack.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");  
         }
@@ -44,7 +44,7 @@ Music ogTrack = new Music();
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
-        setFlag("hasTalkedToWalrus");
+        setFlag("hasTalkedToJukebox");
     }
 
     @Override
