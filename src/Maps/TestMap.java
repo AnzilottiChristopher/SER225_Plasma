@@ -9,12 +9,14 @@ import NPCs.Dinosaur;
 import NPCs.Walrus;
 import NPCs.Jukebox;
 import Scripts.SimpleTextScript;
+import Scripts.TestMap.CombatScript;
 import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.JukeboxScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
 import Scripts.TestMap.WalrusScript;
-import Tilesets.CommonTileset;
+//import Tilesets.CommonTileset;
+import Tilesets.TestTileset;
 
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 public class TestMap extends Map {
 
     public TestMap() {
-        super("test_map.txt", new CommonTileset());
+        super("test_map.txt", new TestTileset());
         this.playerStartPosition = getMapTile(17, 20).getLocation();
     }
 
@@ -46,7 +48,8 @@ public class TestMap extends Map {
 
         Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        dinosaur.setInteractScript(new DinoScript());
+        //dinosaur.setInteractScript(new DinoScript());
+        dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
         Jukebox jukebox = new Jukebox(3, getMapTile(10, 20).getLocation());
