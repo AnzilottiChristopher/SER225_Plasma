@@ -10,10 +10,14 @@ import Players.Cat;
 import Utils.Direction;
 import Utils.Point;
 
+import Engine.Music;
+
+
 // This class is for when the platformer game is actually being played
-public class PlayLevelScreen extends Screen {
+public class PlayLevelScreen extends Screen {  
 
     //Static so that combatScript can affect this 
+
     protected static ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -32,7 +36,7 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasLostBall", false);
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
-        flagManager.addFlag("hasFoundBall", false);
+        flagManager.addFlag("hasFoundBall", false); 
 
         // define/setup map
         this.map = new TestMap();

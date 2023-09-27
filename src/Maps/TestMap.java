@@ -7,9 +7,11 @@ import Level.NPC;
 import Level.Trigger;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
+import NPCs.Jukebox;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.CombatScript;
 import Scripts.TestMap.DinoScript;
+import Scripts.TestMap.JukeboxScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
 import Scripts.TestMap.WalrusScript;
@@ -49,6 +51,10 @@ public class TestMap extends Map {
         //dinosaur.setInteractScript(new DinoScript());
         dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
+
+        Jukebox jukebox = new Jukebox(3, getMapTile(10, 20).getLocation());
+        jukebox.setInteractScript(new JukeboxScript());
+        npcs.add(jukebox);
 
         return npcs;
     }
