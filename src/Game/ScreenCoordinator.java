@@ -3,6 +3,7 @@ package Game;
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Screens.CombatScreen;
 import Screens.CreditsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
@@ -32,6 +33,9 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+
+		//This is here to test CombatScreen un-comment the line above to return to normal
+		//gameState = GameState.COMBATSCREEN;
 	}
 
 	@Override
@@ -49,6 +53,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
+						break;
+					case COMBATSCREEN:
+						currentScreen = new CombatScreen(this);
 						break;
 				}
 				currentScreen.initialize();

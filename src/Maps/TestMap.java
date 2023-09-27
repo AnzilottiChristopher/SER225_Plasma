@@ -8,6 +8,7 @@ import Level.Trigger;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
 import Scripts.SimpleTextScript;
+import Scripts.TestMap.CombatScript;
 import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
@@ -45,7 +46,8 @@ public class TestMap extends Map {
 
         Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        dinosaur.setInteractScript(new DinoScript());
+        //dinosaur.setInteractScript(new DinoScript());
+        dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
         return npcs;
