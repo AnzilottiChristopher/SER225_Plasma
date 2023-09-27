@@ -1,6 +1,7 @@
 package Game;
 
 import Engine.GameWindow;
+import Engine.Music;
 import Engine.ScreenManager;
 
 /*
@@ -12,6 +13,9 @@ public class Game {
 
     public static void main(String[] args) {
         new Game();
+        Music music = new Music();
+        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.playLoop();
     }
 
     public Game() {

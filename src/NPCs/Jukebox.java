@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Jukebox extends NPC {
 
     public Jukebox(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 12, 12), "STAND_RIGHT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Jukebox.jpg"), 12, 13), "STAND_RIGHT");
     }
 
     public void update(Player player) {
