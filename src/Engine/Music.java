@@ -2,11 +2,14 @@ package Engine;
 
 import java.io.File;
 import java.io.IOException;
-import javax.sound.sampled.*; 
+import javax.sound.sampled.*;
+
+import Scripts.TestMap.JukeboxScript; 
 
 public class Music {   
 
     private Clip clip;
+    private int count = 1;
 
     public Music() {
         clip = null;
@@ -35,16 +38,54 @@ public class Music {
     //Call when you want to loop music
     public void playLoop(){
         if (clip != null){
-            clip.loop(-1);
+            clip.loop(-1);  
+                 
+        }
+        if (getCount() == 2){
+            stopLoop();
         }
     }
 
     //Call when you want music to end
     public void stopLoop(){
+        System.out.println("CLIP:" + clip);
+        // count = 2;
         if (clip != null && clip.isRunning()){
+            System.out.println("Stop");
             clip.stop();
         }
     }
+
+    public void stopClass(){
+        Music music = new Music();
+        if (music.clip != null){
+            music.stopLoop();
+        }
+    }
+
+    public Clip getClip() {
+        return clip;
+    }
+
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
+    }
+
+    private enum musicState {
+        PLAY, STOP
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    
 }
 
 

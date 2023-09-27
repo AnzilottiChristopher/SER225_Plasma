@@ -10,15 +10,25 @@ public class JukeboxScript extends Script<NPC> {
 int count = 1; 
 
 Music newTrack = new Music(); 
-Music ogTrack = new Music(); 
+Music ogTrack = new Music();
+Music count2 = new Music();
 
+
+public int getCount() {
+    return count;
+}
+
+public void setCount(int count) {
+    this.count = count;
+}
 
     @Override
     protected void setup() { 
+        //ogTrack.stopClass(); 
         lockPlayer();
         showTextbox(); 
-        //setFlag("hasTalkedToJukebox");
-        // changes what walrus says when talking to him the first time (flag is not set) vs talking to him afterwards (flag is set)
+        setFlag("hasTalkedToJukebox");
+        //Changes music when interacting with jukebox
         if (isFlagSet("hasTalkedToJukebox")) {
             addTextToTextboxQueue( "Starting music!");
             ogTrack.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");  
@@ -26,17 +36,20 @@ Music ogTrack = new Music();
         }
         else {
             addTextToTextboxQueue( "Changing music!"); 
+            //ogTrack.stopClass();
             if (count == 2)
             { 
-                newTrack.stopLoop(); 
+
+                ogTrack.getClip();
+                ogTrack.stopLoop(); 
                 ogTrack.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
                 ogTrack.playLoop();                
                 count = 1;
             }
             else{
-                ogTrack.stopLoop(); 
-                newTrack.background("Resources/Pokemon FireRedLeafGreen- Pallet Town.wav");
-                newTrack.playLoop();
+                ogTrack.stopLoop();
+                ogTrack.background("Resources/Pokemon FireRedLeafGreen- Pallet Town.wav");
+                ogTrack.playLoop();
                 count = 2;
             }
         }

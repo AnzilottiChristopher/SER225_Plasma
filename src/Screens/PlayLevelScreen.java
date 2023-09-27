@@ -16,8 +16,6 @@ import Engine.Music;
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen {  
 
-    Music play = new Music();
-
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
