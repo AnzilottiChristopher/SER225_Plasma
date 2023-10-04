@@ -2,6 +2,7 @@ package EnhancedMapTiles;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
+import Enums.CollisionState;
 import GameObject.GameObject;
 import GameObject.SpriteSheet;
 import GameObject.Frame;
@@ -21,9 +22,9 @@ public class OutOfBoundsCollision extends EnhancedMapTile
                 10000, 10), TileType.NOT_PASSABLE);
     }
 
-    public OutOfBoundsCollision(Point location, TestMap.CollisionSide side)
+    public OutOfBoundsCollision(Point location, CollisionState leftSide)
     {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWallSide.png"),
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWallSides.png"),
                 10, 10000), TileType.NOT_PASSABLE);
 
     }

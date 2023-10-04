@@ -2,6 +2,7 @@ package Maps;
 
 import EnhancedMapTiles.OutOfBoundsCollision;
 import EnhancedMapTiles.PushableRock;
+import Enums.CollisionState;
 import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
@@ -32,13 +33,13 @@ public class TestMap extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-        CollisionSide placement = CollisionSide.SIDE;
+        CollisionState placement = CollisionState.LEFTSIDE;
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(-10, 0).getLocation());
+        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(0, 0).getLocation());
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(pushableRock);
 
-        OutOfBoundsCollision side = new OutOfBoundsCollision(getMapTile(0, 0).getLocation(), placement);
+        OutOfBoundsCollision side = new OutOfBoundsCollision(getMapTile(0, 1).getLocation(), placement);
         enhancedMapTiles.add(side);
 
         return enhancedMapTiles;
