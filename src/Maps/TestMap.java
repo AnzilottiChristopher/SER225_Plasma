@@ -1,5 +1,6 @@
 package Maps;
 
+import EnhancedMapTiles.OutOfBoundsCollision;
 import EnhancedMapTiles.PushableRock;
 import Level.EnhancedMapTile;
 import Level.Map;
@@ -31,9 +32,14 @@ public class TestMap extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-
+        CollisionSide placement = CollisionSide.SIDE;
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(-10, 0).getLocation());
+        enhancedMapTiles.add(wall);
         enhancedMapTiles.add(pushableRock);
+
+        OutOfBoundsCollision side = new OutOfBoundsCollision(getMapTile(0, 0).getLocation(), placement);
+        enhancedMapTiles.add(side);
 
         return enhancedMapTiles;
     }
@@ -77,6 +83,11 @@ public class TestMap extends Map {
         getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
+    }
+
+    public enum CollisionSide
+    {
+        TOP, SIDE;
     }
 }
 
