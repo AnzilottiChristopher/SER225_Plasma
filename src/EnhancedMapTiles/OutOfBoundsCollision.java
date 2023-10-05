@@ -19,13 +19,13 @@ public class OutOfBoundsCollision extends EnhancedMapTile
     {
         //PushableRock constructor
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWall.png"),
-                10000, 10), TileType.NOT_PASSABLE);
+                420, 10), TileType.NOT_PASSABLE);
     }
 
-    public OutOfBoundsCollision(Point location, CollisionState leftSide)
+    public OutOfBoundsCollision(Point location, CollisionState side)
     {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWallSides.png"),
-                10, 10000), TileType.NOT_PASSABLE);
+                1, 480), TileType.NOT_PASSABLE);
 
     }
 
