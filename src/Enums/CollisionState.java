@@ -3,7 +3,8 @@ package Enums;
 public enum CollisionState
 {
     TOP,
-    SIDE,
+    LEFTSIDE,
+    RIGHTSIDE,
     BOTTOM;
 }
 

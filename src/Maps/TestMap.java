@@ -33,11 +33,14 @@ public class TestMap extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-        CollisionState placement = CollisionState.SIDE;
+        CollisionState placement = CollisionState.LEFTSIDE;
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
         OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(0, 0).getLocation());
+        OutOfBoundsCollision.side = CollisionState.LEFTSIDE;
         OutOfBoundsCollision leftSide = new OutOfBoundsCollision(getMapTile(0, 1).getLocation(), placement);
-        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(23, 1).getLocation(), placement);
+        placement = CollisionState.RIGHTSIDE;
+        OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
+        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(24, 1).getLocation(), placement);
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(pushableRock);
         enhancedMapTiles.add(leftSide);

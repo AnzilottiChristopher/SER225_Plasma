@@ -15,6 +15,7 @@ import Utils.Point;
 
 public class OutOfBoundsCollision extends EnhancedMapTile
 {
+    public static CollisionState side;
     public OutOfBoundsCollision(Point location)
     {
         //PushableRock constructor
@@ -26,6 +27,7 @@ public class OutOfBoundsCollision extends EnhancedMapTile
     {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWallSides.png"),
                 1, 480), TileType.NOT_PASSABLE);
+        this.side = side;
 
     }
 
@@ -39,9 +41,30 @@ public class OutOfBoundsCollision extends EnhancedMapTile
     @Override
     protected GameObject loadBottomLayer(SpriteSheet spriteSheet)
     {
-        Frame frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
-                .withScale(3)
-                .build();
+        Frame frame;
+        if (side == CollisionState.LEFTSIDE)
+        {
+            frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
+                    .withScale(3)
+                    .withBounds(0, 0, 1, 480)
+                    .build();
+            //System.out.println("The leftside is: " + side);
+        } else if (side == CollisionState.RIGHTSIDE)
+        {
+            frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
+                    .withScale(3)
+                    .withBounds(20, 0, 1, 480)
+                    .build();
+           // System.out.println("The rightside is: " + side);
+        }
+        else
+        {
+            frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
+                    .withScale(3)
+                    .build();
+            //System.out.println("else side is: " + side);
+        }
+
         return new GameObject(x, y, frame);
     }
 }
