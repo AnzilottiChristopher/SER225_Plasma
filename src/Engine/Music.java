@@ -4,12 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
 
-import Scripts.TestMap.JukeboxScript; 
-
 public class Music {   
 
     private Clip clip;
     private int count = 1;
+    public int talked = 0;
 
     public Music() {
         clip = null;
@@ -48,10 +47,14 @@ public class Music {
 
     //Call when you want music to end
     public void stopLoop(){
-        System.out.println("CLIP:" + clip);
-        // count = 2;
         if (clip != null && clip.isRunning()){
-            System.out.println("Stop");
+            clip.stop();
+        }
+    }
+
+    //Call when you want initial music in PlayLevelScreen to end
+    public void stopLoopPlayLevelScreen(){
+        if (clip != null && clip.isRunning()){
             clip.stop();
         }
     }
@@ -66,14 +69,9 @@ public class Music {
     public Clip getClip() {
         return clip;
     }
-
-
+    
     public void setClip(Clip clip) {
         this.clip = clip;
-    }
-
-    private enum musicState {
-        PLAY, STOP
     }
 
     public int getCount() {

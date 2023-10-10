@@ -7,6 +7,7 @@ import Game.ScreenCoordinator;
 import Level.*;
 import Maps.TestMap;
 import Players.Cat;
+import Scripts.TestMap.JukeboxScript;
 import Utils.Direction;
 import Utils.Point;
 
@@ -26,6 +27,9 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
+    Music music = new Music();
+    JukeboxScript jukebox = new JukeboxScript();
+
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
@@ -42,6 +46,11 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("CombatStarted", false);
         flagManager.addFlag("CombatFinish", false);
 
+        //flagManager.addFlag("hasFoundBall", false);
+        flagManager.addFlag("hasTalked", false); 
+        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.setCount(1);
+        
         // define/setup map
         this.map = new TestMap();
         map.setFlagManager(flagManager);
@@ -107,6 +116,11 @@ public class PlayLevelScreen extends Screen {
         // if flag is set at any point during gameplay, game is "won"
         if (map.getFlagManager().isFlagSet("hasFoundBall")) {
             playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        }
+
+        // if flag is set at any point during gameplay, initiial soundtrack will not play
+        if (map.getFlagManager().isFlagSet("hasTalked")) {
+            music.stopLoop();
         }
         // if flag is set  it starts up the combat screen
         else if(map.getFlagManager().isFlagSet("hasTalkedToDinosaur"))
