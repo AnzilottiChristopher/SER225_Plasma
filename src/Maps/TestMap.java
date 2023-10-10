@@ -10,7 +10,7 @@ import NPCs.Walrus;
 import NPCs.Jukebox;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.CombatScript;
-import Scripts.TestMap.DinoScript;
+//import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.JukeboxScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;

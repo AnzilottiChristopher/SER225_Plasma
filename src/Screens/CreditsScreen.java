@@ -18,6 +18,8 @@ public class CreditsScreen extends Screen {
     protected SpriteFont createdByLabel;
     protected SpriteFont returnInstructionsLabel;
 
+    Music music = new Music();
+
     public CreditsScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
@@ -28,9 +30,11 @@ public class CreditsScreen extends Screen {
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
         creditsLabel = new SpriteFont("Credits", 15, 7, "Times New Roman", 30, Color.white);
-        createdByLabel = new SpriteFont("Created by Alex Thimineur", 130, 121, "Times New Roman", 20, Color.white);
+        createdByLabel = new SpriteFont("Created by Team Plasma", 130, 121, "Times New Roman", 20, Color.white);
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 20, 532, "Times New Roman", 30, Color.white);
         keyLocker.lockKey(Key.SPACE);
+        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.setCount(1);
     }
 
     public void update() {
@@ -42,6 +46,7 @@ public class CreditsScreen extends Screen {
 
         // if space is pressed, go back to main menu
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
+            music.stopLoop();
             screenCoordinator.setGameState(GameState.MENU);
         }
     }
