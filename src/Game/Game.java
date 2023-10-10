@@ -3,7 +3,7 @@ package Game;
 import Engine.GameWindow;
 import Engine.Music;
 import Engine.ScreenManager;
-import Scripts.TestMap.JukeboxScript;
+//import Scripts.TestMap.JukeboxScript;
 
 /*
  * The game starts here
@@ -15,9 +15,6 @@ public class Game {
 
     public static void main(String[] args) {
         new Game();
-        // Music music = new Music();
-        // music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-        // music.playLoop();
     }
 
     public Game() {
@@ -25,6 +22,7 @@ public class Game {
         ScreenManager screenManager = gameWindow.getScreenManager();
         screenManager.setCurrentScreen(new ScreenCoordinator());
         gameWindow.startGame();
+
 
         Music music = new Music();
         // music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
