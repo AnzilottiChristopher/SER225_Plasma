@@ -23,8 +23,8 @@ public void setCount(int count) {
 }
 
     @Override
-    protected void setup() { 
-        //ogTrack.stopClass(); 
+    protected void setup() {  
+        setFlag("hasTalked");
         lockPlayer();
         showTextbox(); 
         setFlag("hasTalkedToJukebox");
@@ -36,10 +36,8 @@ public void setCount(int count) {
         }
         else {
             addTextToTextboxQueue( "Changing music!"); 
-            //ogTrack.stopClass();
             if (count == 2)
             { 
-
                 ogTrack.getClip();
                 ogTrack.stopLoop(); 
                 ogTrack.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");

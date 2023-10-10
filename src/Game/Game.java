@@ -26,15 +26,15 @@ public class Game {
         screenManager.setCurrentScreen(new ScreenCoordinator());
         gameWindow.startGame();
 
-        // Music music = new Music();
+        Music music = new Music();
         // music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         // music.playLoop();
+        // music.setCount(1);
+        System.out.println("Game has been r");
 
-        // System.out.println("Game has been r");
-
-        // if (music.getCount() == 2){
-        //     music.stopLoop();
-        // }
+        if (music.getCount() == 2){
+            music.stopLoop();
+        }
 
         // music.background("Resources/Pokemon FireRedLeafGreen- Pallet Town.wav");
         // music.playLoop();
