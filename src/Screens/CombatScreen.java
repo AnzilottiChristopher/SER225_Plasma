@@ -9,12 +9,14 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.FlagManager;
 import Level.Map;
 import Maps.CombatMap;
 import SpriteFont.SpriteFont;
 
 public class CombatScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
+    protected PlayLevelScreen playLevelScreen;
     protected SpriteFont goBackButton;
     protected int currentCombatItemHovered = 0; // current menu item being "hovered" over
     protected int combatItemSelected = -1;
@@ -22,16 +24,22 @@ public class CombatScreen extends Screen {
     protected int pointerLocationX, pointerLocationY;
     protected int keyPressTimer;
     protected KeyLocker keyLock = new KeyLocker();
+    protected FlagManager flagManager;
 
-    //This constructor is used to help change the screens
-    public CombatScreen(ScreenCoordinator screenCoordinator)
+    public CombatScreen(PlayLevelScreen playLevelScreen)
     {
-        this.screenCoordinator = screenCoordinator;
+        this.playLevelScreen=playLevelScreen;
+        this.screenCoordinator=playLevelScreen.screenCoordinator;
+        
+        initialize();
     }
+
     
     //Initialize can set and reset the screen
     @Override
     public void initialize() {
+        
+       
         goBackButton = new SpriteFont("Go Back", 200, 119, "Comic Sans", 30, new Color(49, 207, 240));
         goBackButton.setOutlineColor(Color.black);
         goBackButton.setOutlineThickness(3);
@@ -58,11 +66,18 @@ public class CombatScreen extends Screen {
         //This checks if the key has been pressed and then returns to level screen
         if(!keyLock.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE))
         {
-            combatItemSelected = currentCombatItemHovered;
+             combatItemSelected = currentCombatItemHovered;
             if(combatItemSelected == 0)
             {
                 //This changes screen
-                screenCoordinator.setGameState(GameState.LEVEL);
+
+                // makes screen coordinator switch to play level
+                screenCoordinator.switchToPLayLevelScreen();
+                
+               // tells play level screen that combat is over and goes back to the play level screen
+                playLevelScreen.goBackPlayLevelScreen();
+
+                
             }
         }
 

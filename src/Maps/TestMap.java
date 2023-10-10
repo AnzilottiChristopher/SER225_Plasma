@@ -48,13 +48,15 @@ public class TestMap extends Map {
 
         Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        //dinosaur.setInteractScript(new DinoScript());
-        dinosaur.setInteractScript(new CombatScript());
+        dinosaur.setInteractScript(new DinoScript());
+        //dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
         Jukebox jukebox = new Jukebox(3, getMapTile(10, 20).getLocation());
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
+
+
 
         return npcs;
     }
