@@ -7,14 +7,20 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import Level.TileType;
 import Level.Tileset;
+import Tilesets.QuadTileset;
 
 import java.util.ArrayList;
 
 // This class represents a "common" tileset of standard tiles defined in the CommonTileset.png file
-public class CommonTileset extends Tileset {
+public class BasicTileset extends Tileset {
 
-    public CommonTileset() {
-        super(ImageLoader.load("CommonTileset.png"), 16, 16, 3);
+        public ArrayList<MapTileBuilder> BasicTileset() {
+                return this.defineTiles();
+        }
+
+public BasicTileset() {
+        super(ImageLoader.load("TestTileset.png"), 16, 16, 3);
+        
     }
 
     @Override
@@ -143,9 +149,6 @@ public class CommonTileset extends Tileset {
                         .withScale(tileScale)
                         .build(),
                 new FrameBuilder(getSubImage(0, 3), 65)
-                        .withScale(tileScale)
-                        .build(),
-                new FrameBuilder(getSubImage(0, 2), 65)
                         .withScale(tileScale)
                         .build(),
                 new FrameBuilder(getSubImage(0, 4), 65)
@@ -319,6 +322,16 @@ public class CommonTileset extends Tileset {
         mapTiles.add(topWaterTile);
 
 
+        //add Quad Tiles
+
+        // Call the QuadTileset method to get the list of quad tiles
+        // QuadTileset quadTileset = new QuadTileset();
+        // ArrayList<MapTileBuilder> quadTiles = quadTileset.QuadTileset();
+        // mapTiles.addAll(quadTiles);
+        
+
         return mapTiles;
-    }
-}
+    }//end TestTileset();
+
+    
+}// end class
