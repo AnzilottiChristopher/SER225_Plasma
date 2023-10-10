@@ -19,10 +19,11 @@ public class PlayLevelScreen extends Screen {
 
     //Static so that combatScript can affect this 
 
-    protected static ScreenCoordinator screenCoordinator;
+    protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
+    protected CombatScreen combatScreen;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
@@ -30,9 +31,10 @@ public class PlayLevelScreen extends Screen {
     JukeboxScript jukebox = new JukeboxScript();
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
-        //Static so that combatScript can affect it but not sure if I like the way it's done
-        PlayLevelScreen.screenCoordinator = screenCoordinator;
+        this.screenCoordinator = screenCoordinator;
     }
+
+   
 
     public void initialize() {
         // setup state
@@ -41,6 +43,10 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
+
+        flagManager.addFlag("CombatStarted", false);
+        flagManager.addFlag("CombatFinish", false);
+
         flagManager.addFlag("hasTalked", false); 
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.setCount(1);
@@ -56,6 +62,7 @@ public class PlayLevelScreen extends Screen {
         this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
         this.playLevelScreenState = PlayLevelScreenState.RUNNING;
         this.player.setFacingDirection(Direction.LEFT);
+
 
         // let pieces of map know which button to listen for as the "interact" button
         map.getTextbox().setInteractKey(player.getInteractKey());
@@ -86,6 +93,7 @@ public class PlayLevelScreen extends Screen {
             }
         }
 
+        combatScreen=new CombatScreen(this);
         winScreen = new WinScreen(this);
     }
 
@@ -101,6 +109,8 @@ public class PlayLevelScreen extends Screen {
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
+            case COMBATMODE:
+                combatScreen.update();
         }
 
         // if flag is set at any point during gameplay, game is "won"
@@ -108,9 +118,28 @@ public class PlayLevelScreen extends Screen {
             playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
 
+        // if flag is set  it starts up the combat screen
+        else if(map.getFlagManager().isFlagSet("hasTalkedToDinosaur"))
+        {
+          
+          playLevelScreenState=PlayLevelScreenState.COMBATMODE;
+
+          //sets flag for when combat starts
+          map.getFlagManager().setFlag("CombatStarted");
+        }
+        // if flag is set it returns back to play level
+        else if(map.getFlagManager().isFlagSet("CombatFinish"))
+        {
+          
+          playLevelScreenState=PlayLevelScreenState.RUNNING;
+          
+          
+
+
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();
+
         }
     }
 
@@ -123,21 +152,34 @@ public class PlayLevelScreen extends Screen {
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);
                 break;
+            case COMBATMODE:
+                combatScreen.draw(graphicsHandler);
+                break;
         }
     }
 
-    public static void combatScreenPopup()
-    {
-        screenCoordinator.setGameState(GameState.COMBATSCREEN);
-    }
+    
+
 
     public PlayLevelScreenState getPlayLevelScreenState() {
         return playLevelScreenState;
     }
 
+
+    public  void goBackPlayLevelScreen()
+    {
+        playLevelScreenState=PlayLevelScreenState.RUNNING;
+        map.getFlagManager().setFlag("CombatFinish");
+        map.getFlagManager().unsetFlag("CombatStarted");
+        map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+    }
+
+
+
     public void resetLevel() {
         initialize();
     }
+
 
     public void goBackToMenu() {
         screenCoordinator.setGameState(GameState.MENU);
@@ -145,6 +187,6 @@ public class PlayLevelScreen extends Screen {
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
-        RUNNING, LEVEL_COMPLETED
+        RUNNING, LEVEL_COMPLETED,COMBATMODE
     }
 }

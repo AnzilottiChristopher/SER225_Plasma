@@ -6,13 +6,16 @@ import Level.ScriptState;
 import Screens.PlayLevelScreen;
 
 public class CombatScript extends Script<NPC>{
+    
 
 
     //This runs first and the start
     @Override
     protected void setup() {
         lockPlayer();
-        PlayLevelScreen.combatScreenPopup();
+        
+        //playLevelScreenState=PlayLevelScreenState.COMBATMODE;
+        //PlayLevelScreen.combatScreenPopup();
     }
 
     //This runs at the end
