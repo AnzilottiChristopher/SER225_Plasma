@@ -34,6 +34,8 @@ public abstract class Tileset extends SpriteSheet {
         this.defaultTile = getDefaultTile();
     }
 
+   
+
     // a subclass of this class must implement this method to define tiles in the tileset
     public abstract ArrayList<MapTileBuilder> defineTiles();
 
@@ -68,4 +70,6 @@ public abstract class Tileset extends SpriteSheet {
         BufferedImage defaultTileImage = ImageUtils.createSolidImage(new Color(0, 0, 0));
         return new MapTileBuilder(new FrameBuilder(ImageUtils.resizeImage(defaultTileImage, spriteWidth, spriteHeight), 0).withScale(tileScale).build());
     }
+
+    
 }

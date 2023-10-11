@@ -20,6 +20,8 @@ public class MenuScreen extends Screen {
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
     protected KeyLocker keyLocker = new KeyLocker();
+    
+    Music music = new Music();
 
     public MenuScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -38,6 +40,9 @@ public class MenuScreen extends Screen {
         keyPressTimer = 0;
         menuItemSelected = -1;
         keyLocker.lockKey(Key.SPACE);
+        music.background("Resources/Pokémon Diamond, Pearl & Platinum - Champion Cynthia Battle Music.wav");
+        music.playLoop();
+        music.setCount(1);
     }
 
     public void update() {
@@ -85,8 +90,12 @@ public class MenuScreen extends Screen {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
                 screenCoordinator.setGameState(GameState.LEVEL);
+                music.setCount(2);
+                music.stopLoop();
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.CREDITS);
+                music.setCount(2);
+                music.stopLoop();
             }
         }
     }

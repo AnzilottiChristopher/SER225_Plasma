@@ -29,6 +29,11 @@ public class ScreenCoordinator extends Screen {
 		this.gameState = gameState;
 	}
 
+	public void switchToPLayLevelScreen()
+	{
+		gameState=GameState.LEVEL;
+	}
+
 	@Override
 	public void initialize() {
 		// start game off with Menu Screen
@@ -54,9 +59,9 @@ public class ScreenCoordinator extends Screen {
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
 						break;
-					case COMBATSCREEN:
-						currentScreen = new CombatScreen(this);
-						break;
+					//case COMBATSCREEN:
+						//currentScreen = new CombatScreen(this);
+						//break;
 				}
 				currentScreen.initialize();
 			}

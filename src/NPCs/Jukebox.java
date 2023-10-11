@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Jukebox extends NPC {
 
     public Jukebox(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Jukebox.jpg"), 12, 13), "STAND_RIGHT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("jukebox3.png"), 25, 12), "STAND_RIGHT");
     }
 
     public void update(Player player) {
@@ -29,14 +29,14 @@ public class Jukebox extends NPC {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(6, 5, 11, 7)
+                            .withBounds(6, 5, 25, 12)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
             put("STAND_RIGHT", new Frame[] {
                    new FrameBuilder(spriteSheet.getSprite(0, 0))
                            .withScale(3)
-                           .withBounds(6, 5, 11, 7)
+                           .withBounds(6, 5, 25, 12)
                            .build()
            });
         }};
