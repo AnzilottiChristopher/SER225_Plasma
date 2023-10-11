@@ -416,8 +416,8 @@ public class QuadTileset extends Tileset {
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder grassTile = new MapTileBuilder(grassFrame )
-                .withTileType(TileType.NOT_PASSABLE);
+        MapTileBuilder grassTile = new MapTileBuilder(grassFrame );
+               // .withTileType(TileType.NOT_PASSABLE);
         
 
         mapTiles.add(grassTile);

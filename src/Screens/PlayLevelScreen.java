@@ -49,6 +49,7 @@ public class PlayLevelScreen extends Screen {
 
         flagManager.addFlag("hasTalked", false); 
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.playLoop();
         music.setCount(1);
         
         // define/setup map
@@ -134,8 +135,7 @@ public class PlayLevelScreen extends Screen {
           playLevelScreenState=PlayLevelScreenState.RUNNING;
           
           
-
-
+        }
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();

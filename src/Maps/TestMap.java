@@ -1,6 +1,8 @@
 package Maps;
 
+import EnhancedMapTiles.OutOfBoundsCollision;
 import EnhancedMapTiles.PushableRock;
+import Enums.CollisionState;
 import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
@@ -10,7 +12,7 @@ import NPCs.Walrus;
 import NPCs.Jukebox;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.CombatScript;
-//import Scripts.TestMap.DinoScript;
+import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.JukeboxScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
@@ -31,9 +33,18 @@ public class TestMap extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-
+        CollisionState placement = CollisionState.LEFTSIDE;
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(0, 0).getLocation());
+        OutOfBoundsCollision.side = CollisionState.LEFTSIDE;
+        OutOfBoundsCollision leftSide = new OutOfBoundsCollision(getMapTile(0, 1).getLocation(), placement);
+        placement = CollisionState.RIGHTSIDE;
+        OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
+        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(24, 1).getLocation(), placement);
+        enhancedMapTiles.add(wall);
         enhancedMapTiles.add(pushableRock);
+        enhancedMapTiles.add(leftSide);
+        enhancedMapTiles.add(rightSide);
 
         return enhancedMapTiles;
     }
@@ -79,6 +90,11 @@ public class TestMap extends Map {
         getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
+    }
+
+    public enum CollisionSide
+    {
+        TOP, SIDE;
     }
 }
 
