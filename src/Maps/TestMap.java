@@ -36,12 +36,14 @@ public class TestMap extends Map {
         CollisionState placement = CollisionState.LEFTSIDE;
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
         OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(0, 0).getLocation());
+        OutOfBoundsCollision bottomWall = new OutOfBoundsCollision(getMapTile(0, 159).getLocation());
         OutOfBoundsCollision.side = CollisionState.LEFTSIDE;
         OutOfBoundsCollision leftSide = new OutOfBoundsCollision(getMapTile(0, 1).getLocation(), placement);
         placement = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
-        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(24, 1).getLocation(), placement);
+        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(129, 1).getLocation(), placement);
         enhancedMapTiles.add(wall);
+        enhancedMapTiles.add(bottomWall);
         enhancedMapTiles.add(pushableRock);
         enhancedMapTiles.add(leftSide);
         enhancedMapTiles.add(rightSide);

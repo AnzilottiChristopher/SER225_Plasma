@@ -20,13 +20,13 @@ public class OutOfBoundsCollision extends EnhancedMapTile
     {
         //PushableRock constructor
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWall.png"),
-                420, 10), TileType.NOT_PASSABLE);
+                10000, 10), TileType.NOT_PASSABLE);
     }
 
     public OutOfBoundsCollision(Point location, CollisionState side)
     {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("CollisionWallSides.png"),
-                1, 480), TileType.NOT_PASSABLE);
+                1, 10000), TileType.NOT_PASSABLE);
         this.side = side;
 
     }
@@ -46,14 +46,14 @@ public class OutOfBoundsCollision extends EnhancedMapTile
         {
             frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
                     .withScale(3)
-                    .withBounds(0, 0, 1, 480)
+                    .withBounds(0, 0, 1, 10000)
                     .build();
             //System.out.println("The leftside is: " + side);
         } else if (side == CollisionState.RIGHTSIDE)
         {
             frame = new FrameBuilder(spriteSheet.getSubImage(0, 0))
                     .withScale(3)
-                    .withBounds(20, 0, 1, 480)
+                    .withBounds(20, 0, 1, 10000)
                     .build();
            // System.out.println("The rightside is: " + side);
         }
