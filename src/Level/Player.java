@@ -103,12 +103,12 @@ public abstract class Player extends GameObject {
         }
     }
 
-    protected void playerSprinting() {
-        if (!keyLocker.isKeyLocked(MOVE_LEFT_KEY) && Keyboard.isKeyDown(SPRINT_KEY))
-        {
-            moveAmountX -= walkSpeed * 2;
-        }
-    }
+//    protected void playerSprinting() {
+//        if (!keyLocker.isKeyLocked(MOVE_LEFT_KEY) && Keyboard.isKeyDown(SPRINT_KEY))
+//        {
+//            moveAmountX -= walkSpeed * 2;
+//        }
+//    }
     // player WALKING state logic
     protected void playerWalking() {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
@@ -124,7 +124,7 @@ public abstract class Player extends GameObject {
             lastWalkingXDirection = Direction.LEFT;
             if (Keyboard.isKeyDown(SPRINT_KEY))
                 {
-                    moveAmountX = moveAmountX * 2;
+                    moveAmountX = moveAmountX * 4;
                 }
         }
 
@@ -136,7 +136,7 @@ public abstract class Player extends GameObject {
             lastWalkingXDirection = Direction.RIGHT;
             if (Keyboard.isKeyDown(SPRINT_KEY))
             {
-                moveAmountX = moveAmountX * 2;
+                moveAmountX = moveAmountX * 4;
             }
         }
         else {
@@ -149,7 +149,7 @@ public abstract class Player extends GameObject {
             lastWalkingYDirection = Direction.UP;
             if (Keyboard.isKeyDown(SPRINT_KEY))
             {
-                moveAmountY = moveAmountY * 2;
+                moveAmountY = moveAmountY * 4;
             }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
@@ -158,7 +158,7 @@ public abstract class Player extends GameObject {
             lastWalkingYDirection = Direction.DOWN;
             if (Keyboard.isKeyDown(SPRINT_KEY))
             {
-                moveAmountY = moveAmountY * 2;
+                moveAmountY = moveAmountY * 4;
             }
         }
         else {

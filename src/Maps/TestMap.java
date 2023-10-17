@@ -27,21 +27,21 @@ public class TestMap extends Map {
 
     public TestMap() {
         super("test_map.txt", new TestTileset());
-        this.playerStartPosition = getMapTile(17, 20).getLocation();
+        this.playerStartPosition = getMapTile(79, 110).getLocation();
     }
 
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
         CollisionState placement = CollisionState.LEFTSIDE;
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(0, 0).getLocation());
-        OutOfBoundsCollision bottomWall = new OutOfBoundsCollision(getMapTile(0, 159).getLocation());
+        PushableRock pushableRock = new PushableRock(getMapTile(70, 115).getLocation());
+        OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(13, 19).getLocation());
+        OutOfBoundsCollision bottomWall = new OutOfBoundsCollision(getMapTile(13, 122).getLocation());
         OutOfBoundsCollision.side = CollisionState.LEFTSIDE;
-        OutOfBoundsCollision leftSide = new OutOfBoundsCollision(getMapTile(0, 1).getLocation(), placement);
+        OutOfBoundsCollision leftSide = new OutOfBoundsCollision(getMapTile(13, 19).getLocation(), placement);
         placement = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
-        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(129, 1).getLocation(), placement);
+        OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(114, 19).getLocation(), placement);
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(bottomWall);
         enhancedMapTiles.add(pushableRock);
@@ -55,17 +55,17 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
+        Walrus walrus = new Walrus(1, getMapTile(70, 110).getLocation().subtractY(40));
         walrus.setInteractScript(new WalrusScript());
         npcs.add(walrus);
 
-        Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
+        Dinosaur dinosaur = new Dinosaur(2, getMapTile(65, 110).getLocation());
         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
         dinosaur.setInteractScript(new DinoScript());
         //dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
-        Jukebox jukebox = new Jukebox(3, getMapTile(10, 20).getLocation());
+        Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
 
