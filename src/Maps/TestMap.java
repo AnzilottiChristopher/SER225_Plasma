@@ -93,10 +93,5 @@ public class TestMap extends Map {
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
     }
-
-    public enum CollisionSide
-    {
-        TOP, SIDE;
-    }
 }
 
