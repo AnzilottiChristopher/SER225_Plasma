@@ -10,6 +10,7 @@ import Level.Trigger;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
 import NPCs.Jukebox;
+//import NPCs.Door;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.CombatScript;
 import Scripts.TestMap.DinoScript;
@@ -68,6 +69,9 @@ public class TestMap extends Map {
         Jukebox jukebox = new Jukebox(3, getMapTile(10, 20).getLocation());
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
+
+        //Door door=new Door(5,getMapTile(23,25).getLocation());
+         
 
 
 
