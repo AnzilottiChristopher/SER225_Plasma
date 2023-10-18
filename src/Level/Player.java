@@ -40,6 +40,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
+    protected Key SPRINT_KEY = Key.SHIFT;
 
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         super(spriteSheet, x, y, startingAnimationName);
@@ -102,6 +103,12 @@ public abstract class Player extends GameObject {
         }
     }
 
+//    protected void playerSprinting() {
+//        if (!keyLocker.isKeyLocked(MOVE_LEFT_KEY) && Keyboard.isKeyDown(SPRINT_KEY))
+//        {
+//            moveAmountX -= walkSpeed * 2;
+//        }
+//    }
     // player WALKING state logic
     protected void playerWalking() {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
@@ -115,6 +122,10 @@ public abstract class Player extends GameObject {
             facingDirection = Direction.LEFT;
             currentWalkingXDirection = Direction.LEFT;
             lastWalkingXDirection = Direction.LEFT;
+            if (Keyboard.isKeyDown(SPRINT_KEY))
+                {
+                    moveAmountX = moveAmountX * 4;
+                }
         }
 
         // if walk right key is pressed, move player to the right
@@ -123,6 +134,10 @@ public abstract class Player extends GameObject {
             facingDirection = Direction.RIGHT;
             currentWalkingXDirection = Direction.RIGHT;
             lastWalkingXDirection = Direction.RIGHT;
+            if (Keyboard.isKeyDown(SPRINT_KEY))
+            {
+                moveAmountX = moveAmountX * 4;
+            }
         }
         else {
             currentWalkingXDirection = Direction.NONE;
@@ -132,11 +147,19 @@ public abstract class Player extends GameObject {
             moveAmountY -= walkSpeed;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
+            if (Keyboard.isKeyDown(SPRINT_KEY))
+            {
+                moveAmountY = moveAmountY * 4;
+            }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             moveAmountY += walkSpeed;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
+            if (Keyboard.isKeyDown(SPRINT_KEY))
+            {
+                moveAmountY = moveAmountY * 4;
+            }
         }
         else {
             currentWalkingYDirection = Direction.NONE;
