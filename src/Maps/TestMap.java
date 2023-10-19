@@ -7,6 +7,7 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Trigger;
+import NPCs.AlexBoss;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
 import NPCs.Jukebox;
@@ -69,6 +70,8 @@ public class TestMap extends Map {
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
 
+        AlexBoss alexBoss = new AlexBoss(4,getMapTile(73, 113).getLocation());
+        npcs.add(alexBoss);
 
 
         return npcs;

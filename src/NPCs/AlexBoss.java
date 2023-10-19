@@ -15,7 +15,7 @@ public class AlexBoss extends NPC
     public AlexBoss(int id, Point location)
     {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Alex.png"),
-                64, 67), "STAND_LEFT");
+                26, 29), "STAND_LEFT");
     }
 
     @Override
@@ -23,9 +23,16 @@ public class AlexBoss extends NPC
     {
         return new HashMap<String, Frame[]>(){{
             put("STAND_RIGHT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(0, 1))
+                    new FrameBuilder(spriteSheet.getSprite(2, 0))
                             .withScale(3)
-                            .withBounds(4, 5, 5, 10)
+                            .withBounds(8, 3, 10, 30)
+                            .build()
+            });
+
+            put("STAND_LEFT", new Frame[] {
+                    new FrameBuilder(spriteSheet.getSprite(1, 0))
+                            .withScale(3)
+                            .withBounds(8, 3, 10, 30)
                             .build()
             });
         }};
