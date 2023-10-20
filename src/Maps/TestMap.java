@@ -72,7 +72,8 @@ public class TestMap extends Map {
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
 
-        JudyAndCar judycar = new JudyAndCar(4, getMapTile(20, 40).getLocation());
+        JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
+        //judycar.setExistenceFlag("hasTalkedToJudyCar");
         judycar.setInteractScript(new JudyAndCarScript());
         npcs.add(judycar);
 

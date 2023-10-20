@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class JudyAndCar extends NPC {
 
     public JudyAndCar(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("JudyAndCar.png"), 24, 24), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("WhiteJudyCar.png"), 96, 48), "STAND_LEFT");
     }
 
     public void update(Player player) {
