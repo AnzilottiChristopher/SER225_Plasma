@@ -12,12 +12,7 @@ import NPCs.Dinosaur;
 import NPCs.Walrus;
 import NPCs.Jukebox;
 import Scripts.SimpleTextScript;
-import Scripts.TestMap.CombatScript;
-import Scripts.TestMap.DinoScript;
-import Scripts.TestMap.JukeboxScript;
-import Scripts.TestMap.LostBallScript;
-import Scripts.TestMap.TreeScript;
-import Scripts.TestMap.WalrusScript;
+import Scripts.TestMap.*;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
 
@@ -71,6 +66,7 @@ public class TestMap extends Map {
         npcs.add(jukebox);
 
         AlexBoss alexBoss = new AlexBoss(4,getMapTile(73, 113).getLocation());
+        alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
 
 
