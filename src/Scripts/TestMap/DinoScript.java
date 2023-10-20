@@ -14,12 +14,15 @@ import Utils.Point;
 // the script is segmented -- it has multiple setups, cleanups, and executions based on its current action
 public class DinoScript extends Script<NPC> {
 
-    
     private int sequence = 0;
     private int amountMoved = 0;
 
+
+    
     @Override
-    protected void setup() {
+    public void setup() {
+        System.out.println("DinoScript Setup Called");
+        
         lockPlayer();
 
         if (!isFlagSet("hasTalkedToWalrus")) {
@@ -27,6 +30,8 @@ public class DinoScript extends Script<NPC> {
             addTextToTextboxQueue("Isn't my garden so lovely?");
         }
         else if (isFlagSet("hasTalkedToWalrus") && !isFlagSet("hasTalkedToDinosaur")) {
+            
+
             if (sequence == 0) {
                 showTextbox();
                 addTextToTextboxQueue("Isn't my garden so lovely?");
@@ -134,7 +139,8 @@ public class DinoScript extends Script<NPC> {
                 start();
                 if (isTextboxQueueEmpty()) {
                     end();
-                    System.out.println("We are here");
+                    System.out.println("!isFlagSet hasTalkedToDinosaur");
+                    
                 }
             }
             // pauses
@@ -178,8 +184,10 @@ public class DinoScript extends Script<NPC> {
                     end();
                 }
             }
+            
             return ScriptState.RUNNING;
         }
+
         return ScriptState.COMPLETED;
     }
 }

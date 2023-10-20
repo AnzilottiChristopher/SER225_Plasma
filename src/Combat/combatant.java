@@ -8,6 +8,8 @@ public class combatant {
 
     SecureRandom random = new SecureRandom();
 
+    private String name; 
+
     private attack move1;
     private attack move2;
     private attack move3;
@@ -27,6 +29,7 @@ public class combatant {
         System.out.println("PLayer combatbant intirialized");
         this.alive = true;
         this.health = 100;
+        this.name = "Boomer";
 
         this.move1 = new attack("Hockey Hurricaine",atkType.SPORTS,3);
         this.move2 = new attack("SPB Bodyslam",atkType.SOCIAL,3);
@@ -40,21 +43,51 @@ public class combatant {
 
     }
 
-    public combatant (int rank) //rank of generic oponent, determines stats
+    public combatant (String enemyName) //rank of generic oponent, determines stats
     {
-        this.move1 = new attack("generic sport attk",atkType.SPORTS,3);
-        this.move2 = new attack("generic social attk",atkType.SOCIAL,3);
-        this.move3 = new attack("generic study attk",atkType.STUDY,3);
+        int rank = 1;
+
+        switch(enemyName)
+        {
+            case "random":
+                rank = 1;
+                this.name = "Enemy";
+                this.move1 = new attack("generic sport attk",atkType.SPORTS,3);
+                this.move2 = new attack("generic social attk",atkType.SOCIAL,3);
+                this.move3 = new attack("generic study attk",atkType.STUDY,3);
 
 
-        this.maxHealth = 50 * rank;
-        this.defence = 5 * rank;
-        this.athletic = 5 * rank;
-        this.academic = 5 * rank;
-        this.engaged = 5 * rank;
+                this.maxHealth = 50 * rank;
+                this.defence = 5 * rank;
+                this.athletic = 5 * rank;
+                this.academic = 5 * rank;
+                this.engaged = 5 * rank;
 
-        this.alive = true;
-        this.health = this.maxHealth;
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "robot":
+
+                rank = 1;
+                this.name = "CyberBobcat";
+                this.move1 = new attack("Esport Execution",atkType.SPORTS,5);
+                this.move2 = new attack("Discord Double-kick",atkType.SOCIAL,3);
+                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
+
+
+                this.maxHealth = 50 * rank;
+                this.defence = 5 * rank;
+                this.athletic = 5 * rank;
+                this.academic = 5 * rank;
+                this.engaged = 5 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+        }
     }
 
 
@@ -92,13 +125,13 @@ public class combatant {
         
         //buffer from defence
 
-        int buffer = (int) (((100 - this.defence) / 100.0) * defence);
+        int buffer = (int) (((100 - this.defence) / 100.0) * 100);
 
         //System.out.println("taking buffer!" + buffer);
 
         //damage *= (100 - this.defence / 100.0);
 
-        damage = damage - buffer;
+        damage = (int) (damage * (buffer / 100.0));
 
         //System.out.println("taking damage!" + damage);
 
@@ -144,5 +177,9 @@ public class combatant {
 
     public int getHealth() {
         return this.health;
+    }
+    
+    public String getName() {
+        return name;
     }
 }
