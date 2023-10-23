@@ -194,7 +194,7 @@ public class CombatScreen extends Screen {
         //player stuffs
         graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
         graphicsHandler.drawString(playerCombatant.getEntityName(), 530, 435, nameFont, Color.BLACK); //name text 
-        graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar   
+        //graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar   
 
         graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
 
@@ -209,11 +209,11 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawString(enemyCombatant.getEntityName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
          //THIS DOES THE THING!!!!
-        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
+       graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
 
 
         // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){
-        //     graphicsHandler.drawFilledRectangle(yellowRect, green); //player healthbar  
+        //     graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar  
         //     graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
         // } else if (playerCombatant.getHealth() < 80 && playerCombatant.getHealth() >)
 
