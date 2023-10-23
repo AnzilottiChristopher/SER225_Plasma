@@ -1,10 +1,17 @@
 package Combat;
-import java.security.SecureRandom;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage; 
+import Engine.ImageLoader;
+import java.security.SecureRandom; 
+import GameObject.Sprite;
+
+import Engine.ImageLoader;
 
 
 
 
-public class combatant {
+public class combatant extends attack {
 
     SecureRandom random = new SecureRandom();
 
@@ -12,7 +19,12 @@ public class combatant {
     private attack move2;
     private attack move3;
 
-    private boolean alive;
+    private BufferedImage boomerImage;  
+    private BufferedImage testEnemyImage;
+
+    private boolean alive; 
+
+    private String entityName;
 
     protected int health;  //health stat
     private int maxHealth;
@@ -24,7 +36,7 @@ public class combatant {
 
     public combatant () //blank constructor, assume player
     {
-        System.out.println("PLayer combatbant intirialized");
+        System.out.println("Player combatbant intirialized");
         this.alive = true;
         this.health = 100;
 
@@ -36,7 +48,9 @@ public class combatant {
         this.defence = 10;
         this.athletic = 10;
         this.academic = 10;
-        this.engaged = 10;
+        this.engaged = 10;  
+
+        this.entityName = "Boomer The Bobcat";
 
     }
 
@@ -54,7 +68,9 @@ public class combatant {
         this.engaged = 5 * rank;
 
         this.alive = true;
-        this.health = this.maxHealth;
+        this.health = this.maxHealth; 
+
+        this.entityName = "Enemy" + rank;
     }
 
 
@@ -116,12 +132,28 @@ public class combatant {
     public int getDefence()
     {
         return this.defence;
-    }
+    } 
+ 
+    public BufferedImage getPlayerImage(){
+        return boomerImage = ImageLoader.load("Boomer.png");
+
+    } 
+public BufferedImage getEnemyImage(){
+    return  testEnemyImage = ImageLoader.load("jukebox2.png");
+
+}
+
 
     public void maxHeal()
     {
         this.health = this.maxHealth;
     }
+
+
+    public String getEntityName(){
+        return this.entityName;
+    }
+
 
     //calls upgrade to the combatant's move
     public void upgradeMove(int moveNum)
@@ -140,9 +172,46 @@ public class combatant {
                 this.move3.upgradeAtkPower();
                 break;
         }
-    }
+    } 
+
+   
 
     public int getHealth() {
         return this.health;
+    } 
+
+
+    public String moveName1(){
+        return move1.getAtkName();
+    } 
+
+    public String moveName2(){
+        return move2.getAtkName();
+    }  
+
+    public String moveName3(){
+        return move3.getAtkName();
     }
+
+    
+
+    // public String getMoveName(int moveSelec){
+    //     switch(moveSelec){
+    //         case 1: {
+    //             return move1.getAtkName(); 
+    //             break;
+    //         }   
+    //         case 2:{
+    //             move2.getAtkName(); 
+    //             break;
+    //         } 
+    //         default: {
+    //             move3.getAtkName(); 
+    //         }
+
+            
+    //     }
+    // }
+
+
 }

@@ -1,22 +1,45 @@
 package Screens;
 
-import java.awt.Color;
+import java.awt.Color; 
+
+import java.awt.Font; //importing font for text
+import java.awt.image.BufferedImage;
 
 import Combat.combatRounds;
 import Combat.combatant;
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Rectangle;
 import Level.FlagManager;
 import Level.Map;
 import Maps.CombatMap;
 import SpriteFont.SpriteFont;
 
-public class CombatScreen extends Screen {
+public class CombatScreen extends Screen {  
+
+    
+    private Font moveFont = new Font("Monospaced", Font.PLAIN, 11);  
+    private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
+
+
+    private BufferedImage testEnemy;
+
+    /*
+     * having colors defined to reuse
+     */
+    private Color red = new Color(225, 0, 0); 
+    private Color yellow = new Color(225, 225, 0); 
+    private Color  green = new Color(0, 128, 0);    
+
+
+    private Rectangle yellowRect = new Rectangle(40, 65, 250, 30); 
+
     protected ScreenCoordinator screenCoordinator;
     protected PlayLevelScreen playLevelScreen;
     protected SpriteFont goBackButton;
@@ -46,9 +69,14 @@ public class CombatScreen extends Screen {
     public void initialize() {
 
         //temportary combatant object intitialization
-        combatant playerCombatant = new combatant();
-        combatant enemyCombatant = new combatant(1);
-        //end temp objects
+         playerCombatant = new combatant(); //boomer
+         enemyCombatant = new combatant(1); //placeolder enemy    
+
+        //end temp objects 
+
+        //tracker for player health and enemy health, so rect adjusts accordingly 
+        
+
         
         //initalize current combat 
         currentCombat = new combatRounds(playerCombatant, enemyCombatant);
@@ -68,7 +96,9 @@ public class CombatScreen extends Screen {
     }
 
     @Override
-    public void update() {
+    public void update() { 
+
+        
 
         currentCombat.updateCombat();
         //decrease timer as time progresses
@@ -139,51 +169,101 @@ public class CombatScreen extends Screen {
         // }
     }
 
+    
     @Override
-    public void draw(GraphicsHandler graphicsHandler) {
+    public void draw(GraphicsHandler graphicsHandler) {   
+
+        //move1Label = new SpriteFont(playerCombatant.getAtkName(), 90, 460, font, Color.WHITE);
+
+
+        
+        
         combatMap.draw(graphicsHandler);
         //goBackButton.draw(graphicsHandler);
-        graphicsHandler.drawRectangle(193, 119, 130, 55, new Color(49, 207, 240), 2);
+       // graphicsHandler.drawRectangle(193, 119, 130, 55, new Color(49, 207, 240), 2);  
+
+       
+
+        //displaying move options and names 
+        graphicsHandler.drawString(playerCombatant.moveName1(), 40, 490, moveFont, Color.WHITE); //drawing text in white  
+
+        graphicsHandler.drawString(playerCombatant.moveName2(), 180, 460, moveFont, Color.WHITE); 
+
+        graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE); 
+
+        //player stuffs
+        graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
+        graphicsHandler.drawString(playerCombatant.getEntityName(), 530, 435, nameFont, Color.BLACK); //name text 
+        graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar   
+
+        graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
 
 
+
+
+        // playerCombatant.getHealth()*2 for the width doesn't work, it repeats a ton  
+        //switch case function for evaluating health amounts? 
+ 
+        //enemy stuffs
+        graphicsHandler.drawFilledRectangle(40, 65, 250, 36, new Color(225, 225, 255)); //white rect outline 
+        graphicsHandler.drawString(enemyCombatant.getEntityName(), 40, 94, nameFont, Color.BLACK); //name text  
+        graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
+         //THIS DOES THE THING!!!!
+        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
+
+
+        // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){
+        //     graphicsHandler.drawFilledRectangle(yellowRect, green); //player healthbar  
+        //     graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
+        // } else if (playerCombatant.getHealth() < 80 && playerCombatant.getHealth() >)
+
+        //conditionals to redraw the rects so the selected one turns white
         if (moveSelected == 1)
         {
-            //rect 1
-            graphicsHandler.drawRectangle(100, 450, 55, 55, new Color(200, 207, 240), 5);
+            //rect 1 
+            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(200, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 400, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(220, 450, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
         }
 
         else if (moveSelected == 2)
         {
             //rect 1
-            graphicsHandler.drawRectangle(100, 450, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 400, 55, 55, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(200, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(220, 450, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
         }
         else if (moveSelected == 3)
         {
             //rect 1
-            graphicsHandler.drawRectangle(100, 450, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 400, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(220, 450, 55, 55, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470, 140, 30, new Color(200, 207, 240), 5);
         }
         else
         {
             //rect 1
-            graphicsHandler.drawRectangle(100, 450, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 400, 55, 55, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(220, 450, 55, 55, new Color(49, 207, 240), 5);
-        }
+            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+        } 
 
-    }
+        
+
+    } 
+
+    // public void healthShfit(int amount) {
+    //     if(amount <= 100 && amount>=70){
+    //         yellowRect.draw(null);
+    //     }
+    // }
     
 }
