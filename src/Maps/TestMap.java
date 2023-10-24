@@ -59,9 +59,15 @@ public class TestMap extends Map {
         //dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
-        Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
-        jukebox.setInteractScript(new JukeboxScript());
-        npcs.add(jukebox);
+        // Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
+        // jukebox.setInteractScript(new JukeboxScript());
+        // npcs.add(jukebox);
+
+        JudyAndCar judycar = new JudyAndCar(7, getMapTile(40, 61).getLocation());
+        //judycar.setExistenceFlag("hasTalkedToJudyCar");
+        judycar.setInteractScript(new JudyAndCarScript());
+        npcs.add(judycar);
+
 
         //Adding The Alex Boss
         AlexBoss alexBoss = new AlexBoss(4,getMapTile(73, 113).getLocation());
@@ -73,7 +79,7 @@ public class TestMap extends Map {
         npcs.add(enemyRobot);
 
         //Adding a student
-        Student student = new Student(6, getMapTile(76, 113).getLocation());
+        Student student = new Student(6, getMapTile(69, 110).getLocation());
         student.setInteractScript(new StudentScript());
         npcs.add(student);
 

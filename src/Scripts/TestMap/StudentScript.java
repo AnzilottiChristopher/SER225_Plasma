@@ -9,6 +9,7 @@ public class StudentScript extends Script<NPC>
     @Override
     protected void setup()
     {
+        npcFacePlayer(6);
         lockPlayer();
         showTextbox();
         addTextToTextboxQueue("We made it");

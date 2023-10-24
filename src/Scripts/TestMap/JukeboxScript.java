@@ -51,7 +51,6 @@ public void setCount(int count) {
                 count = 2;
             }
         }
-        entity.facePlayer(player);
     }
 
     @Override
