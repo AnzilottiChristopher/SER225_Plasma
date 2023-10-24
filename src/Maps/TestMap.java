@@ -71,6 +71,10 @@ public class TestMap extends Map {
         EnemyRobot enemyRobot = new EnemyRobot(5, getMapTile(75, 113).getLocation());
         npcs.add(enemyRobot);
 
+        //Adding a student
+        Student student = new Student(6, getMapTile(76, 113).getLocation());
+        npcs.add(student);
+
 
         return npcs;
     }
