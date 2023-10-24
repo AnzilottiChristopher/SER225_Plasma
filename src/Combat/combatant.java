@@ -36,7 +36,7 @@ public class combatant extends attack {
 
     public combatant () //blank constructor, assume player
     {
-        System.out.println("Player combatbant intirialized");
+        //System.out.println("Player combatbant intirialized");
         this.alive = true;
         this.health = 100;
 
@@ -50,7 +50,7 @@ public class combatant extends attack {
         this.academic = 10;
         this.engaged = 10;  
 
-        this.name = "Boomer The Bobcat";
+        this.name = "Boomer";
 
     }
 
@@ -178,9 +178,9 @@ public BufferedImage getEnemyImage(){
     }
 
 
-    public String getEntityName(){
-        return this.name;
-    }
+    // public String getEntityName(){
+    //     return this.name;
+    // }
 
 
     //calls upgrade to the combatant's move

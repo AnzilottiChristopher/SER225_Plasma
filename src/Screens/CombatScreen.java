@@ -29,7 +29,7 @@ public class CombatScreen extends Screen {
     private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
 
 
-    private BufferedImage testEnemy;
+   // private BufferedImage testEnemy;
 
     /*
      * having colors defined to reuse
@@ -76,7 +76,7 @@ public class CombatScreen extends Screen {
 
         //temportary combatant object intitialization
          playerCombatant = new combatant(); //boomer
-         enemyCombatant = new combatant("Enemy"); //placeolder enemy    
+         enemyCombatant = new combatant("random"); //placeolder enemy    
 
         //end temp objects 
 
@@ -228,8 +228,8 @@ public class CombatScreen extends Screen {
 
         //player stuffs
         graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
-        graphicsHandler.drawString(playerCombatant.getEntityName(), 530, 435, nameFont, Color.BLACK); //name text 
-        //graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar   
+        graphicsHandler.drawString(playerCombatant.getName(), 530, 435, nameFont, Color.BLACK); //name text 
+        graphicsHandler.drawFilledRectangle(520, 405, (playerCombatant.getHealth()*2), 10, green); //player healthbar   
 
         graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
 
@@ -241,16 +241,19 @@ public class CombatScreen extends Screen {
  
         //enemy stuffs
         graphicsHandler.drawFilledRectangle(40, 65, 250, 36, new Color(225, 225, 255)); //white rect outline 
-        graphicsHandler.drawString(enemyCombatant.getEntityName(), 40, 94, nameFont, Color.BLACK); //name text  
-        graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
+        graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
+        graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
          //THIS DOES THE THING!!!!
        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
 
 
         // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){
-        //     graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar  
+        //    // graphicsHandler.drawFilledRectangle(520, 405, 200, 10, green); //player healthbar  
         //     graphicsHandler.drawFilledRectangle(40, 70, 200, 10, green); //enemy healthbar  
-        // } else if (playerCombatant.getHealth() < 80 && playerCombatant.getHealth() >)
+        // } //else if (playerCombatant.getHealth() < 80 && playerCombatant.getHealth() >) 
+        // else{
+        //     graphicsHandler.drawFilledRectangle(40, 70, 100, 10, yellow); //enemy healthbar  
+        // }
 
         //conditionals to redraw the rects so the selected one turns white
         if (moveSelected == 1)
