@@ -24,7 +24,7 @@ public class combatant extends attack {
 
     private boolean alive; 
 
-    private String entityName;
+    private String name;
 
     protected int health;  //health stat
     private int maxHealth;
@@ -50,27 +50,55 @@ public class combatant extends attack {
         this.academic = 10;
         this.engaged = 10;  
 
-        this.entityName = "Boomer The Bobcat";
+        this.name = "Boomer The Bobcat";
 
     }
 
-    public combatant (int rank) //rank of generic oponent, determines stats
+    public combatant (String enemyName) //rank of generic oponent, determines stats
     {
-        this.move1 = new attack("generic sport attk",atkType.SPORTS,3);
-        this.move2 = new attack("generic social attk",atkType.SOCIAL,3);
-        this.move3 = new attack("generic study attk",atkType.STUDY,3);
+        int rank = 1;
+
+        switch(enemyName)
+        {
+            case "random":
+                rank = 1;
+                this.name = "Enemy";
+                this.move1 = new attack("generic sport attk",atkType.SPORTS,3);
+                this.move2 = new attack("generic social attk",atkType.SOCIAL,3);
+                this.move3 = new attack("generic study attk",atkType.STUDY,3);
 
 
-        this.maxHealth = 50 * rank;
-        this.defence = 5 * rank;
-        this.athletic = 5 * rank;
-        this.academic = 5 * rank;
-        this.engaged = 5 * rank;
+                this.maxHealth = 50 * rank;
+                this.defence = 5 * rank;
+                this.athletic = 5 * rank;
+                this.academic = 5 * rank;
+                this.engaged = 5 * rank;
 
-        this.alive = true;
-        this.health = this.maxHealth; 
+                this.alive = true;
+                this.health = this.maxHealth;
 
-        this.entityName = "Enemy" + rank;
+                break;
+
+            case "robot":
+
+                rank = 1;
+                this.name = "CyberBobcat";
+                this.move1 = new attack("Esport Execution",atkType.SPORTS,5);
+                this.move2 = new attack("Discord Double-kick",atkType.SOCIAL,3);
+                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
+
+
+                this.maxHealth = 50 * rank;
+                this.defence = 5 * rank;
+                this.athletic = 5 * rank;
+                this.academic = 5 * rank;
+                this.engaged = 5 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+        }
     }
 
 
@@ -108,13 +136,13 @@ public class combatant extends attack {
         
         //buffer from defence
 
-        int buffer = (int) (((100 - this.defence) / 100.0) * defence);
+        int buffer = (int) (((100 - this.defence) / 100.0) * 100);
 
         //System.out.println("taking buffer!" + buffer);
 
         //damage *= (100 - this.defence / 100.0);
 
-        damage = damage - buffer;
+        damage = (int) (damage * (buffer / 100.0));
 
         //System.out.println("taking damage!" + damage);
 
@@ -151,7 +179,7 @@ public BufferedImage getEnemyImage(){
 
 
     public String getEntityName(){
-        return this.entityName;
+        return this.name;
     }
 
 
@@ -191,6 +219,10 @@ public BufferedImage getEnemyImage(){
 
     public String moveName3(){
         return move3.getAtkName();
+    } 
+
+    public String getName() {
+        return name;
     }
 
     

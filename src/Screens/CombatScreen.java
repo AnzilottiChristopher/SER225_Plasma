@@ -6,6 +6,7 @@ import java.awt.Font; //importing font for text
 import java.awt.image.BufferedImage;
 
 import Combat.combatRounds;
+import Combat.combatStatus;
 import Combat.combatant;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -52,13 +53,17 @@ public class CombatScreen extends Screen {
     protected FlagManager flagManager;
     protected int moveSelected;
     protected combatRounds currentCombat;
-    combatant playerCombatant;
-    combatant enemyCombatant;
+    protected combatant playerCombatant;
+    protected combatant enemyCombatant;
+    protected combatStatus combatState;
 
-    public CombatScreen(PlayLevelScreen playLevelScreen)
+    public CombatScreen(PlayLevelScreen playLevelScreen,combatant playerCombatant ,combatant enemyCombatant)
     {
         this.playLevelScreen=playLevelScreen;
         this.screenCoordinator=playLevelScreen.screenCoordinator;
+        this.enemyCombatant = enemyCombatant;
+        this.playerCombatant = playerCombatant;
+
         
         initialize();
     }
@@ -68,9 +73,10 @@ public class CombatScreen extends Screen {
     @Override
     public void initialize() {
 
+
         //temportary combatant object intitialization
          playerCombatant = new combatant(); //boomer
-         enemyCombatant = new combatant(1); //placeolder enemy    
+         enemyCombatant = new combatant("Enemy"); //placeolder enemy    
 
         //end temp objects 
 
@@ -85,6 +91,7 @@ public class CombatScreen extends Screen {
         // goBackButton.setOutlineColor(Color.black);
         // goBackButton.setOutlineThickness(3);
 
+        combatState = combatStatus.PROGRESS;
         combatMap = new CombatMap();
         combatMap.setAdjustCamera(false);
         keyPressTimer = 0;
@@ -96,11 +103,12 @@ public class CombatScreen extends Screen {
     }
 
     @Override
-    public void update() { 
+    public void update() {  
 
         
 
-        currentCombat.updateCombat();
+        combatState = currentCombat.updateCombat();
+
         //decrease timer as time progresses
         keyPressTimer--;
 
@@ -139,6 +147,8 @@ public class CombatScreen extends Screen {
             keyPressTimer = 14;
             combatRounds.setMoveSelec(moveSelected);
             System.out.println("move selected :" + moveSelected);
+            moveSelected = 0; //de-selects move
+
         }
 
         
@@ -167,6 +177,31 @@ public class CombatScreen extends Screen {
                 
         //     }
         // }
+
+        
+        //responds based on CombatState
+        switch (combatState)
+        {
+            case WIN:
+                // playLevelScreen.goBackPlayLevelScreen();
+                // break;
+            case LOSS:
+            case TIE:
+
+                playLevelScreen.goBackPlayLevelScreen();
+                break;
+
+            case PROGRESS:
+
+                break;
+        }
+
+
+    }
+
+    public combatStatus getState()
+    {
+        return combatState;
     }
 
     

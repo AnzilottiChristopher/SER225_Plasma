@@ -5,6 +5,7 @@ package Combat;
  */
 
 import java.security.SecureRandom;
+import Combat.combatStatus;
 
 
 public class combatRounds {
@@ -15,14 +16,16 @@ public class combatRounds {
     private combatant opponentObj;
     private int round;
     private static int moveSelec;
+    private combatStatus status;
 
     public combatRounds(combatant playerObj,combatant opponentObj)
     {
         this.playerObj = playerObj;
         this.opponentObj = opponentObj;
+        this.status = combatStatus.PROGRESS;
     }
 
-    public boolean updateCombat() //returns boolean, true = player wins, false = player loses
+    public combatStatus updateCombat() //returns boolean, true = player wins, false = player loses
     {
         if(playerObj.isAlive() && opponentObj.isAlive())
        {    
@@ -50,9 +53,27 @@ public class combatRounds {
         
 
         }
-        //either tie, player wins, opponent wins.
 
-        return true;
+
+        //player won!
+        if (playerObj.isAlive() && !opponentObj.isAlive())
+        {
+            status = combatStatus.WIN;
+        }
+
+        if (!playerObj.isAlive() && opponentObj.isAlive())
+        {
+            status =  combatStatus.LOSS;
+        }
+
+        if (!playerObj.isAlive() && !opponentObj.isAlive())
+        {
+            status = combatStatus.TIE;
+        }
+
+
+        //either tie, player wins, opponent wins, or progress
+        return  status;
     }
 
 

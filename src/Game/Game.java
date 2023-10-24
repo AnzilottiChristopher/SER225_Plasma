@@ -28,7 +28,7 @@ public class Game {
         // music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         // music.playLoop();
         // music.setCount(1);
-        //System.out.println("Game has been r");
+        System.out.println("Game has been r");
 
         if (music.getCount() == 2){
             music.stopLoop();

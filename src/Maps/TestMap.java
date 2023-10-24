@@ -69,8 +69,6 @@ public class TestMap extends Map {
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
 
-
-
         return npcs;
     }
 
