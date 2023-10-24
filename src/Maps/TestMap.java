@@ -18,6 +18,7 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class TestMap extends Map {
 
+
     public TestMap() {
         super("test_map.txt", new TestTileset());
         this.playerStartPosition = getMapTile(79, 110).getLocation();
@@ -83,7 +84,8 @@ public class TestMap extends Map {
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
-        triggers.add(new Trigger(79, 110, 50, 50, new StudentScript()));
+        //3000 to 79 ratio X value
+        triggers.add(new Trigger(3800, 5000, 50, 1000, new StudentScript(), "hasStartedGame"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

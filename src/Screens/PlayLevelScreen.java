@@ -54,7 +54,8 @@ public class PlayLevelScreen extends Screen {
 
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasLostBall", false);
+        //flagManager.addFlag("hasLostBall", false);
+        flagManager.addFlag("hasStartedGame", false);
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);

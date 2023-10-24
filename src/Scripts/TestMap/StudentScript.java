@@ -10,17 +10,30 @@ public class StudentScript extends Script<NPC>
     protected void setup()
     {
         lockPlayer();
+        showTextbox();
+        addTextToTextboxQueue("We made it");
     }
 
     @Override
     protected void cleanup()
     {
-
+        setFlag("hasStartedGame");
+        hideTextbox();
+        unlockPlayer();
     }
 
     @Override
     protected ScriptState execute()
     {
-        return null;
+        if (!isFlagSet("hasStartedGame"))
+        {
+            start();
+            if (!isTextboxQueueEmpty())
+            {
+                return ScriptState.RUNNING;
+            }
+            end();
+        }
+        return ScriptState.COMPLETED;
     }
 }
