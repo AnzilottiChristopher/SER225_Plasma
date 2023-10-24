@@ -26,6 +26,7 @@ Music music = new Music();
             music.background("Resources/OMNIS LACRIMA.wav");
             music.playLoop();
             addTextToTextboxQueue( "Whadduuuuuuuuuuup!");
+            addTextToTextboxQueue( "Its your favorite president!");
         }
         else {
             addTextToTextboxQueue( "That track was fireeeeeeeeeee!"); 
