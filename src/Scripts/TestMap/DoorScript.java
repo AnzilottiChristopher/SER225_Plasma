@@ -4,19 +4,21 @@ import Level.Script;
 import Level.ScriptState;
 import Engine.Music;
 
-/*public class DoorScript extends Script<NPC> {
+public class DoorScript extends Script<NPC> {
 
-    public DoorScript()
-    {
-        setFlag("InteractedWithDoor");
-        lockPlayer();
-        showTextbox(); 
+    
 
-    }
+        //setFlag("InteractedWithDoor");
+        
+
+    
         //This runs first and the start
         @Override
         protected void setup() {
-            
+            lockPlayer();
+            showTextbox(); 
+            setFlag("TeleportCompleted");
+            setFlag("TeleportedBack");
             
             
         }
@@ -24,13 +26,24 @@ import Engine.Music;
         //This runs at the end
         @Override
         protected void cleanup() {
+            unlockPlayer();
+            hideTextbox();
+            setFlag("TeleportCompleted");
+            setFlag("TeleportedBack");
            
         }
     
         //This constantly runs and needs to use ENUMS to determine if script is still running or not
         @Override
         protected ScriptState execute() {
-           
+            start();
+            if (!isTextboxQueueEmpty()) {
+                return ScriptState.RUNNING;
+            }
+            end();
+            return ScriptState.COMPLETED;
         }
+           
+ }
     
-}/* */
+
