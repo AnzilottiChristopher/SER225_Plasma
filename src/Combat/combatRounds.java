@@ -1,4 +1,8 @@
-package Combat;
+package Combat; 
+
+/**
+ * this is essentially a "main" class for runnign the combat between 2 objects of the combatant class
+ */
 
 import java.security.SecureRandom;
 import Combat.combatStatus;
