@@ -9,7 +9,7 @@ public class StudentScript extends Script<NPC>
     @Override
     protected void setup()
     {
-
+        lockPlayer();
     }
 
     @Override

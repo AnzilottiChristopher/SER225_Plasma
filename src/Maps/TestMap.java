@@ -73,6 +73,7 @@ public class TestMap extends Map {
 
         //Adding a student
         Student student = new Student(6, getMapTile(76, 113).getLocation());
+        student.setInteractScript(new StudentScript());
         npcs.add(student);
 
 
@@ -82,6 +83,7 @@ public class TestMap extends Map {
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(79, 110, 50, 50, new StudentScript()));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

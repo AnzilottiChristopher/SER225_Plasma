@@ -16,9 +16,7 @@ import Engine.Music;
 public class AlexScript extends Script<NPC> {
 
     Music music = new Music();
-
-    private int sequence = 0;
-    private int amountMoved = 0;
+    
 
     @Override
     protected void setup() {
