@@ -30,12 +30,12 @@ Music music = new Music();
         else {
             addTextToTextboxQueue( "That track was fireeeeeeeeeee!"); 
             addTextToTextboxQueue( "Bye quinnilosers!"); 
-            music.stopLoop();
-            setFlag("hasTalked");
-            if (map.getFlagManager().isFlagSet("hasTalked")){
-                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-                music.playLoop();
-            }
+            // music.stopLoop();
+            // setFlag("hasTalked");
+            // if (map.getFlagManager().isFlagSet("hasTalked")){
+            //     music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            //     music.playLoop();
+            // }
            entity.setIsHidden(true);
         }
         entity.facePlayer(player);
@@ -46,6 +46,9 @@ Music music = new Music();
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToJudyCar");
+        music.stopLoop();
+        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.playLoop();
     }
 
     @Override
