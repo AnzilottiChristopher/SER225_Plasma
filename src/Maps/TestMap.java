@@ -68,9 +68,9 @@ public class TestMap extends Map {
         //dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
-        Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
-        jukebox.setInteractScript(new JukeboxScript());
-        npcs.add(jukebox);
+        // Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
+        // jukebox.setInteractScript(new JukeboxScript());
+        // npcs.add(jukebox);
 
         JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
         //judycar.setExistenceFlag("hasTalkedToJudyCar");

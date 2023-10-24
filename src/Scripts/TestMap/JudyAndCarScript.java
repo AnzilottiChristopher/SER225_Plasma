@@ -20,7 +20,6 @@ Music music = new Music();
         lockPlayer();
         showTextbox();
         setFlag("hasTalked"); 
-
         // changes what walrus says when talking to him the first time (flag is not set) vs talking to him afterwards (flag is set)
         if (!isFlagSet("hasTalkedToJudyCar")) {
             //setFlag("hasTalked");
@@ -29,7 +28,7 @@ Music music = new Music();
             addTextToTextboxQueue( "Whadduuuuuuuuuuup!");
         }
         else {
-            addTextToTextboxQueue( "This track fireeeeeeeeeee!"); 
+            addTextToTextboxQueue( "That track was fireeeeeeeeeee!"); 
             addTextToTextboxQueue( "Bye quinnilosers!"); 
             music.stopLoop();
             setFlag("hasTalked");
