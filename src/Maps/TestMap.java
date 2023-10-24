@@ -8,17 +8,21 @@ import Level.Map;
 import Level.NPC;
 import Level.Trigger;
 import NPCs.Dinosaur;
+import NPCs.JudyAndCar;
 import NPCs.Walrus;
 import NPCs.Jukebox;
 import NPCs.Door;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.CombatScript;
 import Scripts.TestMap.DinoScript;
+import Scripts.TestMap.JudyAndCarScript;
 import Scripts.TestMap.DoorScript;
+
 import Scripts.TestMap.JukeboxScript;
 import Scripts.TestMap.LostBallScript;
 import Scripts.TestMap.TreeScript;
 import Scripts.TestMap.WalrusScript;
+import Scripts.TestMap.JudyAndCarScript;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
 
@@ -67,15 +71,19 @@ public class TestMap extends Map {
         //dinosaur.setInteractScript(new CombatScript());
         npcs.add(dinosaur);
 
-        Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
-        jukebox.setInteractScript(new JukeboxScript());
-        npcs.add(jukebox);
+        // Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
+        // jukebox.setInteractScript(new JukeboxScript());
+        // npcs.add(jukebox);
 
         Door door= new Door(5,getMapTile(71,114).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
          
 
+        JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
+        //judycar.setExistenceFlag("hasTalkedToJudyCar");
+        judycar.setInteractScript(new JudyAndCarScript());
+        npcs.add(judycar);
 
 
         return npcs;

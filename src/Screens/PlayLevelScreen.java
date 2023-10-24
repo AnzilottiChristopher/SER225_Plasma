@@ -1,5 +1,6 @@
 package Screens;
 
+import Combat.combatant;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
@@ -8,6 +9,7 @@ import Level.*;
 import Maps.TempMap;
 import Maps.TestMap;
 import Players.Cat;
+import Scripts.TestMap.DinoScript;
 import Scripts.TestMap.JukeboxScript;
 import Utils.Direction;
 import Utils.Point;
@@ -27,24 +29,39 @@ public class PlayLevelScreen extends Screen {
     protected CombatScreen combatScreen;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected combatant playerCombatant;
+    //protected static String[] enemies;
+    protected static int victoryCount;
 
     Music music = new Music();
     JukeboxScript jukebox = new JukeboxScript();
+    static Combat.combatant[] enemies = {new combatant("robot"),
+                                        new combatant("robot"),
+                                        new combatant("robot"),
+                                        new combatant("alex"),};
+
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+
         this.screenCoordinator = screenCoordinator;
+
     }
 
-   
 
     public void initialize() {
+
+        //String[] enemies = {"robot", "robot", "robot"};
+        playerCombatant = new combatant();
+
         // setup state
         flagManager = new FlagManager();
         flagManager.addFlag("hasLostBall", false);
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
+        flagManager.addFlag("hasTalkedToJudyCar", false);
 
+        //combat screen
         flagManager.addFlag("CombatStarted", false);
         flagManager.addFlag("CombatFinish", false);
         flagManager.addFlag("TeleportCompleted", false);
@@ -55,6 +72,7 @@ public class PlayLevelScreen extends Screen {
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.playLoop();
         music.setCount(1);
+
         
         // define/setup map
         this.map = new TestMap();
@@ -99,7 +117,10 @@ public class PlayLevelScreen extends Screen {
             }
         }
         tempScreen=new TempScreen(this);
-        combatScreen=new CombatScreen(this);
+        //combatScreen=new CombatScreen(this);
+
+
+        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount]);
         winScreen = new WinScreen(this);
     }
 
@@ -115,11 +136,51 @@ public class PlayLevelScreen extends Screen {
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
+
+            //UPDATES BASED ON COMBAT
             case COMBATMODE:
                 combatScreen.update();
+
             case SUSPENDED:
                 tempScreen.update();
                 //map.update(player);
+
+
+                //UPDATES BASED ON RESULT OF COMBAT
+                switch (combatScreen.getState())
+                {
+                    case WIN:
+                    case TIE:  //tie in favor of the player... for now
+
+                    map.getFlagManager().setFlag("BeatDino");
+                    victoryCount++;
+                    System.out.println("Victories:" + victoryCount);
+
+                    System.out.println("PlayLevelScreen recieves = "+ combatScreen.getState() +
+                    "\nFlag:" + map.getFlagManager().isFlagSet("BeatDino"));
+
+                    break;
+
+                    case LOSS:
+                    //if you lose, talk to dino again
+                    System.out.println("PlayLevelScreen recieves = "+ combatScreen.getState() +
+                    "\nFlag:" + map.getFlagManager().isFlagSet("BeatDino"));
+                    
+                    //if you lose the fight... RESET GAME
+                    this.initialize();
+
+                    // Scripts.TestMap.DinoScript.class.
+
+                    // Level.NPC.dinosaur.setIsHidden(false);
+                    // map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+
+                    
+                    break;
+
+                    case PROGRESS:
+                    //do nothing, no results yet
+                    break;
+                }
         }
 
         // if flag is set at any point during gameplay, game is "won"
@@ -214,4 +275,10 @@ public class PlayLevelScreen extends Screen {
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED,COMBATMODE,SUSPENDED
     }
+
+    public static combatant getCurrentEnemy()
+    {
+        return enemies[victoryCount];
+    }
+
 }
