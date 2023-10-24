@@ -7,10 +7,7 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Trigger;
-import NPCs.AlexBoss;
-import NPCs.Dinosaur;
-import NPCs.Walrus;
-import NPCs.Jukebox;
+import NPCs.*;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 //import Tilesets.CommonTileset;
@@ -65,9 +62,14 @@ public class TestMap extends Map {
         jukebox.setInteractScript(new JukeboxScript());
         npcs.add(jukebox);
 
+        //Adding The Alex Boss
         AlexBoss alexBoss = new AlexBoss(4,getMapTile(73, 113).getLocation());
         alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
+
+        //Adding enemies
+        EnemyRobot enemyRobot = new EnemyRobot(5, getMapTile(75, 113).getLocation());
+        npcs.add(enemyRobot);
 
 
         return npcs;
