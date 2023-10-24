@@ -207,10 +207,6 @@ public class CombatScreen extends Screen {
     
     @Override
     public void draw(GraphicsHandler graphicsHandler) {   
-
-        //move1Label = new SpriteFont(playerCombatant.getAtkName(), 90, 460, font, Color.WHITE);
-
-
         
         
         combatMap.draw(graphicsHandler);
