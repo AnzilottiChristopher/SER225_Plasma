@@ -51,6 +51,9 @@ public class AlexScript extends Script<NPC> {
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToAlex");
+        music.stopLoop();
+        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+        music.playLoop();
     }
 
     @Override
