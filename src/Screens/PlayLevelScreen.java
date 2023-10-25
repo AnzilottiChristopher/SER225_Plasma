@@ -6,6 +6,7 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
+import Maps.TempMap;
 import Maps.TestMap;
 import Players.Cat;
 import Scripts.TestMap.DinoScript;
@@ -19,12 +20,12 @@ import Engine.Music;
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen {  
 
-    //Static so that combatScript can affect this 
 
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
+    protected TempScreen tempScreen;
     protected CombatScreen combatScreen;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
@@ -63,6 +64,9 @@ public class PlayLevelScreen extends Screen {
         //combat screen
         flagManager.addFlag("CombatStarted", false);
         flagManager.addFlag("CombatFinish", false);
+        flagManager.addFlag("TeleportCompleted", false);
+        flagManager.addFlag("PlayerHasTeleportedBack", false);
+        
 
         flagManager.addFlag("hasTalked", false); 
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
@@ -79,6 +83,7 @@ public class PlayLevelScreen extends Screen {
         this.player.setMap(map);
         Point playerStartPosition = map.getPlayerStartPosition();
         this.player.setLocation(playerStartPosition.x, playerStartPosition.y);
+        //this.player.setLocation(5000, 0);
         this.playLevelScreenState = PlayLevelScreenState.RUNNING;
         this.player.setFacingDirection(Direction.LEFT);
 
@@ -111,6 +116,9 @@ public class PlayLevelScreen extends Screen {
                 trigger.getTriggerScript().setPlayer(player);
             }
         }
+        tempScreen=new TempScreen(this);
+        //combatScreen=new CombatScreen(this);
+
 
         combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount]);
         winScreen = new WinScreen(this);
@@ -132,6 +140,11 @@ public class PlayLevelScreen extends Screen {
             //UPDATES BASED ON COMBAT
             case COMBATMODE:
                 combatScreen.update();
+
+            case SUSPENDED:
+                tempScreen.update();
+                //map.update(player);
+
 
                 //UPDATES BASED ON RESULT OF COMBAT
                 switch (combatScreen.getState())
@@ -197,6 +210,15 @@ public class PlayLevelScreen extends Screen {
             music.stopLoop();
 
         }
+        //if the player interacts with the door the they are teleported
+        if(map.getFlagManager().isFlagSet("TeleportCompleted"))
+        {
+            playLevelScreenState=PlayLevelScreenState.SUSPENDED;
+        }
+        if(map.getFlagManager().isFlagSet("PlayerHasTeleportedBack"))
+        {
+            playLevelScreenState=PlayLevelScreenState.RUNNING;
+        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -211,6 +233,8 @@ public class PlayLevelScreen extends Screen {
             case COMBATMODE:
                 combatScreen.draw(graphicsHandler);
                 break;
+            case SUSPENDED:
+                tempScreen.draw(graphicsHandler);
         }
     }
 
@@ -230,6 +254,12 @@ public class PlayLevelScreen extends Screen {
         map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
     }
 
+    public void TeleportBack()
+    {
+        playLevelScreenState=PlayLevelScreenState.RUNNING;
+        map.getFlagManager().setFlag("PlayerHasTeleportedBack");
+    }
+
 
 
     public void resetLevel() {
@@ -243,7 +273,7 @@ public class PlayLevelScreen extends Screen {
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
-        RUNNING, LEVEL_COMPLETED,COMBATMODE
+        RUNNING, LEVEL_COMPLETED,COMBATMODE,SUSPENDED
     }
 
     public static combatant getCurrentEnemy()
