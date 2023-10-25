@@ -7,21 +7,10 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Trigger;
-import NPCs.Dinosaur;
-import NPCs.JudyAndCar;
-import NPCs.Walrus;
-import NPCs.Jukebox;
-import NPCs.Door;
+import NPCs.*;
 import Scripts.SimpleTextScript;
-import Scripts.TestMap.CombatScript;
-import Scripts.TestMap.DinoScript;
-import Scripts.TestMap.JudyAndCarScript;
+import Scripts.TestMap.*;
 import Scripts.TestMap.DoorScript;
-
-import Scripts.TestMap.JukeboxScript;
-import Scripts.TestMap.LostBallScript;
-import Scripts.TestMap.TreeScript;
-import Scripts.TestMap.WalrusScript;
 import Scripts.TestMap.JudyAndCarScript;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
@@ -30,6 +19,7 @@ import java.util.ArrayList;
 
 // Represents a test map to be used in a level
 public class TestMap extends Map {
+
 
     public TestMap() {
         super("test_map.txt", new TestTileset());
@@ -75,7 +65,7 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        Door door= new Door(5,getMapTile(71,114).getLocation());
+        Door door= new Door(3,getMapTile(71,114).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
          
@@ -86,12 +76,34 @@ public class TestMap extends Map {
         npcs.add(judycar);
 
 
+        //Adding The Alex Boss
+        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 22).getLocation());
+        alexBoss.setInteractScript(new AlexScript());
+        npcs.add(alexBoss);
+
+        //Adding enemies
+        EnemyRobot enemyRobot1 = new EnemyRobot(6, getMapTile(90, 21).getLocation());
+        enemyRobot1.setInteractScript(new EnemyScript());
+        npcs.add(enemyRobot1);
+
+        EnemyRobot enemyRobot2 = new EnemyRobot(7, getMapTile(105, 21).getLocation());
+        enemyRobot2.setInteractScript(new EnemyScript());
+        npcs.add(enemyRobot2);
+
+        //Adding a student
+        Student student = new Student(8, getMapTile(78, 110).getLocation());
+        student.setInteractScript(new studentInteraction());
+        npcs.add(student);
+
+
         return npcs;
     }
 
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        //3000 to 79 ratio X value
+        triggers.add(new Trigger(3800, 5000, 50, 1000, new StudentScript(), "hasStartedGame"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

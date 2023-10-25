@@ -55,11 +55,17 @@ public class PlayLevelScreen extends Screen {
 
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasLostBall", false);
+        //flagManager.addFlag("hasLostBall", false);
+        flagManager.addFlag("hasStartedGame", false);
+        flagManager.addFlag("hasInteractedWithStudent", false);
+        flagManager.addFlag("enemy1Interaction", false);
+        flagManager.addFlag("enemy2Interaction", false);
+
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
         flagManager.addFlag("hasTalkedToJudyCar", false);
+        flagManager.addFlag("hasTalkedToAlex", false);
 
         //combat screen
         flagManager.addFlag("CombatStarted", false);
