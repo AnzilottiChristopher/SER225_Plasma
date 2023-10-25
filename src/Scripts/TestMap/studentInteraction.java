@@ -10,7 +10,7 @@ public class studentInteraction extends Script<NPC>
     @Override
     protected void setup()
     {
-        npcFacePlayer(6);
+        entity.facePlayer(player);
         lockPlayer();
         showTextbox();
         addTextToTextboxQueue("Boomer please help us!");

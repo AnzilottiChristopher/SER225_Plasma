@@ -29,7 +29,10 @@ public class AlexScript extends Script<NPC> {
             music.stopLoop();
             music.background("Resources/ObstacleInPath.wav");
             music.playLoop();
-            addTextToTextboxQueue("Hello");
+            addTextToTextboxQueue("FASTER FASTER");
+            addTextToTextboxQueue("CODE FASTER");
+            addTextToTextboxQueue("YOU WORTHLESS FOOLS CAN'T \nCODE TO SAVE YOU");
+            addTextToTextboxQueue("BECOME A ROBOT AND CODE \nFOR THE REST OF YOUR LIVES!!!!");
         }
         else
         {

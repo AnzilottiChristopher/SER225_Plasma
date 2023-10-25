@@ -15,7 +15,7 @@ public class EnemyRobot extends NPC
     public EnemyRobot(int id, Point location)
     {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("EnemyRobot.png"),
-                20, 30), "STAND_LEFT");
+                20, 28), "STAND_LEFT");
     }
 
     @Override

@@ -65,7 +65,7 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        Door door= new Door(5,getMapTile(71,114).getLocation());
+        Door door= new Door(3,getMapTile(71,114).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
          
@@ -77,16 +77,21 @@ public class TestMap extends Map {
 
 
         //Adding The Alex Boss
-        AlexBoss alexBoss = new AlexBoss(4,getMapTile(73, 113).getLocation());
+        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 22).getLocation());
         alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
 
         //Adding enemies
-        EnemyRobot enemyRobot = new EnemyRobot(5, getMapTile(75, 113).getLocation());
-        npcs.add(enemyRobot);
+        EnemyRobot enemyRobot1 = new EnemyRobot(6, getMapTile(90, 21).getLocation());
+        enemyRobot1.setInteractScript(new EnemyScript());
+        npcs.add(enemyRobot1);
+
+        EnemyRobot enemyRobot2 = new EnemyRobot(7, getMapTile(105, 21).getLocation());
+        enemyRobot2.setInteractScript(new EnemyScript());
+        npcs.add(enemyRobot2);
 
         //Adding a student
-        Student student = new Student(6, getMapTile(78, 110).getLocation());
+        Student student = new Student(8, getMapTile(78, 110).getLocation());
         student.setInteractScript(new studentInteraction());
         npcs.add(student);
 

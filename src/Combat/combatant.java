@@ -40,7 +40,7 @@ public class combatant extends attack {
         this.alive = true;
         this.health = 100;
 
-        this.move1 = new attack("Hockey Hurricaine",atkType.SPORTS,3);
+        this.move1 = new attack("Hockey Hurricane",atkType.SPORTS,3);
         this.move2 = new attack("SPB Bodyslam",atkType.SOCIAL,3);
         this.move3 = new attack("Study Session Slam",atkType.STUDY,3);
 
