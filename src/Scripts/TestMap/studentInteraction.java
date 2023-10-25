@@ -5,7 +5,7 @@ import Level.Script;
 import Level.ScriptState;
 import Utils.Direction;
 
-public class StudentScript extends Script<NPC>
+public class studentInteraction extends Script<NPC>
 {
     @Override
     protected void setup()
@@ -14,16 +14,11 @@ public class StudentScript extends Script<NPC>
         lockPlayer();
         showTextbox();
         addTextToTextboxQueue("Boomer please help us!");
-        addTextToTextboxQueue("Something terrible is happening at CCE!");
-        addTextToTextboxQueue("I don't understand what's happening");
-        addTextToTextboxQueue("It's almost as if the students were turned into robots!");
-        addTextToTextboxQueue("Please go to CCE and save them!");
     }
 
     @Override
     protected void cleanup()
     {
-        setFlag("hasStartedGame");
         hideTextbox();
         unlockPlayer();
     }
@@ -31,7 +26,7 @@ public class StudentScript extends Script<NPC>
     @Override
     protected ScriptState execute()
     {
-        if (!isFlagSet("hasStartedGame")) {
+        if (!isFlagSet("hasInteractedWithStudent")) {
             start();
             if (!isTextboxQueueEmpty()) {
                 return ScriptState.RUNNING;

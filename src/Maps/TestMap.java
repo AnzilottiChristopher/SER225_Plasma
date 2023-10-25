@@ -10,6 +10,8 @@ import Level.Trigger;
 import NPCs.*;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
+import Scripts.TestMap.DoorScript;
+import Scripts.TestMap.JudyAndCarScript;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
 
@@ -63,7 +65,12 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        JudyAndCar judycar = new JudyAndCar(7, getMapTile(40, 61).getLocation());
+        Door door= new Door(5,getMapTile(71,114).getLocation());
+        door.setInteractScript(new DoorScript());
+        npcs.add(door);
+         
+
+        JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
         //judycar.setExistenceFlag("hasTalkedToJudyCar");
         judycar.setInteractScript(new JudyAndCarScript());
         npcs.add(judycar);
@@ -79,8 +86,8 @@ public class TestMap extends Map {
         npcs.add(enemyRobot);
 
         //Adding a student
-        Student student = new Student(6, getMapTile(69, 110).getLocation());
-        student.setInteractScript(new StudentScript());
+        Student student = new Student(6, getMapTile(78, 110).getLocation());
+        student.setInteractScript(new studentInteraction());
         npcs.add(student);
 
 

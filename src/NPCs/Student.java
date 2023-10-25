@@ -15,7 +15,7 @@ public class Student extends NPC
     public Student(int id, Point location)
     {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Ness.png"),
-                22, 26), "STAND_LEFT");
+                22, 26), "STAND_RIGHT");
     }
 
     @Override
