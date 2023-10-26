@@ -5,6 +5,7 @@ import Level.Script;
 import Level.ScriptState;
 import Screens.CombatScreen;
 import Engine.Music;
+import Screens.PlayLevelScreen;
 
 // script for talking to walrus npc
 public class JudyAndCarScript extends Script<NPC> {
@@ -19,7 +20,7 @@ Music music = new Music();
     protected void setup() { 
         lockPlayer();
         showTextbox();
-        setFlag("hasTalked"); 
+        setFlag("hasTalked");
         // changes what walrus says when talking to him the first time (flag is not set) vs talking to him afterwards (flag is set)
         if (!isFlagSet("hasTalkedToJudyCar")) {
             //setFlag("hasTalked");
@@ -31,12 +32,12 @@ Music music = new Music();
         else {
             addTextToTextboxQueue( "That track was fireeeeeeeeeee!"); 
             addTextToTextboxQueue( "Bye quinnilosers!"); 
-            // music.stopLoop();
-            // setFlag("hasTalked");
-            // if (map.getFlagManager().isFlagSet("hasTalked")){
-            //     music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-            //     music.playLoop();
-            // }
+             music.stopLoop();
+             setFlag("hasTalked");
+//             if (map.getFlagManager().isFlagSet("hasTalked")){
+//                 music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+//                 music.playLoop();
+//             }
            entity.setIsHidden(true);
         }
         entity.facePlayer(player);
@@ -47,9 +48,10 @@ Music music = new Music();
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToJudyCar");
-        music.stopLoop();
-        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-        music.playLoop();
+        setFlag("startingMusic");
+//        music.stopLoop();
+//        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+//        music.playLoop();
     }
 
     @Override

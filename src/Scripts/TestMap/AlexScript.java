@@ -34,16 +34,16 @@ public class AlexScript extends Script<NPC> {
             addTextToTextboxQueue("YOU WORTHLESS FOOLS CAN'T \nCODE TO SAVE YOU");
             addTextToTextboxQueue("BECOME A ROBOT AND CODE \nFOR THE REST OF YOUR LIVES!!!!");
         }
-        else
-        {
-            music.stopLoop();
-            setFlag("hasTalked");
-            if (map.getFlagManager().isFlagSet("hasTalked"))
-            {
-                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-                music.playLoop();
-            }
-        }
+//        else
+//        {
+//            music.stopLoop();
+//            setFlag("hasTalked");
+//            if (map.getFlagManager().isFlagSet("hasTalked"))
+//            {
+//                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+//                music.playLoop();
+//            }
+//        }
         entity.facePlayer(player);
     }
 
@@ -52,9 +52,10 @@ public class AlexScript extends Script<NPC> {
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToAlex");
+        setFlag("startingMusic");
         music.stopLoop();
-        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
-        music.playLoop();
+//        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+//        music.playLoop();
     }
 
     @Override

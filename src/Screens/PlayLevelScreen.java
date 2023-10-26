@@ -33,6 +33,7 @@ public class PlayLevelScreen extends Screen {
     //protected static String[] enemies;
     protected static int victoryCount;
 
+
     Music music = new Music();
     JukeboxScript jukebox = new JukeboxScript();
     static Combat.combatant[] enemies = {new combatant("robot"),
@@ -74,7 +75,8 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("PlayerHasTeleportedBack", false);
         
 
-        flagManager.addFlag("hasTalked", false); 
+        flagManager.addFlag("hasTalked", false);
+        flagManager.addFlag("startingMusic", false);
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.playLoop();
         music.setCount(1);
@@ -214,8 +216,16 @@ public class PlayLevelScreen extends Screen {
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();
-
+            map.getFlagManager().unsetFlag("hasTalked");
         }
+        if(map.getFlagManager().isFlagSet("startingMusic"))
+        {
+            music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("startingMusic");
+            //System.out.println("We are here Flags");
+        }
+
         //if the player interacts with the door the they are teleported
         if(map.getFlagManager().isFlagSet("TeleportCompleted"))
         {
