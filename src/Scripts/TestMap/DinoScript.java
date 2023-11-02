@@ -21,8 +21,7 @@ public class DinoScript extends Script<NPC> {
     
     @Override
     public void setup() {
-        System.out.println("DinoScript Setup Called");
-        
+                
         lockPlayer();
 
         if (!isFlagSet("hasTalkedToWalrus")) {
