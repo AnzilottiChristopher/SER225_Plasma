@@ -106,6 +106,7 @@ public class TestMap extends Map {
             {
                 studentWall = new StudentWall(9 + counter, getMapTile(64 + (counter * 2), 28).getLocation());
             }
+            studentWall.setInteractScript(new WallScript());
             npcs.add(studentWall);
         } //ID counter at 34
 
@@ -115,11 +116,12 @@ public class TestMap extends Map {
             if (counter % 2 == 0)
             {
                 CollisionState girl = CollisionState.GIRL;
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 20 + (counter * 2)).getLocation(), girl);
+                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation(), girl);
             } else
             {
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 20 + (counter * 2)).getLocation());
+                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
             }
+            left.setInteractScript(new WallScript());
             npcs.add(left);
         } //ID counter at 38
 
