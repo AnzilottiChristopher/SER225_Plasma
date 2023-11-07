@@ -67,6 +67,8 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasFoundBall", false);
         flagManager.addFlag("hasTalkedToJudyCar", false);
         flagManager.addFlag("hasTalkedToAlex", false);
+        flagManager.addFlag("hasTalkedToBlake", false);
+        flagManager.addFlag("hasTalkedToDrJ", false);
 
         //combat screen
         flagManager.addFlag("CombatStarted", false);

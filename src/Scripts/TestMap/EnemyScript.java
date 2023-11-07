@@ -32,6 +32,14 @@ public class EnemyScript extends Script<NPC>
             addTextToTextboxQueue("Game...Almost");
             addTextToTextboxQueue(".....Exception?");
         }
+        else if (entity.getId() == 11)
+        {
+            music.stopLoop();
+            music.background("Resources/Announce the truth.wav");
+            music.playLoop();
+            addTextToTextboxQueue("");
+            
+        }
     }
 
     @Override

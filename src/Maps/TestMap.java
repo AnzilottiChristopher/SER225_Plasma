@@ -95,6 +95,18 @@ public class TestMap extends Map {
         student.setInteractScript(new studentInteraction());
         npcs.add(student);
 
+        Blake blake = new Blake(9, getMapTile(21, 100).getLocation());
+        blake.setInteractScript(new BlakeScript());
+        npcs.add(blake);
+
+        DrJ j = new DrJ(10, getMapTile(74, 110).getLocation());
+        j.setInteractScript(new DrJScript());
+        npcs.add(j);
+
+        EnemyRobot enemyRobot3 = new EnemyRobot(11, getMapTile(21, 120).getLocation());
+        enemyRobot3.setInteractScript(new EnemyScript());
+        npcs.add(enemyRobot3);
+
 
         return npcs;
     }
