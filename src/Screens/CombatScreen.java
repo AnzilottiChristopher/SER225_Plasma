@@ -25,7 +25,7 @@ import SpriteFont.SpriteFont;
 public class CombatScreen extends Screen {  
 
     
-    private Font moveFont = new Font("Monospaced", Font.PLAIN, 11);  
+    private Font moveFont = new Font("Monospaced", Font.PLAIN, 15);  
     private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
 
 
@@ -36,7 +36,9 @@ public class CombatScreen extends Screen {
      */
     private Color red = new Color(225, 0, 0); 
     private Color yellow = new Color(225, 225, 0); 
-    private Color  green = new Color(0, 128, 0);    
+    private Color  green = new Color(0, 128, 0);     
+
+    private Color moveTextBox = new Color(204, 204, 204, 50); //makes a transparent color
 
 
     private Rectangle yellowRect = new Rectangle(40, 65, 250, 30); 
@@ -55,14 +57,19 @@ public class CombatScreen extends Screen {
     protected combatRounds currentCombat;
     protected combatant playerCombatant;
     protected combatant enemyCombatant;
-    protected combatStatus combatState;
+    protected combatStatus combatState; 
+
+    protected GraphicsHandler moveDisplay;
+
 
     public CombatScreen(PlayLevelScreen playLevelScreen,combatant playerCombatant ,combatant enemyCombatant)
     {
         this.playLevelScreen=playLevelScreen;
         this.screenCoordinator=playLevelScreen.screenCoordinator;
         this.enemyCombatant = enemyCombatant;
-        this.playerCombatant = playerCombatant;
+        this.playerCombatant = playerCombatant; 
+
+        moveDisplay = new GraphicsHandler();
 
         
         initialize();
@@ -76,13 +83,13 @@ public class CombatScreen extends Screen {
 
         //temportary combatant object intitialization
          playerCombatant = new combatant(); //boomer
-         enemyCombatant = new combatant("random"); //placeolder enemy    
+         enemyCombatant = new combatant("random"); //placeolder enemy 
+         
+        flagManager = new FlagManager();
+        //flagManager.addFlag("hasLostBall", false);
+        flagManager.addFlag("hasUsedMove", false);
 
-        //end temp objects 
-
-        //tracker for player health and enemy health, so rect adjusts accordingly 
-        
-
+        //end temp objects         
         
         //initalize current combat 
         currentCombat = new combatRounds(playerCombatant, enemyCombatant);
@@ -106,7 +113,6 @@ public class CombatScreen extends Screen {
     public void update() {  
 
         
-
         combatState = currentCombat.updateCombat();
 
         //decrease timer as time progresses
@@ -145,9 +151,15 @@ public class CombatScreen extends Screen {
         //if space is pressed, do combat stuff 
         if (Keyboard.isKeyDown(Key.SPACE) && keyPressTimer == 0 && moveSelected != 0) {
             keyPressTimer = 14;
-            combatRounds.setMoveSelec(moveSelected);
+            combatRounds.setMoveSelec(moveSelected); 
+           
+            //indicator code goes here? 
+           // moveDisplay.drawFilledRectangleWithBorder(40, 470, 300, 200, moveTextBox, green, 5); 
+
             System.out.println("move selected :" + moveSelected);
-            moveSelected = 0; //de-selects move
+            moveSelected = 0; //de-selects move 
+           // System.out.println("move selected :" + moveSelected);
+
 
         }
 
@@ -196,7 +208,6 @@ public class CombatScreen extends Screen {
                 break;
         }
 
-
     }
 
     public combatStatus getState()
@@ -208,19 +219,39 @@ public class CombatScreen extends Screen {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {   
         
-        
         combatMap.draw(graphicsHandler);
         //goBackButton.draw(graphicsHandler);
        // graphicsHandler.drawRectangle(193, 119, 130, 55, new Color(49, 207, 240), 2);  
 
-       
 
         //displaying move options and names 
         graphicsHandler.drawString(playerCombatant.moveName1(), 40, 490, moveFont, Color.WHITE); //drawing text in white  
 
-        graphicsHandler.drawString(playerCombatant.moveName2(), 180, 460, moveFont, Color.WHITE); 
+        graphicsHandler.drawString(playerCombatant.moveName2(), 180, 460, moveFont, Color.WHITE); //
 
-        graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE); 
+        graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE); // 
+
+        
+        //attempt to draw a rect text box when the move is used (kinda works, but allows you to hold space and it appears)
+        if (Keyboard.isKeyDown(Key.SPACE)) {  
+            // int moveDisplayTimer = 5; //internal timer?        
+          // keyPressTimer = 2;   
+          
+        graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
+
+           switch(moveSelected){
+             case 1: 
+                graphicsHandler.drawFilledRectangleWithBorder(40, 470, 300, 200, moveTextBox, green, 5);   
+                graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 40, 490, moveFont, Color.WHITE); //drawing text in white 
+                System.out.println("move one display");  
+                 break; 
+            default:
+                System.out.println("Didn't reach move 1"); 
+           }
+           //  keyLock.lockKey(Key.SPACE); 
+            // moveDisplayTimer--;
+           //System.out.println("it reached here");  
+        }
 
         //player stuffs
         graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
@@ -228,8 +259,6 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawFilledRectangle(520, 405, (playerCombatant.getHealth()*2), 10, green); //player healthbar   
 
         graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
-
-
 
 
         // playerCombatant.getHealth()*2 for the width doesn't work, it repeats a ton  
@@ -240,7 +269,7 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
          //THIS DOES THE THING!!!!
-       graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
+        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250); 
 
 
         // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){
@@ -255,39 +284,48 @@ public class CombatScreen extends Screen {
         if (moveSelected == 1)
         {
             //rect 1 
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 180, 30, new Color(200, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 180, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,185, 30, new Color(49, 207, 240), 5); 
+
+        //      if (Keyboard.isKeyDown(Key.SPACE)) {  
+        //   // keyPressTimer = 2;  
+        //         graphicsHandler.drawFilledRectangleWithBorder(40, 470, 300, 200, moveTextBox, green, 5);   
+        //         graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 40, 490, moveFont, Color.WHITE); //drawing text in white  
+       
+        //    //System.out.println("it reached here");   
+
+        // }
         }
 
         else if (moveSelected == 2)
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 180, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 180, 30, new Color(200, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,185, 30, new Color(49, 207, 240), 5);
         }
         else if (moveSelected == 3)
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 180, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 180, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470, 185, 30, new Color(200, 207, 240), 5);
         }
         else
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 180, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(160, 440, 180, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,185, 30, new Color(49, 207, 240), 5);
         } 
 
         

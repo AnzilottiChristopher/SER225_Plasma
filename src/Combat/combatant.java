@@ -166,7 +166,7 @@ public class combatant extends attack {
         return boomerImage = ImageLoader.load("Boomer.png");
 
     } 
-public BufferedImage getEnemyImage(){
+    public BufferedImage getEnemyImage(){
     return  testEnemyImage = ImageLoader.load("jukebox2.png");
 
 }

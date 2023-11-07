@@ -42,7 +42,8 @@ public class combatRounds {
                 int enemyMove = (random.nextInt(0,3)) + 1;
 
                 //deal damages & let player see what happened
-                playerObj.attacking(moveSelec, opponentObj);
+                playerObj.attacking(moveSelec, opponentObj); 
+               // System.out.println("Boomer used " + playerObj.moveName1());
                 opponentObj.attacking(enemyMove, playerObj);
 
                 System.out.println(playerObj.getHealth() +" : "+ opponentObj.getHealth());
