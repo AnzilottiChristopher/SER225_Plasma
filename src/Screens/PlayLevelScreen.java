@@ -38,8 +38,8 @@ public class PlayLevelScreen extends Screen {
     JukeboxScript jukebox = new JukeboxScript();
     static Combat.combatant[] enemies = {new combatant("robot"),
                                         new combatant("robot"),
-                                        new combatant("robot"),
-                                        new combatant("alex"),};
+                                        new combatant("alex"),
+                                        new combatant("random")};
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -163,27 +163,24 @@ public class PlayLevelScreen extends Screen {
                     case WIN:
                     case TIE:  //tie in favor of the player... for now
 
-                    map.getFlagManager().setFlag("BeatDino");
-                    victoryCount++;
-                    System.out.println("Victories:" + victoryCount);
+                    //reset flag that starts combat
+                    map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
 
-                    System.out.println("PlayLevelScreen recieves = "+ combatScreen.getState() +
-                    "\nFlag:" + map.getFlagManager().isFlagSet("BeatDino"));
+                    //incriment victories
+                    victoryCount++;
+                    //advance who the current enemy is
+                    combatScreen.setEnemy(enemies[victoryCount]);
+                    
+                    //heal player after combat
+                    playerCombatant.maxHeal();
 
                     break;
 
                     case LOSS:
-                    //if you lose, talk to dino again
-                    System.out.println("PlayLevelScreen recieves = "+ combatScreen.getState() +
-                    "\nFlag:" + map.getFlagManager().isFlagSet("BeatDino"));
-                    
-                    //if you lose the fight... RESET GAME
-                    this.initialize();
 
-                    // Scripts.TestMap.DinoScript.class.
-
-                    // Level.NPC.dinosaur.setIsHidden(false);
-                    // map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+                    //victory doesn't incriment
+                    System.out.println("You lost... whomp whomp");
+                    playerCombatant.maxHeal();
 
                     
                     break;
@@ -298,6 +295,11 @@ public class PlayLevelScreen extends Screen {
     public static combatant getCurrentEnemy()
     {
         return enemies[victoryCount];
+    }
+
+    public static int getVictoryCount()
+    {
+        return victoryCount;
     }
 
 }
