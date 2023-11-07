@@ -18,18 +18,43 @@ public class WallScript extends Script<NPC>
             addTextToTextboxQueue("I hope this doesn't make me late for class!");
         } else if (entity.getId() >= 14 && entity.getId() < 20)
         {
-            addTextToTextboxQueue("YESSS");
-            addTextToTextboxQueue("I DONT HAVE TO TAKE MY QUIZ NOW");
-            addTextToTextboxQueue("LETS GOOOOOOOOOOOOO");
+            if (!isFlagSet("Boss1Complete"))
+            {
+                addTextToTextboxQueue("YESSS");
+                addTextToTextboxQueue("I DONT HAVE TO TAKE MY QUIZ NOW");
+                addTextToTextboxQueue("LETS GOOOOOOOOOOOOO");
+            } else
+            {
+                addTextToTextboxQueue("Damn....");
+                addTextToTextboxQueue("I'm still gonna have to take that quiz");
+                addTextToTextboxQueue("You couldn't have waited\n like a little longer to save him?");
+            }
+
         } else if (entity.getId() >= 20 && entity.getId() < 30)
         {
-            addTextToTextboxQueue("Are those students robots!?!?!??!");
-            addTextToTextboxQueue("Those poor students");
+            if (!isFlagSet("Boss1Complete"))
+            {
+                addTextToTextboxQueue("Are those students robots!?!?!??!");
+                addTextToTextboxQueue("Those poor students");
+            }
+            else
+            {
+                addTextToTextboxQueue("So are they gonna turn back to humans?");
+            }
+
         } else if (entity.getId() >= 30 && entity.getId() < 34)
         {
-            addTextToTextboxQueue("Alex?");
-            addTextToTextboxQueue("What are you doing Alex?");
-            addTextToTextboxQueue("Oh geez somebody stop him!");
+            if (!isFlagSet("Boss1Complete"))
+            {
+                addTextToTextboxQueue("Alex?");
+                addTextToTextboxQueue("What are you doing Alex?");
+                addTextToTextboxQueue("Oh geez somebody stop him!");
+            } else if (isFlagSet("Boss1Complete"))
+            {
+                addTextToTextboxQueue("Thank you Boomer");
+                addTextToTextboxQueue("Thank you for saving Alex");
+            }
+
         } else if (entity.getId() >= 34 && entity.getId() <= 38)
         {
             addTextToTextboxQueue("What's going on over there?");

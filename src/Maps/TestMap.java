@@ -102,9 +102,17 @@ public class TestMap extends Map {
             {
                 CollisionState girl = CollisionState.GIRL;
                 studentWall = new StudentWall(9 + counter, getMapTile(64 + (counter * 2), 28).getLocation(), girl);
+                if (counter < 8)
+                {
+                    studentWall.setExistenceFlag("Boss1Complete");
+                }
             } else
             {
                 studentWall = new StudentWall(9 + counter, getMapTile(64 + (counter * 2), 28).getLocation());
+                if (counter < 8)
+                {
+                    studentWall.setExistenceFlag("Boss1Complete");
+                }
             }
             studentWall.setInteractScript(new WallScript());
             npcs.add(studentWall);
@@ -121,6 +129,7 @@ public class TestMap extends Map {
             {
                 left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
             }
+            left.setExistenceFlag("Boss1Complete");
             left.setInteractScript(new WallScript());
             npcs.add(left);
         } //ID counter at 38
