@@ -32,14 +32,14 @@ public class StudentWall extends NPC
             put("STAND_RIGHT", new Frame[]{
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(8, 3, 10, 30)
+                            .withBounds(10, 3, 50, 30)
                             .build()
             });
 
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 1))
                             .withScale(3)
-                            .withBounds(8, 3, 10, 30)
+                            .withBounds(10, 3, 50, 30)
                             //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
