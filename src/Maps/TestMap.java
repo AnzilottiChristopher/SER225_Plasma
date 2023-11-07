@@ -23,7 +23,7 @@ public class TestMap extends Map {
 
     public TestMap() {
         super("test_map.txt", new TestTileset());
-        this.playerStartPosition = getMapTile(79, 110).getLocation();
+        this.playerStartPosition = getMapTile(64, 25).getLocation();
     }
 
     @Override
@@ -94,6 +94,36 @@ public class TestMap extends Map {
         Student student = new Student(8, getMapTile(78, 110).getLocation());
         student.setInteractScript(new studentInteraction());
         npcs.add(student);
+
+        for (int counter = 0; counter < 25; counter++)
+        {
+            StudentWall studentWall;
+            if (counter % 2 == 0)
+            {
+                CollisionState girl = CollisionState.GIRL;
+                studentWall = new StudentWall(9 + counter, getMapTile(65 + (counter * 2), 28).getLocation(), girl);
+            } else
+            {
+                studentWall = new StudentWall(9 + counter, getMapTile(65 + (counter * 2), 28).getLocation());
+            }
+            npcs.add(studentWall);
+        } //ID counter at 33
+
+        for (int counter = 0; counter < 5; counter++)
+        {
+            StudentWallLeft left;
+            if (counter % 2 == 0)
+            {
+                CollisionState girl = CollisionState.GIRL;
+                left = new StudentWallLeft(34 + counter, getMapTile(63, 28 + (counter * 2)).getLocation(), girl);
+            } else
+            {
+                left = new StudentWallLeft(34 + counter, getMapTile(63, 28 + (counter * 2)).getLocation());
+            }
+            npcs.add(left);
+        } //ID counter at 37
+
+
 
 
         return npcs;

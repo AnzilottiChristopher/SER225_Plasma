@@ -1,5 +1,6 @@
 package NPCs;
 
+import Enums.CollisionState;
 import Level.NPC;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
@@ -10,17 +11,23 @@ import GameObject.SpriteSheet;
 import Utils.Point;
 
 import java.util.HashMap;
-public class Student extends NPC
+public class StudentWall extends NPC
 {
-    public Student(int id, Point location)
+    public StudentWall(int id, Point location)
     {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Ness.png"),
-                22, 26), "STAND_RIGHT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("StudentWall.png"),
+                26, 28), "STAND_RIGHT");
+    }
+
+    public StudentWall(int id, Point location, CollisionState state)
+    {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("StudentWall.png"),
+                26, 28), "STAND_LEFT");
     }
 
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet)
-    { 
+    {
         return new HashMap<String, Frame[]>(){{
             put("STAND_RIGHT", new Frame[]{
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
@@ -30,10 +37,10 @@ public class Student extends NPC
             });
 
             put("STAND_LEFT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(0, 0))
+                    new FrameBuilder(spriteSheet.getSprite(0, 1))
                             .withScale(3)
                             .withBounds(8, 3, 10, 30)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                            //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
         }};
