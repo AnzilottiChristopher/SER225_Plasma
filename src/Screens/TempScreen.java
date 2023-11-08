@@ -26,6 +26,7 @@ public class TempScreen extends Screen {
     protected Player player;
     protected PlayLevelScreen playLevelScreen;
     protected TempScreenState tempScreenState;
+    //protected PLayLevelScreenState playLevelScreenState;
     protected SpriteFont goBackButton;
     protected Map map;
     //protected PlayLevelScreenState playLevelScreenState;
@@ -45,7 +46,7 @@ public class TempScreen extends Screen {
     public void initialize() {
         // TODO Auto-generated method stub
         flagManager=new FlagManager();
-        flagManager.addFlag("TeleportedBack", false);
+        flagManager.addFlag("Teleported2", false);
 
         //setup map
         this.map=new TempMap();
@@ -107,14 +108,23 @@ public class TempScreen extends Screen {
                 break;
         }
 
-        if(map.getFlagManager().isFlagSet("TeleportedBack"))
+        if(map.getFlagManager().isFlagSet("Teleported2"))
         {
             tempScreenState=TempScreenState.SUSPENDED;
+            
+            //screenCoordinator.switchToPLayLevelScreen();
+            //playLevelScreen.goBack();
             playLevelScreen.TeleportBack();
+            //System.out.println(map);
             
         }
 
 
+    }
+
+    public TempScreenState getTempScreenState()
+    {
+        return tempScreenState;
     }
 
    
