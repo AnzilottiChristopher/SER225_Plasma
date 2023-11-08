@@ -77,16 +77,16 @@ public class TestMap extends Map {
 
 
         //Adding The Alex Boss
-        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 22).getLocation());
+        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 21).getLocation());
         alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
 
         //Adding enemies
-        EnemyRobot enemyRobot1 = new EnemyRobot(6, getMapTile(90, 21).getLocation());
+        EnemyRobot enemyRobot1 = new EnemyRobot(6, getMapTile(97, 20).getLocation());
         enemyRobot1.setInteractScript(new EnemyScript());
         npcs.add(enemyRobot1);
 
-        EnemyRobot enemyRobot2 = new EnemyRobot(7, getMapTile(105, 21).getLocation());
+        EnemyRobot enemyRobot2 = new EnemyRobot(7, getMapTile(102, 20).getLocation());
         enemyRobot2.setInteractScript(new EnemyScript());
         npcs.add(enemyRobot2);
 
@@ -179,6 +179,18 @@ public class TestMap extends Map {
         getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
+
+        getMapTile(101,25).setInteractScript(new SimpleTextScript("CCE"));
+
+        getMapTile(88,108).setInteractScript(new SimpleTextScript("School of Business "));
+
+        getMapTile(88,112).setInteractScript(new SimpleTextScript("School of Business"));
+
+        getMapTile(23,98).setInteractScript(new SimpleTextScript("Student Center"));
+
+        getMapTile(20,49).setInteractScript(new SimpleTextScript("Tator Hall"));
+
+        getMapTile(29,22).setInteractScript(new SimpleTextScript("Buckman"));
     }
 }
 
