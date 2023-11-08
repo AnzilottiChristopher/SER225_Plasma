@@ -134,6 +134,8 @@ public class TestMap extends Map {
             npcs.add(left);
         } //ID counter at 38
 
+        HerscoviciBoss herscovici = new HerscoviciBoss(39, getMapTile(14, 76).getLocation());
+        npcs.add(herscovici);
 
 
 
