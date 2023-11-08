@@ -140,13 +140,15 @@ public class TestMap extends Map {
             left.setExistenceFlag("Boss1Complete");
             left.setInteractScript(new WallScript());
             npcs.add(left);
-        } //ID counter at 25
+        } //ID counter at 25 or 26 not sure
 
-        HerscoviciBoss herscovici = new HerscoviciBoss(300, getMapTile(14, 76).getLocation());
+        HerscoviciBoss herscovici = new HerscoviciBoss(200, getMapTile(14, 76).getLocation());
 
         CollisionState girl = CollisionState.GIRL;
         Boss2Enemy boss2Enemy1 = new Boss2Enemy(27, getMapTile(18, 74).getLocation());
         Boss2Enemy boss2Enemy2 = new Boss2Enemy(28, getMapTile(23, 74).getLocation(), girl);
+        boss2Enemy2.setInteractScript(new HerscoviciEnemyScript());
+        boss2Enemy1.setInteractScript(new HerscoviciEnemyScript());
 
         boss2Enemy1.setIsHidden(true);
         boss2Enemy2.setIsHidden(true);
