@@ -3,6 +3,7 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
+import Screens.PlayLevelScreen;
 
 public class EnemyScript extends Script<NPC>
 {
@@ -29,6 +30,17 @@ public class EnemyScript extends Script<NPC>
     {
         unlockPlayer();
         hideTextbox();
+
+        if (entity.getId() == 6 && PlayLevelScreen.getVictoryCount() == 0)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }   
+
+        if (entity.getId() == 7 && PlayLevelScreen.getVictoryCount() == 1)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }   
+
     }
 
     @Override
