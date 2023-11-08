@@ -28,15 +28,14 @@ public class MoveNPC extends Script<NPC>
 
         for (int counter = 16; counter < 21; counter++)
         {
-            int randomVal = random.nextInt(500);
-            if (counter == 17)
+            xVal = switch (counter)
             {
-                xVal = 0;
-            } else
-            {
-                xVal = randomVal + 500;
-            }
-            //int yVal = randomVal + 500;
+                case 17 -> 0;
+                case 18 -> 100;
+                case 19 -> 200;
+                case 20 -> 300;
+                default -> 0;
+            };
             getNPC(counter).setLocation(2500 + xVal, 3650);
             if (counter % 2 == 0)
             {
@@ -47,7 +46,7 @@ public class MoveNPC extends Script<NPC>
             }
         }
         getNPC(4).setIsHidden(true);
-        getNPC(8).setLocation(2350, 3500);
+        getNPC(8).setLocation(1850, 3400);
 //        NPC npc = getNPC(20);
 //        npc.setLocation(1000, 2500);
 

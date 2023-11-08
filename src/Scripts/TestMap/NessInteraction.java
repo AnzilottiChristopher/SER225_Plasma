@@ -3,9 +3,8 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
-import Utils.Direction;
 
-public class studentInteraction extends Script<NPC>
+public class NessInteraction extends Script<NPC>
 {
     @Override
     protected void setup()
@@ -13,7 +12,15 @@ public class studentInteraction extends Script<NPC>
         entity.facePlayer(player);
         lockPlayer();
         showTextbox();
-        addTextToTextboxQueue("Boomer please help us!");
+
+        if (!isFlagSet("hasPassed"))
+        {
+            addTextToTextboxQueue("Boomer please help us!");
+        }
+        if (isFlagSet("hasPassed"))
+        {
+            addTextToTextboxQueue("What is Herscovici doing over there?");
+        }
     }
 
     @Override

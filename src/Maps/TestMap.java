@@ -100,7 +100,7 @@ public class TestMap extends Map {
 
         //Adding a student
         Student student = new Student(8, getMapTile(80, 22).getLocation());
-        student.setInteractScript(new studentInteraction());
+        student.setInteractScript(new NessInteraction());
         npcs.add(student);
 
         for (int counter = 0; counter < 14; counter++)

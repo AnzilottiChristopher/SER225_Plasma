@@ -12,11 +12,11 @@ public class WallScript extends Script<NPC>
     {
         lockPlayer();
         showTextbox();
-       // System.out.println(entity.getId());
-        if (entity.getId() >= 9 && entity.getId() < 14)
+       System.out.println(entity.getId());
+        if (entity.getId() >= 9 && entity.getId() < 14 && !isFlagSet("hasPassed"))
         {
             addTextToTextboxQueue("I hope this doesn't make me late for class!");
-        } else if (entity.getId() >= 14 && entity.getId() < 17)
+        } else if (entity.getId() >= 14 && entity.getId() < 17 && !isFlagSet("hasPassed"))
         {
             if (!isFlagSet("Boss1Complete"))
             {
@@ -30,7 +30,7 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("You couldn't have waited\n like a little longer to save him?");
             }
 
-        } else if (entity.getId() >= 17 && entity.getId() < 19)
+        } else if (entity.getId() >= 17 && entity.getId() < 19 && !isFlagSet("hasPassed"))
         {
             if (!isFlagSet("Boss1Complete"))
             {
@@ -44,7 +44,7 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("So are they gonna turn back to humans?");
             }
 
-        } else if (entity.getId() >= 19 && entity.getId() <= 21)
+        } else if (entity.getId() >= 19 && entity.getId() <= 21 && !isFlagSet("hasPassed"))
         {
             if (!isFlagSet("Boss1Complete"))
             {
@@ -57,11 +57,24 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("Thank you for saving Alex");
             }
 
-        } else if (entity.getId() > 21 && entity.getId() <= 27)
+        } else if (entity.getId() > 21 && entity.getId() <= 27 && !isFlagSet("hasPassed"))
         {
             addTextToTextboxQueue("What's going on over there?");
         }
 
+
+        if (isFlagSet("hasPassed"))
+        {
+            String text = switch (entity.getId())
+            {
+                case 17 -> "Is this the Sleeping Giant?";
+                case 18 -> "The heck is going on?\n why can't we get past?";
+                case 19 -> "This time I won't have to take my quiz.";
+                case 20 -> "School has been strange recently";
+                default -> "So odd";
+            };
+            addTextToTextboxQueue(text);
+        }
     }
 
     @Override
