@@ -65,7 +65,7 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        Door door= new Door(3,getMapTile(71,114).getLocation());
+        Door door= new Door(3,getMapTile(113,23).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
          
