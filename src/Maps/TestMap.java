@@ -10,8 +10,6 @@ import Level.Trigger;
 import NPCs.*;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
-import Scripts.TestMap.DoorScript;
-import Scripts.TestMap.JudyAndCarScript;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
 
@@ -148,6 +146,15 @@ public class TestMap extends Map {
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+
+        //enemy vicCount = 0 trigger , robot 1
+        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0)));
+
+        //enemy vicCount = 1 trigger, robot 2
+        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1)));
+
+        
+
         return triggers;
     }
 
