@@ -5,7 +5,8 @@ public enum CollisionState
     TOP,
     LEFTSIDE,
     RIGHTSIDE,
-    BOTTOM;
+    BOTTOM,
+    GIRL,
+    BOY;
 }
-
 

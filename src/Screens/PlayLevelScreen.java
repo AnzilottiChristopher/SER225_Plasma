@@ -62,6 +62,9 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("enemy1Interaction", false);
         flagManager.addFlag("enemy2Interaction", false);
 
+        //Destruction of NPC's flags
+        flagManager.addFlag("Boss1Complete", false);
+
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);

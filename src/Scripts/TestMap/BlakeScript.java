@@ -30,7 +30,7 @@ public class BlakeScript extends Script<NPC> {
             music.background("Resources/ObstacleInPath.wav");
             music.playLoop();
             addTextToTextboxQueue("You want a snack?");
-            addTextToTextboxQueue("NO WHY WOULD I GIVE YOU ONE");
+            addTextToTextboxQueue("NO WHY WOULD I GIVE YOU ONE! THEY'RE MINE!");
             addTextToTextboxQueue("GET BACK TO WORK!");
         }
        else

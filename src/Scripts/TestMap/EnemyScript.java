@@ -33,13 +33,39 @@ public class EnemyScript extends Script<NPC>
             addTextToTextboxQueue("Game...Almost");
             addTextToTextboxQueue(".....Exception?");
         }
-        else if (entity.getId() == 11)
+        else if (entity.getId() == 41)
         {
             music.stopLoop();
             music.background("Resources/Announce the truth.wav");
             music.playLoop();
-            addTextToTextboxQueue("");
+            addTextToTextboxQueue("Professor Blake keeps asking us to make snacks for him.");
+            addTextToTextboxQueue("I cant stop making them, stop me and help Blake!");
+            addTextToTextboxQueue("Please stop him.");
             
+        }
+        else if (entity.getId() == 42)
+        {
+            music.stopLoop();
+            music.background("Resources/Announce the truth.wav");
+            music.playLoop();
+            addTextToTextboxQueue("The dining hall is closed.");
+            addTextToTextboxQueue("No one deserves any of the food we make.");
+            addTextToTextboxQueue("Professor Blake deserves all of the snacks");
+        }
+        else if (entity.getId() == 42)
+        {
+            music.stopLoop();
+            music.background("Resources/Announce the truth.wav");
+            music.playLoop();
+            addTextToTextboxQueue("Must make food."); 
+        }
+        else if (entity.getId() == 43)
+        {
+            music.stopLoop();
+            music.background("Resources/Announce the truth.wav");
+            music.playLoop();
+            addTextToTextboxQueue("*Smacks table*");
+            addTextToTextboxQueue("We should make a unity game together!");
         }
     }
 
