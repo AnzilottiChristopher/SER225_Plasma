@@ -91,7 +91,7 @@ public class TestMap extends Map {
         npcs.add(enemyRobot2);
 
         //Adding a student
-        Student student = new Student(8, getMapTile(78, 110).getLocation());
+        Student student = new Student(8, getMapTile(80, 22).getLocation());
         student.setInteractScript(new studentInteraction());
         npcs.add(student);
 
@@ -144,7 +144,7 @@ public class TestMap extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
         //3000 to 79 ratio X value
-        triggers.add(new Trigger(3800, 5000, 50, 1000, new StudentScript(), "hasStartedGame"));
+        triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

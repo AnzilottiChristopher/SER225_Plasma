@@ -10,7 +10,8 @@ public class StudentScript extends Script<NPC>
     @Override
     protected void setup()
     {
-        npcFacePlayer(6);
+        npcFacePlayer(8);
+        //npcWalk(8, Direction.RIGHT, 4);
         lockPlayer();
         showTextbox();
         addTextToTextboxQueue("Boomer please help us!");
