@@ -47,6 +47,11 @@ public class MoveNPC extends Script<NPC>
         }
         getNPC(4).setIsHidden(true);
         getNPC(8).setLocation(1850, 3400);
+
+        getNPC(300).setIsHidden(false);
+        getNPC(27).setIsHidden(false);
+        getNPC(28).setIsHidden(false);
+
 //        NPC npc = getNPC(20);
 //        npc.setLocation(1000, 2500);
 
