@@ -30,9 +30,9 @@ public class TempMap extends Map {
 
         
 
-        //Door door= new Door(5,getMapTile(5,10).getLocation());
-        //door.setInteractScript(new DoorScript());
-        //npcs.add(door);
+        Door door= new Door(5,getMapTile(5,10).getLocation());
+        door.setInteractScript(new DoorScript());
+        npcs.add(door);
          
 
 

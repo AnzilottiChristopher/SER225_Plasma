@@ -7,6 +7,7 @@ import Screens.CombatScreen;
 import Screens.CreditsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
+import Screens.TempScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -34,6 +35,7 @@ public class ScreenCoordinator extends Screen {
 		gameState=GameState.LEVEL;
 	}
 
+
 	@Override
 	public void initialize() {
 		// start game off with Menu Screen
@@ -59,6 +61,7 @@ public class ScreenCoordinator extends Screen {
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
 						break;
+					
 					//case COMBATSCREEN:
 						//currentScreen = new CombatScreen(this);
 						//break;

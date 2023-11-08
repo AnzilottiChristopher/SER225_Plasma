@@ -62,6 +62,9 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("enemy1Interaction", false);
         flagManager.addFlag("enemy2Interaction", false);
 
+        //Destruction of NPC's flags
+        flagManager.addFlag("Boss1Complete", false);
+
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
@@ -71,6 +74,7 @@ public class PlayLevelScreen extends Screen {
         //combat screen
         flagManager.addFlag("CombatStarted", false);
         flagManager.addFlag("CombatFinish", false);
+        //teleporting
         flagManager.addFlag("TeleportCompleted", false);
         flagManager.addFlag("PlayerHasTeleportedBack", false);
         
@@ -144,14 +148,17 @@ public class PlayLevelScreen extends Screen {
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
+             // bring up a temporary screen
+             case SUSPENDED:
+             tempScreen.update();
+             break;
 
             //UPDATES BASED ON COMBAT
             case COMBATMODE:
                 combatScreen.update();
 
-            case SUSPENDED:
-                tempScreen.update();
-                //map.update(player);
+           
+                
 
 
                 //UPDATES BASED ON RESULT OF COMBAT
@@ -226,6 +233,7 @@ public class PlayLevelScreen extends Screen {
         //if the player interacts with the door the they are teleported
         if(map.getFlagManager().isFlagSet("TeleportCompleted"))
         {
+           
             playLevelScreenState=PlayLevelScreenState.SUSPENDED;
         }
         if(map.getFlagManager().isFlagSet("PlayerHasTeleportedBack"))
@@ -251,7 +259,16 @@ public class PlayLevelScreen extends Screen {
         }
     }
 
-    
+    /*public void loadMap()
+    {
+        Map map;
+        int MapID=0;
+        switch(MapID)
+        {
+            case 0:
+                map
+        }
+    }*/
 
 
     public PlayLevelScreenState getPlayLevelScreenState() {
@@ -267,10 +284,19 @@ public class PlayLevelScreen extends Screen {
         map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
     }
 
-    public void TeleportBack()
+    /*  public void goBack()
     {
         playLevelScreenState=PlayLevelScreenState.RUNNING;
         map.getFlagManager().setFlag("PlayerHasTeleportedBack");
+        map.getFlagManager().unsetFlag("TeleportCompleted");
+    }*/
+
+    
+    public void TeleportBack()
+    {
+        map.getFlagManager().setFlag("PlayerHasTeleportedBack");
+        playLevelScreenState=PlayLevelScreenState.RUNNING;
+        
     }
 
 
