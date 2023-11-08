@@ -155,6 +155,7 @@ public class TestMap extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
         //3000 to 79 ratio X value
         triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
+        triggers.add(new Trigger(0, 6000, 1700, 50, new MoveNPC(), "hasPassed"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

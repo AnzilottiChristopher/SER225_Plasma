@@ -15,7 +15,6 @@ import Utils.Point;
 
 public class SleepWall extends EnhancedMapTile
 {
-    public static CollisionState side;
     public SleepWall(Point location)
     {
         //PushableRock constructor

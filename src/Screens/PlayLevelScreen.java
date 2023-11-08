@@ -65,6 +65,9 @@ public class PlayLevelScreen extends Screen {
         //Destruction of NPC's flags
         flagManager.addFlag("Boss1Complete", false);
 
+        //Move NPC
+        flagManager.addFlag("hasPassed", false);
+
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
