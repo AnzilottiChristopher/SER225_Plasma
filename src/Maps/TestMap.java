@@ -140,7 +140,7 @@ public class TestMap extends Map {
         blake.setInteractScript(new BlakeScript());
         npcs.add(blake);
 
-        DrJ j = new DrJ(40, getMapTile(74, 110).getLocation());
+        DrJ j = new DrJ(40, getMapTile(85, 109).getLocation());
         j.setInteractScript(new DrJScript());
         npcs.add(j);
 
@@ -152,7 +152,7 @@ public class TestMap extends Map {
         chef2.setInteractScript(new EnemyScript());
         npcs.add(chef2);
 
-        Peter peter = new Peter(43, getMapTile(70, 105).getLocation());
+        Peter peter = new Peter(43, getMapTile(79, 105).getLocation());
         peter.setInteractScript(new EnemyScript());
         npcs.add(peter);
 

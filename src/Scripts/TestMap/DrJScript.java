@@ -39,6 +39,9 @@ public class DrJScript extends Script<NPC> {
             music.playLoop();
             addTextToTextboxQueue("I love Eclipse");
             addTextToTextboxQueue("Best IDE of all time.");
+            addTextToTextboxQueue("*A car just sped onto the middle of the quad!*");
+            addTextToTextboxQueue("*Quickly go find it!*");
+            addTextToTextboxQueue("*Maybe it'll be the answer to whats going on.*");
        }
         entity.facePlayer(player);
     }

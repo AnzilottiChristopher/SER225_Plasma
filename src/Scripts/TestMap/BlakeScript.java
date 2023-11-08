@@ -41,6 +41,8 @@ public class BlakeScript extends Script<NPC> {
             addTextToTextboxQueue("What happened to me?");
             addTextToTextboxQueue("Whatever doesnt matter.");
             addTextToTextboxQueue("I can get you that snack now if you still want it.");
+            addTextToTextboxQueue("*Theres some commotion at the School of Business*");
+            addTextToTextboxQueue("*Maybe I should check it out*");
        }
         entity.facePlayer(player);
     }
