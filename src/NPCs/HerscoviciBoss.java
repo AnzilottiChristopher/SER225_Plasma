@@ -23,16 +23,16 @@ public class HerscoviciBoss extends NPC
     {
         return new HashMap<String, Frame[]>(){{
             put("SIT_RIGHT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(3, 0))
+                    new FrameBuilder(spriteSheet.getSprite(2, 0))
                             .withScale(3)
-                            .withBounds(8, 3, 10, 30)
+                            .withBounds(8, 3, 20, 30)
                             .build()
             });
 
             put("SIT_LEFT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(2, 0))
+                    new FrameBuilder(spriteSheet.getSprite(1, 0))
                             .withScale(3)
-                            .withBounds(8, 3, 10, 30)
+                            .withBounds(8, 3, 20, 30)
                             .build()
             });
 

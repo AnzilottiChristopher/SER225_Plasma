@@ -143,6 +143,7 @@ public class TestMap extends Map {
         } //ID counter at 25 or 26 not sure
 
         HerscoviciBoss herscovici = new HerscoviciBoss(200, getMapTile(14, 76).getLocation());
+        herscovici.setInteractScript(new HerscoviciScript());
 
         CollisionState girl = CollisionState.GIRL;
         Boss2Enemy boss2Enemy1 = new Boss2Enemy(27, getMapTile(18, 74).getLocation());
