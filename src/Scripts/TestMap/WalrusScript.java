@@ -34,6 +34,7 @@ Music ogTrack = new Music();
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
+        setFlag("hasTalkedToDinosaur");
         setFlag("hasTalkedToWalrus");
     }
 

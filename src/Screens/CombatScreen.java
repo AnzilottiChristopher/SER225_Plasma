@@ -64,26 +64,21 @@ public class CombatScreen extends Screen {
         this.enemyCombatant = enemyCombatant;
         this.playerCombatant = playerCombatant;
 
-        
         initialize();
+    }
+
+    public void setEnemy(combatant enemyCombatant)
+    {
+        System.out.println("Making new combat - setEnemy method");
+        this.enemyCombatant = enemyCombatant;
+        currentCombat = new combatRounds(playerCombatant, enemyCombatant);
     }
 
     
     //Initialize can set and reset the screen
     @Override
-    public void initialize() {
+    public void initialize() {        
 
-
-        //temportary combatant object intitialization
-         playerCombatant = new combatant(); //boomer
-         enemyCombatant = new combatant("random"); //placeolder enemy    
-
-        //end temp objects 
-
-        //tracker for player health and enemy health, so rect adjusts accordingly 
-        
-
-        
         //initalize current combat 
         currentCombat = new combatRounds(playerCombatant, enemyCombatant);
        

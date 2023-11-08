@@ -54,6 +54,12 @@ public class AlexScript extends Script<NPC> {
         setFlag("hasTalkedToAlex");
         setFlag("startingMusic");
         music.stopLoop();
+
+        if (PlayLevelScreen.getVictoryCount() == 2)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
 //        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
 //        music.playLoop();
     }
