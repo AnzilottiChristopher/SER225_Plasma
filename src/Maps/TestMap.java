@@ -2,6 +2,7 @@ package Maps;
 
 import EnhancedMapTiles.OutOfBoundsCollision;
 import EnhancedMapTiles.PushableRock;
+import EnhancedMapTiles.SleepWall;
 import Enums.CollisionState;
 import Level.EnhancedMapTile;
 import Level.Map;
@@ -38,6 +39,13 @@ public class TestMap extends Map {
         placement = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(114, 19).getLocation(), placement);
+
+
+        SleepWall sleepWall = new SleepWall(getMapTile(10, 80).getLocation());
+
+
+        enhancedMapTiles.add(sleepWall);
+
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(bottomWall);
         enhancedMapTiles.add(pushableRock);
