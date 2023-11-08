@@ -1,44 +1,63 @@
 package Scripts.TestMap;
 
+import Engine.GraphicsHandler;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
 import Utils.Direction;
+import Utils.Point;
+
+import java.security.SecureRandom;
 
 public class MoveNPC extends Script<NPC>
 {
+    SecureRandom random = new SecureRandom();
     @Override
     protected void setup()
     {
-        npcFacePlayer(8);
         //npcWalk(8, Direction.RIGHT, 4);
-        lockPlayer();
-        showTextbox();
-        addTextToTextboxQueue("Boomer please help us!");
-        addTextToTextboxQueue("Something terrible is happening over by CCE!");
-        addTextToTextboxQueue("I don't understand what's happening");
-        addTextToTextboxQueue("It's almost as if the students were turned into robots!");
-        addTextToTextboxQueue("Please go to CCE and save them!");
+        //lockPlayer();
+
     }
 
     @Override
     protected void cleanup()
     {
-        setFlag("hasStartedGame");
-        hideTextbox();
-        unlockPlayer();
+        int xVal;
+        setFlag("hasPassed");
+
+        for (int counter = 16; counter < 21; counter++)
+        {
+            int randomVal = random.nextInt(500);
+            if (counter == 17)
+            {
+                xVal = 0;
+            } else
+            {
+                xVal = randomVal + 500;
+            }
+            //int yVal = randomVal + 500;
+            getNPC(counter).setLocation(2500 + xVal, 3650);
+            if (counter % 2 == 0)
+            {
+                getNPC(counter).setCurrentAnimationName("LOOK_DOWN_BOY");
+            } else
+            {
+                getNPC(counter).setCurrentAnimationName("LOOK_DOWN_GIRL");
+            }
+        }
+        getNPC(4).setIsHidden(true);
+        getNPC(8).setLocation(2350, 3500);
+//        NPC npc = getNPC(20);
+//        npc.setLocation(1000, 2500);
+
+        //System.out.println("Hello");
     }
 
     @Override
     protected ScriptState execute()
     {
-        if (!isFlagSet("hasStartedGame")) {
-            start();
-            if (!isTextboxQueueEmpty()) {
-                return ScriptState.RUNNING;
-            }
-            end();
-        }
+        end();
         return ScriptState.COMPLETED;
     }
 }

@@ -12,11 +12,11 @@ public class WallScript extends Script<NPC>
     {
         lockPlayer();
         showTextbox();
-        //System.out.println(entity.getId());
+       // System.out.println(entity.getId());
         if (entity.getId() >= 9 && entity.getId() < 14)
         {
             addTextToTextboxQueue("I hope this doesn't make me late for class!");
-        } else if (entity.getId() >= 14 && entity.getId() < 20)
+        } else if (entity.getId() >= 14 && entity.getId() < 17)
         {
             if (!isFlagSet("Boss1Complete"))
             {
@@ -30,11 +30,13 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("You couldn't have waited\n like a little longer to save him?");
             }
 
-        } else if (entity.getId() >= 20 && entity.getId() < 30)
+        } else if (entity.getId() >= 17 && entity.getId() < 19)
         {
             if (!isFlagSet("Boss1Complete"))
             {
+                addTextToTextboxQueue("Look inside.");
                 addTextToTextboxQueue("Are those students robots!?!?!??!");
+                addTextToTextboxQueue("What the...");
                 addTextToTextboxQueue("Those poor students");
             }
             else
@@ -42,7 +44,7 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("So are they gonna turn back to humans?");
             }
 
-        } else if (entity.getId() >= 30 && entity.getId() < 34)
+        } else if (entity.getId() >= 19 && entity.getId() <= 21)
         {
             if (!isFlagSet("Boss1Complete"))
             {
@@ -55,7 +57,7 @@ public class WallScript extends Script<NPC>
                 addTextToTextboxQueue("Thank you for saving Alex");
             }
 
-        } else if (entity.getId() >= 34 && entity.getId() <= 38)
+        } else if (entity.getId() > 21 && entity.getId() <= 27)
         {
             addTextToTextboxQueue("What's going on over there?");
         }

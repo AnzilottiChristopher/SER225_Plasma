@@ -41,7 +41,7 @@ public class TestMap extends Map {
         OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(114, 19).getLocation(), placement);
 
 
-        SleepWall sleepWall = new SleepWall(getMapTile(10, 80).getLocation());
+        SleepWall sleepWall = new SleepWall(getMapTile(40, 80).getLocation());
 
 
         enhancedMapTiles.add(sleepWall);
@@ -85,7 +85,7 @@ public class TestMap extends Map {
 
 
         //Adding The Alex Boss
-        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 21).getLocation());
+        AlexBoss alexBoss = new AlexBoss(5,getMapTile(112, 22).getLocation());
         alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
 
@@ -103,7 +103,7 @@ public class TestMap extends Map {
         student.setInteractScript(new studentInteraction());
         npcs.add(student);
 
-        for (int counter = 0; counter < 26; counter++)
+        for (int counter = 0; counter < 14; counter++)
         {
             StudentWall studentWall;
             if (counter % 2 == 0)
@@ -124,7 +124,7 @@ public class TestMap extends Map {
             }
             studentWall.setInteractScript(new WallScript());
             npcs.add(studentWall);
-        } //ID counter at 34
+        } //ID counter at 24
 
         for (int counter = 0; counter < 5; counter++)
         {
@@ -132,15 +132,15 @@ public class TestMap extends Map {
             if (counter % 2 == 0)
             {
                 CollisionState girl = CollisionState.GIRL;
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation(), girl);
+                left = new StudentWallLeft(22 + counter, getMapTile(63, 19 + (counter * 2)).getLocation(), girl);
             } else
             {
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
+                left = new StudentWallLeft(22 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
             }
             left.setExistenceFlag("Boss1Complete");
             left.setInteractScript(new WallScript());
             npcs.add(left);
-        } //ID counter at 38
+        } //ID counter at 28
 
         HerscoviciBoss herscovici = new HerscoviciBoss(39, getMapTile(14, 76).getLocation());
         npcs.add(herscovici);
@@ -155,7 +155,7 @@ public class TestMap extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
         //3000 to 79 ratio X value
         triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
-        triggers.add(new Trigger(0, 6000, 1700, 50, new MoveNPC(), "hasPassed"));
+        triggers.add(new Trigger(1000, 2500, 6000, 50, new MoveNPC(), "hasPassed"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

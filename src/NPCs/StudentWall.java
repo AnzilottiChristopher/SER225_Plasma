@@ -32,17 +32,32 @@ public class StudentWall extends NPC
             put("STAND_RIGHT", new Frame[]{
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(10, 3, 50, 30)
+                            .withBounds(10, 3, 30, 30)
                             .build()
             });
 
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 1))
                             .withScale(3)
-                            .withBounds(10, 3, 50, 30)
+                            .withBounds(10, 3, 30, 30)
                             //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
+            put("LOOK_DOWN_BOY", new Frame[] {
+                    new FrameBuilder(spriteSheet.getSprite(1, 0))
+                            .withScale(3)
+                            .withBounds(10, 3, 30, 30)
+                            //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                            .build()
+            });
+            put("LOOK_DOWN_GIRL", new Frame[] {
+                    new FrameBuilder(spriteSheet.getSprite(1, 1))
+                            .withScale(3)
+                            .withBounds(10, 3, 30, 30)
+                            //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                            .build()
+            });
+
         }};
     }
 
