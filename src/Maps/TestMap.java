@@ -174,10 +174,10 @@ public class TestMap extends Map {
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
         //enemy vicCount = 0 trigger , robot 1
-        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0)));
+        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
 
         //enemy vicCount = 1 trigger, robot 2
-        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1)));
+        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
 
         
 

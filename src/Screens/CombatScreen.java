@@ -8,12 +8,7 @@ import java.awt.image.BufferedImage;
 import Combat.combatRounds;
 import Combat.combatStatus;
 import Combat.combatant;
-import Engine.GraphicsHandler;
-import Engine.ImageLoader;
-import Engine.Key;
-import Engine.KeyLocker;
-import Engine.Keyboard;
-import Engine.Screen;
+import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.Rectangle;
@@ -56,13 +51,15 @@ public class CombatScreen extends Screen {
     protected combatant playerCombatant;
     protected combatant enemyCombatant;
     protected combatStatus combatState;
+    protected Music music = new Music();
 
-    public CombatScreen(PlayLevelScreen playLevelScreen,combatant playerCombatant ,combatant enemyCombatant)
+    public CombatScreen(PlayLevelScreen playLevelScreen,combatant playerCombatant ,combatant enemyCombatant, FlagManager flagManager)
     {
         this.playLevelScreen=playLevelScreen;
         this.screenCoordinator=playLevelScreen.screenCoordinator;
         this.enemyCombatant = enemyCombatant;
         this.playerCombatant = playerCombatant;
+        this.flagManager = flagManager;
 
         initialize();
     }
@@ -98,10 +95,18 @@ public class CombatScreen extends Screen {
     }
 
     @Override
-    public void update() {  
+    public void update() {
 
-        
 
+
+
+        if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
+        {
+            music.stopLoop();
+            music.background("Resources/ObstacleInPath.wav");
+            music.playLoop();
+            flagManager.unsetFlag("AlexBossStart");
+        }
         combatState = currentCombat.updateCombat();
 
         //decrease timer as time progresses
@@ -111,6 +116,21 @@ public class CombatScreen extends Screen {
         {
             keyPressTimer = 0;
         }
+
+        //win button
+        if (Keyboard.isKeyDown(Key.NINE) && keyPressTimer == 0) {
+            keyPressTimer = 14;
+            combatState = combatStatus.WIN;
+            System.out.println("AUTO WIN");
+        }
+
+        if (Keyboard.isKeyDown(Key.ZERO) && keyPressTimer == 0) {
+            keyPressTimer = 14;
+            combatState = combatStatus.LOSS;
+            System.out.println("AUTO LOSS");
+        }
+
+
 
         //down key = 0
         if (Keyboard.isKeyDown(Key.DOWN) && keyPressTimer == 0) {
@@ -124,7 +144,6 @@ public class CombatScreen extends Screen {
             keyPressTimer = 14;
             moveSelected = 1;
         }
-
         //up = move 2
         if (Keyboard.isKeyDown(Key.UP) && keyPressTimer == 0) {
             keyPressTimer = 14;
@@ -182,7 +201,12 @@ public class CombatScreen extends Screen {
                 // break;
             case LOSS:
             case TIE:
-
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("Boss1Complete");
+                }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
 

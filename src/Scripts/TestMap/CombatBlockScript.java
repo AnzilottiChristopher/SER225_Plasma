@@ -49,6 +49,15 @@ public class CombatBlockScript extends Script<NPC> {
 
         //start combat!
         setFlag("hasTalkedToDinosaur");
+        if (caseNum == 0)
+        {
+            setFlag("Enemy1");
+        }
+        if (caseNum == 1)
+        {
+            setFlag("Enemy2");
+        }
+
 
         unlockPlayer();
     }

@@ -34,6 +34,13 @@ public class AlexScript extends Script<NPC> {
             addTextToTextboxQueue("YOU WORTHLESS FOOLS CAN'T \nCODE TO SAVE YOU");
             addTextToTextboxQueue("BECOME A ROBOT AND CODE \nFOR THE REST OF YOUR LIVES!!!!");
         }
+        if (isFlagSet("Boss1Complete"))
+        {
+            addTextToTextboxQueue("Ughhhh");
+            addTextToTextboxQueue("My head....");
+            addTextToTextboxQueue("What Happened here are you ok?");
+            addTextToTextboxQueue("I was supposed to play Ping Pong against Only Git");
+        }
 //        else
 //        {
 //            music.stopLoop();
@@ -52,10 +59,15 @@ public class AlexScript extends Script<NPC> {
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToAlex");
-        setFlag("startingMusic");
-        setFlag("Boss1Complete");
+        //setFlag("startingMusic");
+        //setFlag("Boss1Complete");
+        setFlag("AlexBossStart");
         music.stopLoop();
 
+        if (isFlagSet("Boss1Complete"))
+        {
+            setFlag("startingMusic");
+        }
         if (PlayLevelScreen.getVictoryCount() == 2)
         {
             setFlag("hasTalkedToDinosaur");
