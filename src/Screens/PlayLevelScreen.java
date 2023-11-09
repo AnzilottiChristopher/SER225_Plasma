@@ -16,6 +16,8 @@ import Utils.Point;
 
 import Engine.Music;
 
+import java.util.ArrayList;
+
 
 // This class is for when the platformer game is actually being played
 public class PlayLevelScreen extends Screen {  
@@ -65,6 +67,9 @@ public class PlayLevelScreen extends Screen {
         //Destruction of NPC's flags
         flagManager.addFlag("Boss1Complete", false);
 
+        //Move NPC
+        flagManager.addFlag("hasPassed", false);
+
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
@@ -76,6 +81,15 @@ public class PlayLevelScreen extends Screen {
         //combat screen
         flagManager.addFlag("CombatStarted", false);
         flagManager.addFlag("CombatFinish", false);
+
+        //Combat Screen Music
+        flagManager.addFlag("AlexBossStart", false);
+        flagManager.addFlag("RoboEnemyStart", false);
+
+        //Alex Enemy Flag Trigger
+        flagManager.addFlag("Enemy1", false);
+        flagManager.addFlag("Enemy2", false);
+
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
         flagManager.addFlag("PlayerHasTeleportedBack", false);
@@ -135,7 +149,7 @@ public class PlayLevelScreen extends Screen {
         //combatScreen=new CombatScreen(this);
 
 
-        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount]);
+        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount], flagManager);
         winScreen = new WinScreen(this);
     }
 
@@ -188,6 +202,7 @@ public class PlayLevelScreen extends Screen {
                     //victory doesn't incriment
                     System.out.println("You lost... whomp whomp");
                     playerCombatant.maxHeal();
+                    enemies[victoryCount].maxHeal();
 
                     
                     break;

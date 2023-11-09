@@ -71,17 +71,19 @@ public class EnemyScript extends Script<NPC>
     {
         unlockPlayer();
         hideTextbox();
-        setFlag("startingMusic");
+        //setFlag("startingMusic");
         music.stopLoop();
 
         if (entity.getId() == 6 && PlayLevelScreen.getVictoryCount() == 0)
         {
             setFlag("hasTalkedToDinosaur");
+            setFlag("RoboEnemyStart");
         }   
 
         if (entity.getId() == 7 && PlayLevelScreen.getVictoryCount() == 1)
         {
             setFlag("hasTalkedToDinosaur");
+            setFlag("RoboEnemyStart");
         }   
 
     }
