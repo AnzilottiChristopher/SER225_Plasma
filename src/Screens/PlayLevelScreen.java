@@ -172,6 +172,7 @@ public class PlayLevelScreen extends Screen {
                 break;
              // bring up a temporary screen
              case SUSPENDED:
+             tempScreen.setTempScreenState("RUNNING");
              tempScreen.update();
              break;
 
@@ -275,6 +276,7 @@ public class PlayLevelScreen extends Screen {
            
             playLevelScreenState=PlayLevelScreenState.SUSPENDED;
         }
+        
         if(map.getFlagManager().isFlagSet("PlayerHasTeleportedBack"))
         {
             playLevelScreenState=PlayLevelScreenState.RUNNING;
@@ -335,7 +337,8 @@ public class PlayLevelScreen extends Screen {
     {
         map.getFlagManager().setFlag("PlayerHasTeleportedBack");
         playLevelScreenState=PlayLevelScreenState.RUNNING;
-        
+        map.getFlagManager().unsetFlag("TeleportCompleted");
+        map.getFlagManager().unsetFlag("Teleported2");
     }
 
 

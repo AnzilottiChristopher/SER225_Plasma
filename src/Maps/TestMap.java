@@ -73,9 +73,26 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        Door door= new Door(3,getMapTile(71,114).getLocation());
+        Door door= new Door(3,getMapTile(113,23).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
+
+        Door door2=new Door(104,getMapTile(20,99).getLocation());
+        door2.setInteractScript(new DoorScript());
+        npcs.add(door2);
+
+        Door door3=new Door(109,getMapTile(86,103).getLocation());
+        door3.setInteractScript(new DoorScript());
+        npcs.add(door3);
+
+        Door door4=new Door(101,getMapTile(86,117).getLocation());
+        door4.setInteractScript(new DoorScript());
+        npcs.add(door4);
+
+        Door door5=new Door(110,getMapTile(21,48).getLocation());
+        door4.setInteractScript(new DoorScript());
+        npcs.add(door5);
+
          
 
         JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
