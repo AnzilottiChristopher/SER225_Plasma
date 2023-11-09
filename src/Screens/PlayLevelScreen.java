@@ -247,6 +247,11 @@ public class PlayLevelScreen extends Screen {
             map.getFlagManager().unsetFlag("startingMusic");
             //System.out.println("We are here Flags");
         }
+
+        if (map.getFlagManager().isFlagSet("RoboEnemyStart"))
+        {
+            music.stopLoop();
+        }
         if(map.getFlagManager().isFlagSet("tenseMusic"))
         {
             music.background("Resources/A violent encounter.wav");
