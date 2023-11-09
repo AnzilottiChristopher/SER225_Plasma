@@ -103,6 +103,16 @@ public class TestMap extends Map {
         student.setInteractScript(new NessInteraction());
         npcs.add(student);
 
+        JudyGrunt judyGruntOne = new JudyGrunt(50, getMapTile(44, 68).getLocation());
+        judyGruntOne.setInteractScript(new JudyGruntScript());
+        npcs.add(judyGruntOne);
+
+        JudyGrunt judyGruntTwo = new JudyGrunt(51, getMapTile(44, 73).getLocation());
+        judyGruntTwo.setInteractScript(new JudyGruntScript());
+        npcs.add(judyGruntTwo);
+
+
+
         for (int counter = 0; counter < 14; counter++)
         {
             StudentWall studentWall;

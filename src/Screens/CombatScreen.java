@@ -17,9 +17,18 @@ import Level.Map;
 import Maps.CombatMap;
 import SpriteFont.SpriteFont;
 
-public class CombatScreen extends Screen {  
+public class CombatScreen extends Screen {
 
-    
+
+    protected boolean checkMove1;
+    protected int moveTimer;
+
+    protected boolean checkMove2;
+    protected boolean checkMove3;
+
+    private Color moveTextBox = new Color(204, 204, 204, 50); //makes a transparent color
+
+
     private Font moveFont = new Font("Monospaced", Font.PLAIN, 11);  
     private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
 
@@ -89,6 +98,14 @@ public class CombatScreen extends Screen {
         keyPressTimer = 0;
         combatItemSelected = -1;
         keyLock.lockKey(Key.SPACE);
+
+
+
+        checkMove1 = false;
+        checkMove2 = false;
+        checkMove3 = false;
+
+        moveTimer = 5;
 
         moveSelected = 0;
 
@@ -167,6 +184,18 @@ public class CombatScreen extends Screen {
         //if space is pressed, do combat stuff 
         if (Keyboard.isKeyDown(Key.SPACE) && keyPressTimer == 0 && moveSelected != 0) {
             keyPressTimer = 14;
+            if(moveSelected == 1){
+                checkMove1 = true;
+                moveTimer = 45;
+            }
+            else if(moveSelected == 2){
+                checkMove2 = true;
+                moveTimer = 45;
+            }
+            else if(moveSelected == 3){
+                checkMove3 = true;
+                moveTimer = 45;
+            }
             combatRounds.setMoveSelec(moveSelected);
             System.out.println("move selected :" + moveSelected);
             moveSelected = 0; //de-selects move
@@ -252,14 +281,43 @@ public class CombatScreen extends Screen {
 
         graphicsHandler.drawString(playerCombatant.moveName2(), 180, 460, moveFont, Color.WHITE); 
 
-        graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE); 
+        graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE);
+
+
+        if(checkMove1 == true){
+            graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            moveTimer--;
+            if(moveTimer <= 0){
+                checkMove1 = false;
+            }
+
+        }
+        else if(checkMove2 == true){
+            graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            moveTimer--;
+            if(moveTimer <= 0){
+                checkMove2 = false;
+            }
+
+        }
+        else if(checkMove3 == true){
+            graphicsHandler.drawFilledRectangleWithBorder(420, 360, 330, 40, moveTextBox, Color.WHITE, 5);
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            moveTimer--;
+            if(moveTimer <= 0){
+                checkMove3 = false;
+            }
+
+        }
 
         //player stuffs
         graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
         graphicsHandler.drawString(playerCombatant.getName(), 530, 435, nameFont, Color.BLACK); //name text 
         graphicsHandler.drawFilledRectangle(520, 405, (playerCombatant.getHealth()*2), 10, green); //player healthbar   
 
-        graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
+        graphicsHandler.drawImage(playerCombatant.getPlayerImage(), 180, 250);
 
 
 
@@ -272,7 +330,7 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
          //THIS DOES THE THING!!!!
-       graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250);
+       graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 420, 110);
 
 
         // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){

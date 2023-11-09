@@ -20,6 +20,7 @@ public class MenuScreen extends Screen {
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
     protected KeyLocker keyLocker = new KeyLocker();
+    protected SpriteFont guide;
     
     Music music = new Music();
 
@@ -35,6 +36,11 @@ public class MenuScreen extends Screen {
         credits = new SpriteFont("CREDITS", 200, 219, "Comic Sans", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
+
+        guide = new SpriteFont("GUIDE", 200, 319, "Comic Sans", 30, new Color(49, 207, 240));
+        guide.setOutlineColor(Color.black);
+        guide.setOutlineThickness(3);
+
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
         keyPressTimer = 0;
@@ -63,10 +69,17 @@ public class MenuScreen extends Screen {
         }
 
         // if down is pressed on last menu item or up is pressed on first menu item, "loop" the selection back around to the beginning/end
-        if (currentMenuItemHovered > 1) {
+        if (currentMenuItemHovered > 3) {
             currentMenuItemHovered = 0;
         } else if (currentMenuItemHovered < 0) {
             currentMenuItemHovered = 1;
+        } else if (currentMenuItemHovered == 2)
+        {
+            playGame.setColor(new Color(49, 207, 240));
+            guide.setColor(new Color(255, 215, 0));
+            credits.setColor(new Color(49, 207, 240));
+            pointerLocationX = 170;
+            pointerLocationY = 330;
         }
 
         // sets location for blue square in front of text (pointerLocation) and also sets color of spritefont text based on which menu item is being hovered
@@ -96,6 +109,10 @@ public class MenuScreen extends Screen {
                 screenCoordinator.setGameState(GameState.CREDITS);
                 music.setCount(2);
                 music.stopLoop();
+            } else if (menuItemSelected == 2) {
+                screenCoordinator.setGameState(GameState.GUIDE);
+                music.setCount(2);
+                music.stopLoop();
             }
         }
     }
@@ -104,6 +121,7 @@ public class MenuScreen extends Screen {
         background.draw(graphicsHandler);
         playGame.draw(graphicsHandler);
         credits.draw(graphicsHandler);
+        guide.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, new Color(49, 207, 240), Color.black, 2);
     }
 }

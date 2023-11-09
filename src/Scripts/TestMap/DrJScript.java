@@ -52,6 +52,7 @@ public class DrJScript extends Script<NPC> {
         hideTextbox();
         setFlag("hasTalkedToDrJ");
         setFlag("startingMusic");
+        //getNPC(4).setIsHidden(false);
         music.stopLoop();
     }
 
