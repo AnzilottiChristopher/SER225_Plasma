@@ -45,7 +45,7 @@ public class MoveNPC extends Script<NPC>
                 getNPC(counter).setCurrentAnimationName("LOOK_DOWN_GIRL");
             }
         }
-        getNPC(4).setIsHidden(true);
+        //getNPC(4).setIsHidden(true);
         getNPC(8).setLocation(1850, 3400);
 
         getNPC(200).setIsHidden(false);

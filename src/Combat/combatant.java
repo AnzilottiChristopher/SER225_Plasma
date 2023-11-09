@@ -20,7 +20,7 @@ public class combatant extends attack {
     private attack move3;
 
     private BufferedImage boomerImage;  
-    private BufferedImage testEnemyImage;
+    private BufferedImage enemyImage;
 
     private boolean alive; 
 
@@ -48,8 +48,10 @@ public class combatant extends attack {
         this.defence = 10;
         this.athletic = 10;
         this.academic = 10;
-        this.engaged = 10;  
+        this.engaged = 10;
 
+
+        this.boomerImage = ImageLoader.load("combatBoomer.png");
         this.name = "Boomer";
 
     }
@@ -87,6 +89,8 @@ public class combatant extends attack {
                 this.move2 = new attack("Discord Double-kick",atkType.SOCIAL,3);
                 this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
 
+
+                this.enemyImage = ImageLoader.load("robotCombat.png");
 
                 this.maxHealth = 50 * rank;
                 this.defence = 5 * rank;
@@ -182,11 +186,11 @@ public class combatant extends attack {
     } 
  
     public BufferedImage getPlayerImage(){
-        return boomerImage = ImageLoader.load("Boomer.png");
+        return boomerImage;
 
     } 
 public BufferedImage getEnemyImage(){
-    return  testEnemyImage = ImageLoader.load("jukebox2.png");
+    return enemyImage;
 
 }
 
