@@ -6,19 +6,14 @@ import Engine.Music;
 
 public class DoorScript extends Script<NPC> {
 
-    
-
-        //setFlag("InteractedWithDoor");
-        
-
-    
         //This runs first and the start
         @Override
         protected void setup() {
             lockPlayer();
             showTextbox(); 
             setFlag("TeleportCompleted");
-            setFlag("Teleported2");
+            unsetFlag("PlayerHasTeleportedBack");
+            //setFlag("Teleported2");
             
             
         }
@@ -29,7 +24,8 @@ public class DoorScript extends Script<NPC> {
             unlockPlayer();
             hideTextbox();
             setFlag("TeleportCompleted");
-            setFlag("Teleported2");
+            unsetFlag("PlayerHasTeleportedBack");
+            //setFlag("Teleported2");
            
         }
     

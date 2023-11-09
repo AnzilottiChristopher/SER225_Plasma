@@ -45,7 +45,8 @@ public class TempScreen extends Screen {
     @Override
     public void initialize() {
         // TODO Auto-generated method stub
-        flagManager=new FlagManager();
+        
+        flagManager=playLevelScreen.flagManager;
         flagManager.addFlag("Teleported2", false);
 
         //setup map
@@ -89,7 +90,7 @@ public class TempScreen extends Screen {
                 trigger.getTriggerScript().setPlayer(player);
             }
         }
-        playLevelScreen=new PlayLevelScreen(screenCoordinator);
+        //playLevelScreen=new PlayLevelScreen(screenCoordinator);
 
 
 
@@ -110,7 +111,7 @@ public class TempScreen extends Screen {
 
         if(map.getFlagManager().isFlagSet("Teleported2"))
         {
-            tempScreenState=TempScreenState.SUSPENDED;
+            tempScreenState= TempScreenState.SUSPENDED;
             
             //screenCoordinator.switchToPLayLevelScreen();
             //playLevelScreen.goBack();
@@ -127,7 +128,15 @@ public class TempScreen extends Screen {
         return tempScreenState;
     }
 
-   
+   public void setTempScreenState(String state){
+    state = state.toUpperCase();
+    if(state == "RUNNING"){
+        tempScreenState = TempScreenState.RUNNING;
+    }else{
+        tempScreenState = TempScreenState.SUSPENDED;
+    }
+
+   }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
@@ -137,7 +146,7 @@ public class TempScreen extends Screen {
                 map.draw(player, graphicsHandler);
                 break;
             case SUSPENDED:
-                playLevelScreen.draw(graphicsHandler);
+                //playLevelScreen.draw(graphicsHandler);
                 break;
         }
         //map.draw(player, graphicsHandler);

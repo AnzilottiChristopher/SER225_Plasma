@@ -8,6 +8,7 @@ import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import NPCs.Door;
+import Scripts.TestMap.DoorScript2;
 import Scripts.TestMap.DoorScript;
 import Tilesets.CombatTileset;
 //import Tilesets.QuadTileset;
@@ -29,9 +30,9 @@ public class TempMap extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         
-
+        
         Door door= new Door(5,getMapTile(5,10).getLocation());
-        door.setInteractScript(new DoorScript());
+        door.setInteractScript(new DoorScript2());
         npcs.add(door);
          
 
