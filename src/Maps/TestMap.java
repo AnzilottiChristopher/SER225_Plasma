@@ -159,6 +159,29 @@ public class TestMap extends Map {
 
 
 
+        Blake blake = new Blake(39, getMapTile(21, 47).getLocation());
+        blake.setInteractScript(new BlakeScript());
+        npcs.add(blake);
+
+        DrJ j = new DrJ(40, getMapTile(85, 109).getLocation());
+        j.setInteractScript(new DrJScript());
+        npcs.add(j);
+
+        Chef chef = new Chef(41, getMapTile(30, 37).getLocation());
+        chef.setInteractScript(new EnemyScript());
+        npcs.add(chef);
+
+        Chef chef2 = new Chef(42, getMapTile(35, 32).getLocation());
+        chef2.setInteractScript(new EnemyScript());
+        npcs.add(chef2);
+
+        Peter peter = new Peter(43, getMapTile(79, 105).getLocation());
+        peter.setInteractScript(new EnemyScript());
+        npcs.add(peter);
+
+        HelloKitty kitty = new HelloKitty(44, getMapTile(79, 114).getLocation());
+        kitty.setInteractScript(new EnemyScript());
+        npcs.add(kitty);
 
         return npcs;
     }

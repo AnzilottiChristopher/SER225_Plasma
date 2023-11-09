@@ -75,6 +75,8 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasFoundBall", false);
         flagManager.addFlag("hasTalkedToJudyCar", false);
         flagManager.addFlag("hasTalkedToAlex", false);
+        flagManager.addFlag("hasTalkedToBlake", false);
+        flagManager.addFlag("hasTalkedToDrJ", false);
 
         //combat screen
         flagManager.addFlag("CombatStarted", false);
@@ -94,6 +96,7 @@ public class PlayLevelScreen extends Screen {
 
         flagManager.addFlag("hasTalked", false);
         flagManager.addFlag("startingMusic", false);
+        flagManager.addFlag("tenseMusic", false);
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.playLoop();
         music.setCount(1);
@@ -243,7 +246,13 @@ public class PlayLevelScreen extends Screen {
             map.getFlagManager().unsetFlag("startingMusic");
             //System.out.println("We are here Flags");
         }
-
+        if(map.getFlagManager().isFlagSet("tenseMusic"))
+        {
+            music.background("Resources/A violent encounter.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("tenseMusic");
+            //System.out.println("We are here Flags");
+        }
         //if the player interacts with the door the they are teleported
         if(map.getFlagManager().isFlagSet("TeleportCompleted"))
         {
