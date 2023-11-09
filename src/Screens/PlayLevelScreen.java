@@ -93,11 +93,16 @@ public class PlayLevelScreen extends Screen {
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
         flagManager.addFlag("PlayerHasTeleportedBack", false);
-        
+
+
+        //SleepWall Visibility
+        flagManager.addFlag("Boss3Complete", false);
 
         flagManager.addFlag("hasTalked", false);
         flagManager.addFlag("startingMusic", false);
         flagManager.addFlag("tenseMusic", false);
+
+
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.playLoop();
         music.setCount(1);
@@ -259,6 +264,11 @@ public class PlayLevelScreen extends Screen {
             map.getFlagManager().unsetFlag("tenseMusic");
             //System.out.println("We are here Flags");
         }
+
+
+
+
+
         //if the player interacts with the door the they are teleported
         if(map.getFlagManager().isFlagSet("TeleportCompleted"))
         {

@@ -41,6 +41,8 @@ public class TestMap extends Map {
 
         SleepWall sleepWall = new SleepWall(getMapTile(40, 80).getLocation());
 
+        sleepWall.setExistenceFlag("Boss3Complete");
+
 
         enhancedMapTiles.add(sleepWall);
 
