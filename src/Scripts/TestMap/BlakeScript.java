@@ -4,6 +4,7 @@ import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
 //import Game.ScreenCoordinator;
 //import Game.ScreenCoordinator;
+import EnhancedMapTiles.SleepWall;
 import Screens.PlayLevelScreen;
 import GameObject.Frame;
 import Level.*;
@@ -53,6 +54,7 @@ public class BlakeScript extends Script<NPC> {
         hideTextbox();
         setFlag("hasTalkedToBlake");
         setFlag("startingMusic");
+        setFlag("Boss3Complete");
         music.stopLoop();
     }
 
