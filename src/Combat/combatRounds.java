@@ -1,11 +1,14 @@
 package Combat; 
 
+//using key press timer to determine a pause. increment the keyPressTimer, once it gets to a certain point, unlock the key(?)
+
 /**
- * this is essentially a "main" class for runnign the combat between 2 objects of the combatant class
+ * this is essentially a "main" class for running the combat between 2 objects of the combatant class
  */
 
 import java.security.SecureRandom;
 import Combat.combatStatus;
+import Engine.KeyLocker;
 
 
 public class combatRounds {
@@ -13,7 +16,7 @@ public class combatRounds {
     SecureRandom random = new SecureRandom();
     
     private combatant playerObj;
-    private combatant opponentObj;
+    private combatant opponentObj;  
     private int round;
     private static int moveSelec;
     private combatStatus status;
@@ -80,7 +83,9 @@ public class combatRounds {
 
     public static void setMoveSelec(int setMove) {
         moveSelec = setMove;
-    }
+    } 
+
+
 
     public int getMoveSelec() {
         return moveSelec;

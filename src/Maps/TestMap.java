@@ -10,8 +10,6 @@ import Level.Trigger;
 import NPCs.*;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
-import Scripts.TestMap.DoorScript;
-import Scripts.TestMap.JudyAndCarScript;
 //import Tilesets.CommonTileset;
 import Tilesets.TestTileset;
 
@@ -93,7 +91,18 @@ public class TestMap extends Map {
         //Adding a student
         Student student = new Student(8, getMapTile(78, 110).getLocation());
         student.setInteractScript(new studentInteraction());
-        npcs.add(student);
+        npcs.add(student); 
+
+        //Adding a judygrunt1
+        JudyGrunt judyGruntOne = new JudyGrunt(50, getMapTile(44, 68).getLocation());
+        judyGruntOne.setInteractScript(new JudyGruntScript());
+        npcs.add(judyGruntOne); 
+
+        //Adding 2nd judy grunt
+        JudyGrunt judyGruntTwo = new JudyGrunt(51, getMapTile(44, 73).getLocation());
+        judyGruntTwo.setInteractScript(new JudyGruntScript());
+        npcs.add(judyGruntTwo);      
+
 
 
         return npcs;

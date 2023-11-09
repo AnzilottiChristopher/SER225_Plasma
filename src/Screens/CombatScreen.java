@@ -57,7 +57,15 @@ public class CombatScreen extends Screen {
     protected combatRounds currentCombat;
     protected combatant playerCombatant;
     protected combatant enemyCombatant;
-    protected combatStatus combatState; 
+    protected combatStatus combatState;  
+
+    protected boolean checkMove1;  
+    protected int moveTimer; 
+
+    protected boolean checkMove2;
+    protected boolean checkMove3 
+    ;
+
 
     protected GraphicsHandler moveDisplay;
 
@@ -83,7 +91,7 @@ public class CombatScreen extends Screen {
 
         //temportary combatant object intitialization
          playerCombatant = new combatant(); //boomer
-         enemyCombatant = new combatant("random"); //placeolder enemy 
+         enemyCombatant = new combatant("robot"); //placeolder enemy 
          
         flagManager = new FlagManager();
         //flagManager.addFlag("hasLostBall", false);
@@ -105,7 +113,13 @@ public class CombatScreen extends Screen {
         combatItemSelected = -1;
         keyLock.lockKey(Key.SPACE);
 
-        moveSelected = 0;
+        moveSelected = 0; 
+
+        checkMove1 = false;  
+        checkMove2 = false; 
+        checkMove3 = false;
+
+        moveTimer = 5;
 
     }
 
@@ -150,7 +164,22 @@ public class CombatScreen extends Screen {
 
         //if space is pressed, do combat stuff 
         if (Keyboard.isKeyDown(Key.SPACE) && keyPressTimer == 0 && moveSelected != 0) {
-            keyPressTimer = 14;
+            keyPressTimer = 14;  
+
+            if(moveSelected == 1){
+            checkMove1 = true; 
+            moveTimer = 45;
+            } 
+            else if(moveSelected == 2){
+            checkMove2 = true; 
+            moveTimer = 45;
+            } 
+            else if(moveSelected == 3){
+            checkMove3 = true; 
+            moveTimer = 45;
+            }
+            
+           // keyLock.lockKey(Key.SPACE);
             combatRounds.setMoveSelec(moveSelected); 
            
             //indicator code goes here? 
@@ -158,8 +187,11 @@ public class CombatScreen extends Screen {
 
             System.out.println("move selected :" + moveSelected);
             moveSelected = 0; //de-selects move 
-           // System.out.println("move selected :" + moveSelected);
+           // System.out.println("move selected :" + moveSelected); 
 
+        //keyPressTimer = 14;
+        //   System.out.println(keyLock.isKeyLocked(Key.SPACE));
+           // keyLock.unlockKey(Key.SPACE);
 
         }
 
@@ -232,33 +264,74 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawString(playerCombatant.moveName3(), 310, 490, moveFont, Color.WHITE); // 
 
         
-        //attempt to draw a rect text box when the move is used (kinda works, but allows you to hold space and it appears)
-        if (Keyboard.isKeyDown(Key.SPACE)) {  
-            // int moveDisplayTimer = 5; //internal timer?        
-          // keyPressTimer = 2;   
-          
-        graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
+        //moves for Boomer, displayed with the following!
 
-           switch(moveSelected){
-             case 1: 
-                graphicsHandler.drawFilledRectangleWithBorder(40, 470, 300, 200, moveTextBox, green, 5);   
-                graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 40, 490, moveFont, Color.WHITE); //drawing text in white 
-                System.out.println("move one display");  
-                 break; 
-            default:
-                System.out.println("Didn't reach move 1"); 
-           }
-           //  keyLock.lockKey(Key.SPACE); 
-            // moveDisplayTimer--;
-           //System.out.println("it reached here");  
-        }
+        if(checkMove1 == true){
+            graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);   
+           graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            moveTimer--;  
+            if(moveTimer <= 0){
+                checkMove1 = false;
+            } 
+             
+      } 
+      else if(checkMove2 == true){
+            graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);   
+           graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            moveTimer--;  
+            if(moveTimer <= 0){
+                checkMove2 = false;
+            }
+            
+      }  
+      else if(checkMove3 == true){
+           graphicsHandler.drawFilledRectangleWithBorder(420, 360, 330, 40, moveTextBox, Color.WHITE, 5);   
+           graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            moveTimer--;  
+            if(moveTimer <= 0){
+                checkMove3 = false;
+            } 
+            
+      }
+
+        // if (Keyboard.isKeyDown(Key.SPACE)) {  
+        //     // int moveDisplayTimer = 5; //internal timer?        
+        //    //keyPressTimer = 4;   
+          
+        // //graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
+
+        //    switch(moveSelected){    
+        //      case 1: 
+        //         graphicsHandler.drawFilledRectangleWithBorder(650, 500, 300, 200, moveTextBox, Color.WHITE, 5);   
+        //         graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 320, 400, moveFont, Color.WHITE); //drawing text in white 
+        //         System.out.println("move 1 display");  
+        //          break;  
+        //      case 2: 
+        //         graphicsHandler.drawFilledRectangleWithBorder(500, 400, 300, 200, moveTextBox, Color.ORANGE, 5);   
+        //         graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 320, 400, moveFont, Color.cyan); //drawing text in white 
+        //         System.out.println("move 2 display");  
+        //          break;  
+        //     case 3: 
+        //         graphicsHandler.drawFilledRectangleWithBorder(600, 300, 300, 200, moveTextBox, green, 5);   
+        //         graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 320, 400, moveFont, Color.YELLOW); //drawing text in white 
+        //         System.out.println("move 3 display");  
+        //          break; 
+        //     default:
+        //         System.out.println("Didn't reach move 1"); 
+        //    }
+        //    //  keyLock.lockKey(Key.SPACE); 
+        //     // moveDisplayTimer--;
+        //    //System.out.println("it reached here");   
+
+        //    //keyPressTimer =0;
+        // }
 
         //player stuffs
         graphicsHandler.drawFilledRectangle(520, 400, 250, 40, new Color(225, 225, 255)); //white rect outline for player 
         graphicsHandler.drawString(playerCombatant.getName(), 530, 435, nameFont, Color.BLACK); //name text 
         graphicsHandler.drawFilledRectangle(520, 405, (playerCombatant.getHealth()*2), 10, green); //player healthbar   
 
-        graphicsHandler.drawImage(enemyCombatant.getPlayerImage(), 180, 300);
+        graphicsHandler.drawImage(playerCombatant.getPlayerImage(), 180, 250);
 
 
         // playerCombatant.getHealth()*2 for the width doesn't work, it repeats a ton  
@@ -269,7 +342,7 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
          //THIS DOES THE THING!!!!
-        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 450, 250); 
+        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 420, 110); 
 
 
         // if(playerCombatant.getHealth() >= 80 && enemyCombatant.getHealth() >= 50){

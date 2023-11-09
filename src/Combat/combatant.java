@@ -4,7 +4,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage; 
 import Engine.ImageLoader;
 import java.security.SecureRandom; 
-import GameObject.Sprite;
+import GameObject.Sprite; 
+
 
 import Engine.ImageLoader;
 
@@ -20,7 +21,10 @@ public class combatant extends attack {
     private attack move3;
 
     private BufferedImage boomerImage;  
-    private BufferedImage testEnemyImage;
+    private BufferedImage enemyImage; 
+
+    // private String playerImage; 
+    // private String enemyImage;
 
     private boolean alive; 
 
@@ -50,7 +54,10 @@ public class combatant extends attack {
         this.academic = 10;
         this.engaged = 10;  
 
-        this.name = "Boomer";
+        this.name = "Boomer"; 
+
+        this.boomerImage = ImageLoader.load("combatBoomer.png");
+
 
     }
 
@@ -75,8 +82,10 @@ public class combatant extends attack {
                 this.engaged = 5 * rank;
 
                 this.alive = true;
-                this.health = this.maxHealth;
+                this.health = this.maxHealth; 
 
+                this.enemyImage = ImageLoader.load("jukebox2.png");
+ 
                 break;
 
             case "robot":
@@ -85,7 +94,9 @@ public class combatant extends attack {
                 this.name = "CyberBobcat";
                 this.move1 = new attack("Esport Execution",atkType.SPORTS,5);
                 this.move2 = new attack("Discord Double-kick",atkType.SOCIAL,3);
-                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
+                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3); 
+
+                this.enemyImage =  ImageLoader.load("robotCombat.png");
 
 
                 this.maxHealth = 50 * rank;
@@ -160,16 +171,21 @@ public class combatant extends attack {
     public int getDefence()
     {
         return this.defence;
-    } 
+    }  
  
     public BufferedImage getPlayerImage(){
-        return boomerImage = ImageLoader.load("Boomer.png");
+        return boomerImage; 
 
-    } 
+    }  
+
     public BufferedImage getEnemyImage(){
-    return  testEnemyImage = ImageLoader.load("jukebox2.png");
+    return  enemyImage; 
 
-}
+    }  
+
+    // public void  setPlayerImage(BufferedImage image){
+    //     this.image = image;
+    // }
 
 
     public void maxHeal()

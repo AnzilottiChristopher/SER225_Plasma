@@ -60,7 +60,10 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasStartedGame", false);
         flagManager.addFlag("hasInteractedWithStudent", false);
         flagManager.addFlag("enemy1Interaction", false);
-        flagManager.addFlag("enemy2Interaction", false);
+        flagManager.addFlag("enemy2Interaction", false); 
+
+        flagManager.addFlag("judyGrunt1", false); 
+        flagManager.addFlag("judygrunt2", false);
 
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
