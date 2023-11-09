@@ -109,6 +109,25 @@ public class combatant extends attack {
                 this.health = this.maxHealth;
 
                 break;
+
+            case "alex":
+
+                rank = 2;
+                this.name = "Professor Alex";
+                this.move1 = new attack("Git Guillotine",atkType.SPORTS,5);
+                this.move2 = new attack("Comedy Tickets",atkType.SOCIAL,3);
+                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
+
+
+                this.maxHealth = 50 * rank;
+                this.defence = 5 * rank;
+                this.athletic = 5 * rank;
+                this.academic = 5 * rank;
+                this.engaged = 5 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
         }
     }
 

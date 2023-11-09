@@ -18,7 +18,7 @@ public class DoorScript extends Script<NPC> {
             lockPlayer();
             showTextbox(); 
             setFlag("TeleportCompleted");
-            setFlag("TeleportedBack");
+            setFlag("Teleported2");
             
             
         }
@@ -29,7 +29,7 @@ public class DoorScript extends Script<NPC> {
             unlockPlayer();
             hideTextbox();
             setFlag("TeleportCompleted");
-            setFlag("TeleportedBack");
+            setFlag("Teleported2");
            
         }
     

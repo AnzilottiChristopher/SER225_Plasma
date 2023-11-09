@@ -20,7 +20,7 @@ public class Student extends NPC
 
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet)
-    {
+    { 
         return new HashMap<String, Frame[]>(){{
             put("STAND_RIGHT", new Frame[]{
                     new FrameBuilder(spriteSheet.getSprite(0, 0))

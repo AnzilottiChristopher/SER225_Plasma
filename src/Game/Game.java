@@ -32,7 +32,7 @@ public class Game {
 
         if (music.getCount() == 2){
             music.stopLoop();
-        }
+        } 
         // music.background("Resources/Pokemon FireRedLeafGreen- Pallet Town.wav");
         // music.playLoop();
         // music.setCount(1);
