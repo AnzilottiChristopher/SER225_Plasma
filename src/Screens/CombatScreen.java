@@ -107,6 +107,14 @@ public class CombatScreen extends Screen {
             music.playLoop();
             flagManager.unsetFlag("AlexBossStart");
         }
+
+        if (flagManager.isFlagSet("RoboEnemyStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/Announce the truth.wav");
+            music.playLoop();
+            flagManager.unsetFlag("RoboEnemyStart");
+        }
         combatState = currentCombat.updateCombat();
 
         //decrease timer as time progresses
@@ -206,6 +214,11 @@ public class CombatScreen extends Screen {
                     music.stopLoop();
                     flagManager.setFlag("startingMusic");
                     flagManager.setFlag("Boss1Complete");
+                }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
                 }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;

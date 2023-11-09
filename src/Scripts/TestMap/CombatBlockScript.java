@@ -1,5 +1,6 @@
 package Scripts.TestMap;
 
+import Engine.Music;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
@@ -10,7 +11,7 @@ import Utils.Direction;
 public class CombatBlockScript extends Script<NPC> {
 
 
-    int caseNum; 
+    int caseNum;
 
     public CombatBlockScript(int caseNum)
     {
@@ -52,10 +53,12 @@ public class CombatBlockScript extends Script<NPC> {
         if (caseNum == 0)
         {
             setFlag("Enemy1");
+            setFlag("RoboEnemyStart");
         }
         if (caseNum == 1)
         {
             setFlag("Enemy2");
+            setFlag("RoboEnemyStart");
         }
 
 
@@ -65,7 +68,7 @@ public class CombatBlockScript extends Script<NPC> {
     @Override
     public ScriptState execute() {
 
-        System.out.println("CombatBlockScript.execute() running");
+        //System.out.println("CombatBlockScript.execute() running");
     
         if (PlayLevelScreen.getVictoryCount() == caseNum)
         {

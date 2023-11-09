@@ -84,6 +84,7 @@ public class PlayLevelScreen extends Screen {
 
         //Combat Screen Music
         flagManager.addFlag("AlexBossStart", false);
+        flagManager.addFlag("RoboEnemyStart", false);
 
         //Alex Enemy Flag Trigger
         flagManager.addFlag("Enemy1", false);
