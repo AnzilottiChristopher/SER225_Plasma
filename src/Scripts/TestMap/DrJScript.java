@@ -37,15 +37,15 @@ public class DrJScript extends Script<NPC> {
             music.stopLoop();
             music.background("Resources/ObstacleInPath.wav");
             music.playLoop();
-            addTextToTextboxQueue("I love Eclipse");
+            addTextToTextboxQueue("I love Eclipse!");
             addTextToTextboxQueue("Best IDE of all time.");
-            addTextToTextboxQueue("*A car just sped onto the middle of the quad!*");
+            addTextToTextboxQueue("*A Tesla just sped onto the middle of the quad!*");
             addTextToTextboxQueue("*Quickly go find it!*");
             addTextToTextboxQueue("*Maybe it'll be the answer to whats going on.*");
        }
         entity.facePlayer(player);
     }
-
+    
     @Override
     protected void cleanup() {
         unlockPlayer();

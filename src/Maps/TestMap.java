@@ -156,6 +156,10 @@ public class TestMap extends Map {
         peter.setInteractScript(new EnemyScript());
         npcs.add(peter);
 
+        HelloKitty kitty = new HelloKitty(44, getMapTile(79, 114).getLocation());
+        kitty.setInteractScript(new EnemyScript());
+        npcs.add(kitty);
+
         return npcs;
     }
 
