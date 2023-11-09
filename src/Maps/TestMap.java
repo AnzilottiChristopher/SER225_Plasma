@@ -2,6 +2,7 @@ package Maps;
 
 import EnhancedMapTiles.OutOfBoundsCollision;
 import EnhancedMapTiles.PushableRock;
+import EnhancedMapTiles.SleepWall;
 import Enums.CollisionState;
 import Level.EnhancedMapTile;
 import Level.Map;
@@ -36,6 +37,15 @@ public class TestMap extends Map {
         placement = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(114, 19).getLocation(), placement);
+
+
+        SleepWall sleepWall = new SleepWall(getMapTile(40, 80).getLocation());
+
+        sleepWall.setExistenceFlag("Boss3Complete");
+
+
+        enhancedMapTiles.add(sleepWall);
+
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(bottomWall);
         enhancedMapTiles.add(pushableRock);
@@ -92,7 +102,7 @@ public class TestMap extends Map {
 
 
         //Adding The Alex Boss
-        AlexBoss alexBoss = new AlexBoss(5,getMapTile(113, 21).getLocation());
+        AlexBoss alexBoss = new AlexBoss(5,getMapTile(112, 22).getLocation());
         alexBoss.setInteractScript(new AlexScript());
         npcs.add(alexBoss);
 
@@ -107,10 +117,10 @@ public class TestMap extends Map {
 
         //Adding a student
         Student student = new Student(8, getMapTile(80, 22).getLocation());
-        student.setInteractScript(new studentInteraction());
+        student.setInteractScript(new NessInteraction());
         npcs.add(student);
 
-        for (int counter = 0; counter < 26; counter++)
+        for (int counter = 0; counter < 14; counter++)
         {
             StudentWall studentWall;
             if (counter % 2 == 0)
@@ -131,7 +141,7 @@ public class TestMap extends Map {
             }
             studentWall.setInteractScript(new WallScript());
             npcs.add(studentWall);
-        } //ID counter at 34
+        } //ID counter at 21
 
         for (int counter = 0; counter < 5; counter++)
         {
@@ -139,18 +149,58 @@ public class TestMap extends Map {
             if (counter % 2 == 0)
             {
                 CollisionState girl = CollisionState.GIRL;
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation(), girl);
+                left = new StudentWallLeft(22 + counter, getMapTile(63, 19 + (counter * 2)).getLocation(), girl);
             } else
             {
-                left = new StudentWallLeft(34 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
+                left = new StudentWallLeft(22 + counter, getMapTile(63, 19 + (counter * 2)).getLocation());
             }
             left.setExistenceFlag("Boss1Complete");
             left.setInteractScript(new WallScript());
             npcs.add(left);
-        } //ID counter at 38
+        } //ID counter at 25 or 26 not sure
+
+        HerscoviciBoss herscovici = new HerscoviciBoss(200, getMapTile(14, 76).getLocation());
+        herscovici.setInteractScript(new HerscoviciScript());
+
+        CollisionState girl = CollisionState.GIRL;
+        Boss2Enemy boss2Enemy1 = new Boss2Enemy(27, getMapTile(18, 74).getLocation());
+        Boss2Enemy boss2Enemy2 = new Boss2Enemy(28, getMapTile(23, 74).getLocation(), girl);
+        boss2Enemy2.setInteractScript(new HerscoviciEnemyScript());
+        boss2Enemy1.setInteractScript(new HerscoviciEnemyScript());
+
+        boss2Enemy1.setIsHidden(true);
+        boss2Enemy2.setIsHidden(true);
+        herscovici.setIsHidden(true);
+
+        npcs.add(herscovici);
+        npcs.add(boss2Enemy1);
+        npcs.add(boss2Enemy2);
 
 
 
+        Blake blake = new Blake(39, getMapTile(21, 47).getLocation());
+        blake.setInteractScript(new BlakeScript());
+        npcs.add(blake);
+
+        DrJ j = new DrJ(40, getMapTile(85, 109).getLocation());
+        j.setInteractScript(new DrJScript());
+        npcs.add(j);
+
+        Chef chef = new Chef(41, getMapTile(30, 37).getLocation());
+        chef.setInteractScript(new EnemyScript());
+        npcs.add(chef);
+
+        Chef chef2 = new Chef(42, getMapTile(35, 32).getLocation());
+        chef2.setInteractScript(new EnemyScript());
+        npcs.add(chef2);
+
+        Peter peter = new Peter(43, getMapTile(79, 105).getLocation());
+        peter.setInteractScript(new EnemyScript());
+        npcs.add(peter);
+
+        HelloKitty kitty = new HelloKitty(44, getMapTile(79, 114).getLocation());
+        kitty.setInteractScript(new EnemyScript());
+        npcs.add(kitty);
 
         return npcs;
     }
@@ -160,15 +210,16 @@ public class TestMap extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
         //3000 to 79 ratio X value
         triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
+        triggers.add(new Trigger(1000, 2500, 6000, 50, new MoveNPC(), "hasPassed"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
         //enemy vicCount = 0 trigger , robot 1
-        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0)));
+        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
 
         //enemy vicCount = 1 trigger, robot 2
-        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1)));
+        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
 
         
 
