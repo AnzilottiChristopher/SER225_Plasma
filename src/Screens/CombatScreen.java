@@ -29,7 +29,7 @@ public class CombatScreen extends Screen {
     private Color moveTextBox = new Color(204, 204, 204, 50); //makes a transparent color
 
 
-    private Font moveFont = new Font("Monospaced", Font.PLAIN, 11);  
+    private Font moveFont = new Font("Monospaced", Font.PLAIN, 14);  
     private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
 
 
@@ -286,7 +286,10 @@ public class CombatScreen extends Screen {
 
         if(checkMove1 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            
+            graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
+            graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName1() + "!", 60, 170, moveFont, Color.WHITE); //drawing text in white
             moveTimer--;
             if(moveTimer <= 0){
                 checkMove1 = false;
@@ -295,7 +298,10 @@ public class CombatScreen extends Screen {
         }
         else if(checkMove2 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+
+            graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
+            graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName2() + "!", 60, 170, moveFont, Color.WHITE);
             moveTimer--;
             if(moveTimer <= 0){
                 checkMove2 = false;
@@ -304,7 +310,10 @@ public class CombatScreen extends Screen {
         }
         else if(checkMove3 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 330, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+
+           graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
+            graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName3() + "!", 60, 170, moveFont, Color.WHITE);
             moveTimer--;
             if(moveTimer <= 0){
                 checkMove3 = false;
@@ -329,7 +338,7 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawFilledRectangle(40, 65, 250, 36, new Color(225, 225, 255)); //white rect outline 
         graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
-         //THIS DOES THE THING!!!!
+         //THIS DOES THE THING!!!! 
        graphicsHandler.drawImage(enemyCombatant.getEnemyImage(), 420, 110);
 
 
@@ -345,39 +354,39 @@ public class CombatScreen extends Screen {
         if (moveSelected == 1)
         {
             //rect 1 
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 170, 30, new Color(200, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(155, 440, 170, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,180, 30, new Color(49, 207, 240), 5);
         }
 
         else if (moveSelected == 2)
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 170, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(155, 440, 170, 30, new Color(200, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,180, 30, new Color(49, 207, 240), 5);
         }
         else if (moveSelected == 3)
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 170, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(155, 440, 170, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470, 140, 30, new Color(200, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470, 180, 30, new Color(200, 207, 240), 5);
         }
         else
         {
             //rect 1
-            graphicsHandler.drawRectangle(20, 470, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(20, 470, 170, 30, new Color(49, 207, 240), 5);
             //rect 2
-            graphicsHandler.drawRectangle(160, 440, 140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(155, 440, 170, 30, new Color(49, 207, 240), 5);
             //rect 3
-            graphicsHandler.drawRectangle(300, 470,140, 30, new Color(49, 207, 240), 5);
+            graphicsHandler.drawRectangle(300, 470,180, 30, new Color(49, 207, 240), 5);
         } 
 
         

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Game",
+            "request": "launch",
+            "mainClass": "Game.Game",
+            "projectName": "SER225_Plasma Repo Folder_cc1ecc66"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
