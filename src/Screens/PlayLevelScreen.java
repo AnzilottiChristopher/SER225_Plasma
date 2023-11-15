@@ -64,8 +64,12 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("enemy1Interaction", false);
         flagManager.addFlag("enemy2Interaction", false);
 
-        //Destruction of NPC's flags
+        //Boss completion flags
         flagManager.addFlag("Boss1Complete", false);
+        flagManager.addFlag("Boss2Complete", false);
+        flagManager.addFlag("Boss3Complete", false);
+        flagManager.addFlag("Boss4Complete", false);
+
 
         //Move NPC
         flagManager.addFlag("hasPassed", false);

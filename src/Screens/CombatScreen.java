@@ -235,9 +235,6 @@ public class CombatScreen extends Screen {
         {
             case WIN:
                 // playLevelScreen.goBackPlayLevelScreen();
-                // break;
-            case LOSS:
-            case TIE:
                 if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
                 {
                     music.stopLoop();
@@ -251,9 +248,14 @@ public class CombatScreen extends Screen {
                 }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
+            case LOSS:
+                break;
+            case TIE:
+
+                playLevelScreen.goBackPlayLevelScreen();
+                break;
 
             case PROGRESS:
-
                 break;
         }
 
