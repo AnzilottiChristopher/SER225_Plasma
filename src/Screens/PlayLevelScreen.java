@@ -57,6 +57,9 @@ public class PlayLevelScreen extends Screen {
                                         new combatant("julia"), //9
                                         new combatant("peter"), //10
                                         new combatant("drj"), //11
+                                        new combatant("construction"), //12
+                                        new combatant("construction"), //13
+                                        new combatant("judy"), //14
                                     }; 
 
 
