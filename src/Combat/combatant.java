@@ -45,10 +45,10 @@ public class combatant extends attack {
         this.move3 = new attack("Study Session Slam",atkType.STUDY,3);
 
         this.maxHealth = 100;
-        this.defence = 10;
-        this.athletic = 10;
-        this.academic = 10;
-        this.engaged = 10;
+        this.defence = 15;
+        this.athletic = 15;
+        this.academic = 15;
+        this.engaged = 15;
 
 
         this.boomerImage = ImageLoader.load("combatBoomer.png");
@@ -184,11 +184,111 @@ public class combatant extends attack {
 
             case "blake":
 
-                rank = 2;
+                rank = 3;
                 this.name = "Professor Blake";
                 this.move1 = new attack("Office-Hours Annihalation",atkType.SPORTS,6);
                 this.move2 = new attack("Snacktime Smack",atkType.SOCIAL,2);
                 this.move3 = new attack("*too busy walking all the way to his office*",atkType.STUDY,0);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "julia":
+
+                rank = 3;
+                this.name = "Hello Kitty";
+                this.move1 = new attack("Research Shakedown",atkType.SPORTS,3);
+                this.move2 = new attack("Procreate Punch",atkType.SOCIAL,2);
+                this.move3 = new attack("Neko-Neko Nuclear!",atkType.STUDY,8);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "peter":
+
+                rank = 3;
+                this.name = "Peter";
+                this.move1 = new attack("Research Shakedown",atkType.SPORTS,3);
+                this.move2 = new attack("Procreate Punch",atkType.SOCIAL,2);
+                this.move3 = new attack("Neko-Neko Nuclear!",atkType.STUDY,8);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "drj":
+
+                rank = 3;
+                this.name = "Doctor J";
+                this.move1 = new attack("Object-Oriented Punch",atkType.SPORTS,3);
+                this.move2 = new attack("Eclipse Explosion",atkType.SOCIAL,7);
+                this.move3 = new attack("Paper notes ONLY!!!",atkType.STUDY,3);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "construction":
+
+                rank = 3;
+                this.name = "Quad Construction";
+                this.move1 = new attack("5 AM Demolition",atkType.SPORTS,7);
+                this.move2 = new attack("Tennis-Court Teardown",atkType.SOCIAL,2);
+                this.move3 = new attack("OSHA Obliteration",atkType.STUDY,4);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "judy":
+
+                rank = 3;
+                this.name = "Overlord Olian";
+                this.move1 = new attack("charging her tesla...",atkType.SPORTS,0);
+                this.move2 = new attack("VEHICULAR MANSLAUGHTER",atkType.SOCIAL,10);
+                this.move3 = new attack("PRESIDENTIAL PUNISHMENT",atkType.STUDY,5);
 
 
                 this.maxHealth = 25 * rank;
