@@ -70,11 +70,11 @@ public class combatant extends attack {
                 this.move3 = new attack("generic study attk",atkType.STUDY,3);
 
 
-                this.maxHealth = 50 * rank;
-                this.defence = 5 * rank;
-                this.athletic = 5 * rank;
-                this.academic = 5 * rank;
-                this.engaged = 5 * rank;
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
 
                 this.alive = true;
                 this.health = this.maxHealth;
@@ -108,19 +108,99 @@ public class combatant extends attack {
                 rank = 2;
                 this.name = "Professor Alex";
                 this.move1 = new attack("Git Guillotine",atkType.SPORTS,5);
-                this.move2 = new attack("Comedy Tickets",atkType.SOCIAL,3);
-                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,3);
+                this.move2 = new attack("Comedy Tickets",atkType.SOCIAL,1);
+                this.move3 = new attack("StackOverflow skimming",atkType.STUDY,1);
 
 
-                this.maxHealth = 50 * rank;
-                this.defence = 5 * rank;
-                this.athletic = 5 * rank;
-                this.academic = 5 * rank;
-                this.engaged = 5 * rank;
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
 
                 this.alive = true;
                 this.health = this.maxHealth;
 
+                break;
+
+            case "student":
+                rank = 2;
+                this.name = "Student p^q";
+                this.move1 = new attack("Iteration Impact",atkType.SPORTS,2);
+                this.move2 = new attack("Truth Table Teamwork",atkType.SOCIAL,2);
+                this.move3 = new attack("Study for all E in Q",atkType.STUDY,2);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "herscovici":
+
+                rank = 2;
+                this.name = "Professor Herscovici";
+                this.move1 = new attack("Iteration Impact",atkType.SPORTS,3);
+                this.move2 = new attack("Recursion Retaliation",atkType.SOCIAL,1);
+                this.move3 = new attack(" (p^q) = true... ",atkType.STUDY,6);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "chef":
+
+                rank = 2;
+                this.name = "Coding Cuisiner";
+                this.move1 = new attack("Fruit by the Foot",atkType.SPORTS,2);
+                this.move2 = new attack("Chocolate Almond Chop",atkType.SOCIAL,4);
+                this.move3 = new attack("Chip Bag Kick ",atkType.STUDY,1);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
+
+            case "blake":
+
+                rank = 2;
+                this.name = "Professor Blake";
+                this.move1 = new attack("Office-Hours Annihalation",atkType.SPORTS,6);
+                this.move2 = new attack("Snacktime Smack",atkType.SOCIAL,2);
+                this.move3 = new attack("*too busy walking all the way to his office*",atkType.STUDY,0);
+
+
+                this.maxHealth = 25 * rank;
+                this.defence = 3 * rank;
+                this.athletic = 3 * rank;
+                this.academic = 3 * rank;
+                this.engaged = 3 * rank;
+
+                this.alive = true;
+                this.health = this.maxHealth;
+
+                break;
         }
     }
 

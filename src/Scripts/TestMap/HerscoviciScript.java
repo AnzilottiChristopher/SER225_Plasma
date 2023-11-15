@@ -3,6 +3,7 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
+import Screens.PlayLevelScreen;
 
 public class HerscoviciScript extends Script<NPC>
 {
@@ -30,6 +31,11 @@ public class HerscoviciScript extends Script<NPC>
     {
         hideTextbox();
         unlockPlayer();
+
+        if (PlayLevelScreen.getVictoryCount() == 5)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
     }
 
     @Override
