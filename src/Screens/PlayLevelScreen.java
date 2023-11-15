@@ -38,10 +38,29 @@ public class PlayLevelScreen extends Screen {
 
     Music music = new Music();
     JukeboxScript jukebox = new JukeboxScript();
-    static Combat.combatant[] enemies = {new combatant("robot"),
-                                        new combatant("robot"),
-                                        new combatant("alex"),
-                                        new combatant("random")};
+
+    //alex, herscovici, blake, dr j, judy
+    //robot,robot, alex, 
+    //student student herscovici
+    //chef chef blake
+    //julia peter drj
+    //construction construction judy
+    static Combat.combatant[] enemies = {new combatant("robot"), //0
+                                        new combatant("robot"), //1
+                                        new combatant("alex"), //2
+                                        new combatant("student"), //3
+                                        new combatant("student"), //4
+                                        new combatant("herscovici"),//5
+                                        new combatant("chef"), //6
+                                        new combatant("chef"), //7
+                                        new combatant("blake"), //8
+                                        new combatant("julia"), //9
+                                        new combatant("peter"), //10
+                                        new combatant("drj"), //11
+                                        new combatant("construction"), //12
+                                        new combatant("construction"), //13
+                                        new combatant("judy"), //14
+                                    }; 
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -154,7 +173,7 @@ public class PlayLevelScreen extends Screen {
         //combatScreen=new CombatScreen(this);
 
 
-        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount], flagManager);
+        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount], this.flagManager);
         winScreen = new WinScreen(this);
     }
 
@@ -195,18 +214,23 @@ public class PlayLevelScreen extends Screen {
 
                     //incriment victories
                     victoryCount++;
+                    System.out.println("vic count:" + victoryCount);
+
                     //advance who the current enemy is
                     combatScreen.setEnemy(enemies[victoryCount]);
                     
                     //heal player after combat
                     playerCombatant.maxHeal();
 
+
                     break;
 
                     case LOSS:
 
                     //victory doesn't incriment
+                    //this.initialize();
                     System.out.println("You lost... whomp whomp");
+                    //victoryCount++;
                     playerCombatant.maxHeal();
                     enemies[victoryCount].maxHeal();
 

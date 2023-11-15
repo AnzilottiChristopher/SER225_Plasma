@@ -227,9 +227,11 @@ public class TestMap extends Map {
 
         //enemy vicCount = 0 trigger , robot 1
         triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
-
         //enemy vicCount = 1 trigger, robot 2
         triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
+        
+        //first herscovici enemy
+        //triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(3), "Enemy 4"));
 
         
 
