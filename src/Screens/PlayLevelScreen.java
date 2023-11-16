@@ -252,7 +252,10 @@ public class PlayLevelScreen extends Screen {
         }
         if(map.getFlagManager().isFlagSet("startingMusic"))
         {
-            music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            if (!flagManager.isFlagSet("Boss1Complete"))
+            {
+                music.background("Resources/RoboticMusic.wav");
+            }
             music.playLoop();
             map.getFlagManager().unsetFlag("startingMusic");
             //System.out.println("We are here Flags");
