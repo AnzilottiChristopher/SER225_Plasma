@@ -10,6 +10,7 @@ public class HerscoviciScript extends Script<NPC>
     @Override
     protected void setup()
     {
+        //Maybe make NPCs sleepy do to his effects (Part of plot)
         lockPlayer();
         showTextbox();
         if (entity.getX() > player.getX())

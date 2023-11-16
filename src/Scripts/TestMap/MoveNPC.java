@@ -52,6 +52,9 @@ public class MoveNPC extends Script<NPC>
         getNPC(27).setIsHidden(false);
         getNPC(28).setIsHidden(false);
 
+        setFlag("Boss2Start");
+        setFlag("startingMusic");
+
 //        NPC npc = getNPC(20);
 //        npc.setLocation(1000, 2500);
 

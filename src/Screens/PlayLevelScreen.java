@@ -85,6 +85,7 @@ public class PlayLevelScreen extends Screen {
 
         //Boss completion flags
         flagManager.addFlag("Boss1Complete", false);
+        flagManager.addFlag("Boss2Start", false);
         flagManager.addFlag("Boss2Complete", false);
         flagManager.addFlag("Boss3Complete", false);
         flagManager.addFlag("Boss4Complete", false);
@@ -272,18 +273,34 @@ public class PlayLevelScreen extends Screen {
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();
+            music.background("Resources/ObstacleInPath.wav");
+            music.playLoop();
             map.getFlagManager().unsetFlag("hasTalked");
         }
+
+        //This is main music controller
         if(map.getFlagManager().isFlagSet("startingMusic"))
         {
+            music.stopLoop();
             if (!flagManager.isFlagSet("Boss1Complete"))
             {
                 music.background("Resources/RoboticMusic.wav");
             }
+            if (flagManager.isFlagSet("Boss1Complete") && !flagManager.isFlagSet("Boss2Start"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            }
+            if (flagManager.isFlagSet("Boss2Start"))
+            {
+                music.background("Resources/PuzzleMusic.wav");
+            }
             music.playLoop();
+
             map.getFlagManager().unsetFlag("startingMusic");
             //System.out.println("We are here Flags");
         }
+
+
 
         if (map.getFlagManager().isFlagSet("RoboEnemyStart"))
         {

@@ -119,9 +119,9 @@ public class CombatScreen extends Screen {
 
         if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
         {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
+//            music.stopLoop();
+//            music.background("Resources/ObstacleInPath.wav");
+//            music.playLoop();
             flagManager.unsetFlag("AlexBossStart");
         }
 
