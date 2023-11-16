@@ -41,6 +41,23 @@ public class CombatBlockScript extends Script<NPC> {
                 break;
             case 2: //alex
                 break;
+
+            case 3: //herscovici grunt 1 
+                addTextToTextboxQueue("It's not a robot student");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("They keep saying...");
+                addTextToTextboxQueue("truth tables?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
+
+            case 4: //herscovici grunt 2
+                addTextToTextboxQueue("Maybe this student can tell me what's up");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue(" if p equals q OR m...");
+                addTextToTextboxQueue("and what...");
+                addTextToTextboxQueue("Boomer will be defeated?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
         }
     }
 
@@ -59,6 +76,18 @@ public class CombatBlockScript extends Script<NPC> {
         {
             setFlag("Enemy2");
             setFlag("RoboEnemyStart");
+        }
+
+        if (caseNum == 3)
+        {
+            setFlag("Enemy4");
+            setFlag("PQEnemyStart");
+        }
+
+        if (caseNum == 4)
+        {
+            setFlag("Enemy5");
+            setFlag("PQEnemyStart");
         }
 
 

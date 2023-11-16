@@ -109,6 +109,9 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("Enemy1", false);
         flagManager.addFlag("Enemy2", false);
 
+        flagManager.addFlag("Enemy3", false);
+        flagManager.addFlag("Enemy4", false);
+
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
         flagManager.addFlag("PlayerHasTeleportedBack", false);
@@ -278,7 +281,8 @@ public class PlayLevelScreen extends Screen {
             //System.out.println("We are here Flags");
         }
 
-        if (map.getFlagManager().isFlagSet("RoboEnemyStart"))
+        if (map.getFlagManager().isFlagSet("RoboEnemyStart") ||
+            map.getFlagManager().isFlagSet("PQEnemyStart"))
         {
             music.stopLoop();
         }
