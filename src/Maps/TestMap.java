@@ -231,9 +231,9 @@ public class TestMap extends Map {
         triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
         
         //first herscovici enemy
-        triggers.add(new Trigger(1210, 3000, 1, 1000, new CombatBlockScript(3), "Enemy 4"));
+        triggers.add(new Trigger(1210, 3000, 1, 1000, new CombatBlockScript(3), "Enemy4"));
 
-        triggers.add(new Trigger(1050, 3000, 1, 1000, new CombatBlockScript(4), "Enemy 5"));
+        triggers.add(new Trigger(950, 3000, 1, 1000, new CombatBlockScript(4), "Enemy5"));
 
         
 

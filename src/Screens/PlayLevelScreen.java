@@ -109,8 +109,8 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("Enemy1", false);
         flagManager.addFlag("Enemy2", false);
 
-        flagManager.addFlag("Enemy3", false);
         flagManager.addFlag("Enemy4", false);
+        flagManager.addFlag("Enemy5", false);
 
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
