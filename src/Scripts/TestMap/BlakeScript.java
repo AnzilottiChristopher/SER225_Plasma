@@ -52,6 +52,13 @@ public class BlakeScript extends Script<NPC> {
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
+
+        if (PlayLevelScreen.getVictoryCount() == 8)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
+
         setFlag("hasTalkedToBlake");
         setFlag("startingMusic");
         setFlag("Boss3Complete");

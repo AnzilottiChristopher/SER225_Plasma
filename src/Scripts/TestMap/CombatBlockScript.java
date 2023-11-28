@@ -80,18 +80,50 @@ public class CombatBlockScript extends Script<NPC> {
 
         if (caseNum == 3)
         {
-            System.out.println("CBScript - 3");
-
             setFlag("Enemy4");
             setFlag("PQEnemyStart");
         }
 
         if (caseNum == 4)
         {
-            System.out.println("CBScript - 4");
-
             setFlag("Enemy5");
             setFlag("PQEnemyStart");
+        }
+
+        if (caseNum == 6)
+        {
+            setFlag("Enemy7");
+            setFlag("chefEnemyStart");
+        }
+
+        if (caseNum == 7)
+        {
+            setFlag("Enemy8");
+            setFlag("chefEnemyStart");
+        }
+
+        if (caseNum == 9)
+        {
+            setFlag("Enemy10");
+            setFlag("sobEnemyStart");
+        }
+
+        if (caseNum == 10)
+        {
+            setFlag("Enemy11");
+            setFlag("sobEnemyStart");
+        }
+
+        if (caseNum == 12)
+        {
+            setFlag("Enemy13");
+            setFlag("constructionEnemyStart");
+        }
+
+        if (caseNum == 13)
+        {
+            setFlag("Enemy14");
+            setFlag("constructionEnemyStart");
         }
 
 
