@@ -50,6 +50,12 @@ public class DrJScript extends Script<NPC> {
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
+
+        if (PlayLevelScreen.getVictoryCount() == 11)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
         setFlag("hasTalkedToDrJ");
         setFlag("startingMusic");
         //getNPC(4).setIsHidden(false);

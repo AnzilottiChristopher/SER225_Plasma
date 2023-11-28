@@ -60,7 +60,8 @@ public class PlayLevelScreen extends Screen {
                                         new combatant("construction"), //12
                                         new combatant("construction"), //13
                                         new combatant("judy"), //14
-                                    }; 
+                                        new combatant("random"), //never used, used to stop array length error
+                                    };
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -117,6 +118,18 @@ public class PlayLevelScreen extends Screen {
         //Alex Enemy Flag Trigger
         flagManager.addFlag("Enemy1", false);
         flagManager.addFlag("Enemy2", false);
+
+        flagManager.addFlag("Enemy4", false);
+        flagManager.addFlag("Enemy5", false);
+
+        flagManager.addFlag("Enemy7", false);
+        flagManager.addFlag("Enemy8", false);
+
+        flagManager.addFlag("Enemy10", false);
+        flagManager.addFlag("Enemy11", false);
+
+        flagManager.addFlag("Enemy13", false);
+        flagManager.addFlag("Enemy14", false);
 
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
@@ -315,9 +328,8 @@ public class PlayLevelScreen extends Screen {
             //System.out.println("We are here Flags");
         }
 
-
-
-        if (map.getFlagManager().isFlagSet("RoboEnemyStart"))
+        if (map.getFlagManager().isFlagSet("RoboEnemyStart") ||
+            map.getFlagManager().isFlagSet("PQEnemyStart"))
         {
             music.stopLoop();
         }
