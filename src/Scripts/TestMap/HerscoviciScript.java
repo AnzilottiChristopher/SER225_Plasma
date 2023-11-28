@@ -13,6 +13,7 @@ public class HerscoviciScript extends Script<NPC>
         //Maybe make NPCs sleepy do to his effects (Part of plot)
         lockPlayer();
         showTextbox();
+        setFlag("HerscBossStart");
         if (entity.getX() > player.getX())
         {
             entity.setCurrentAnimationName("SIT_LEFT");

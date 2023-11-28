@@ -87,8 +87,11 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("Boss1Complete", false);
         flagManager.addFlag("Boss2Start", false);
         flagManager.addFlag("Boss2Complete", false);
+        //flagManager.addFlag("Boss3Start", false);
         flagManager.addFlag("Boss3Complete", false);
+       // flagManager.addFlag("Boss4Start", false);
         flagManager.addFlag("Boss4Complete", false);
+
 
 
         //Move NPC
@@ -109,6 +112,7 @@ public class PlayLevelScreen extends Screen {
         //Combat Screen Music
         flagManager.addFlag("AlexBossStart", false);
         flagManager.addFlag("RoboEnemyStart", false);
+        flagManager.addFlag("HerscBossStart", false);
 
         //Alex Enemy Flag Trigger
         flagManager.addFlag("Enemy1", false);
@@ -120,7 +124,7 @@ public class PlayLevelScreen extends Screen {
 
 
         //SleepWall Visibility
-        flagManager.addFlag("Boss3Complete", false);
+        //flagManager.addFlag("Boss3Complete", false);
 
         flagManager.addFlag("hasTalked", false);
         flagManager.addFlag("startingMusic", false);
@@ -277,8 +281,15 @@ public class PlayLevelScreen extends Screen {
             music.playLoop();
             map.getFlagManager().unsetFlag("hasTalked");
         }
+        if(map.getFlagManager().isFlagSet("HerscBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/SoulMaster.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("HerscBossStart");
+        }
 
-        //This is main music controller
+        //!This is main music controller
         if(map.getFlagManager().isFlagSet("startingMusic"))
         {
             music.stopLoop();
@@ -293,6 +304,10 @@ public class PlayLevelScreen extends Screen {
             if (flagManager.isFlagSet("Boss2Start"))
             {
                 music.background("Resources/PuzzleMusic.wav");
+            }
+            if (flagManager.isFlagSet("Boss2Complete"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
             }
             music.playLoop();
 

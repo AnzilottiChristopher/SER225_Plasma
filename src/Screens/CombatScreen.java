@@ -117,13 +117,13 @@ public class CombatScreen extends Screen {
 
 
 
-        if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
-        {
-//            music.stopLoop();
-//            music.background("Resources/ObstacleInPath.wav");
-//            music.playLoop();
-            flagManager.unsetFlag("AlexBossStart");
-        }
+//        if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
+//        {
+////            music.stopLoop();
+////            music.background("Resources/ObstacleInPath.wav");
+////            music.playLoop();
+//            flagManager.unsetFlag("AlexBossStart");
+//        }
 
         if (flagManager.isFlagSet("RoboEnemyStart"))
         {
@@ -245,6 +245,12 @@ public class CombatScreen extends Screen {
                 {
                     music.stopLoop();
                     flagManager.setFlag("startingMusic");
+                }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("herscovici"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("Boss2Complete");
                 }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
