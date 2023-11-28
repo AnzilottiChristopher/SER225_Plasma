@@ -60,6 +60,7 @@ public class PlayLevelScreen extends Screen {
                                         new combatant("construction"), //12
                                         new combatant("construction"), //13
                                         new combatant("judy"), //14
+                                        new combatant("random"), //never used, used to stop array length error
                                     }; 
 
 
@@ -111,6 +112,15 @@ public class PlayLevelScreen extends Screen {
 
         flagManager.addFlag("Enemy4", false);
         flagManager.addFlag("Enemy5", false);
+
+        flagManager.addFlag("Enemy7", false);
+        flagManager.addFlag("Enemy8", false);
+
+        flagManager.addFlag("Enemy10", false);
+        flagManager.addFlag("Enemy11", false);
+
+        flagManager.addFlag("Enemy13", false);
+        flagManager.addFlag("Enemy14", false);
 
         //teleporting
         flagManager.addFlag("TeleportCompleted", false);
