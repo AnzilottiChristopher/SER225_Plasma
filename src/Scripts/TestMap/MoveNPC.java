@@ -38,6 +38,11 @@ public class MoveNPC extends Script<NPC>
             addTextToTextboxQueue("Help... please... something is happening");
             addTextToTextboxQueue("It must be another teacher!");
         }
+
+        if(sequence == 2)
+        {
+            amountMoved = 0;
+        }
         //System.out.println(player.getX());
 
 
@@ -59,11 +64,6 @@ public class MoveNPC extends Script<NPC>
             check = true;
         }
 
-        if (sequence == 2)
-        {
-            //sequence = 2;
-            amountMoved = 0;
-        }
         if(sequence == 3)
         {
             unlockPlayer();
@@ -137,15 +137,19 @@ public class MoveNPC extends Script<NPC>
         {
             sequence = 1;
             start();
+            secondStartCheck = !secondStartCheck;
         }
 
         if (!isTextboxQueueEmpty() && sequence == 1)
         {
             return ScriptState.RUNNING;
-        } else if (sequence == 1)
-        {
+        }
 
-            end();
+        if (sequence == 1 && isTextboxQueueEmpty())
+        {
+            hideTextbox();
+            sequence = 2;
+            //start();
             return ScriptState.RUNNING;
         }
 
