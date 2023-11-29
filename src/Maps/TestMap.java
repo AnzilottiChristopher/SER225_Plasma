@@ -128,8 +128,6 @@ public class TestMap extends Map {
         judyGruntTwo.setInteractScript(new JudyGruntScript());
         npcs.add(judyGruntTwo);
 
-
-
         for (int counter = 0; counter < 14; counter++)
         {
             StudentWall studentWall;
@@ -212,6 +210,134 @@ public class TestMap extends Map {
         kitty.setInteractScript(new EnemyScript());
         npcs.add(kitty);
 
+        ONeill oneill = new ONeill(44, getMapTile(67, 35).getLocation());
+        oneill.setInteractScript(new ONeillScript());
+        npcs.add(oneill);
+
+        //Quad details
+        //Lamps on walk up to echlin
+        Lamp lamp1 = new Lamp(1001, getMapTile(40, 73).getLocation());
+        npcs.add(lamp1);
+
+        Lamp lamp17 = new Lamp(1001, getMapTile(40, 66).getLocation());
+        npcs.add(lamp17);
+
+        Lamp lamp18 = new Lamp(1001, getMapTile(40, 56).getLocation());
+        npcs.add(lamp18);
+
+        Lamp lamp19 = new Lamp(1001, getMapTile(40, 46).getLocation());
+        npcs.add(lamp19);
+
+        //Lamps at corner of student center
+        Lamp lamp2 = new Lamp(1001, getMapTile(43, 94).getLocation());
+        npcs.add(lamp2);
+
+        Lamp lamp16 = new Lamp(1001, getMapTile(43, 86).getLocation());
+        npcs.add(lamp16);
+
+        //Lamps on walk up from business to CCE
+        Lamp lamp3 = new Lamp(1001, getMapTile(65, 73).getLocation());
+        npcs.add(lamp3);
+
+        Lamp lamp4 = new Lamp(1001, getMapTile(65, 60).getLocation());
+        npcs.add(lamp4);
+
+        Lamp lamp5 = new Lamp(1001, getMapTile(65, 50).getLocation());
+        npcs.add(lamp5);
+
+        Lamp lamp6 = new Lamp(1001, getMapTile(65, 40).getLocation());
+        npcs.add(lamp6);
+
+        //Lamp at walkway to residence halls
+        Lamp lamp7 = new Lamp(1001, getMapTile(21, 115).getLocation());
+        npcs.add(lamp7);
+
+        Lamp lamp12 = new Lamp(1001, getMapTile(31, 118).getLocation());
+        npcs.add(lamp12);
+
+        Lamp lamp14 = new Lamp(1001, getMapTile(21, 104).getLocation());
+        npcs.add(lamp14);
+
+        //Lamps from student center to business
+        Lamp lamp8 = new Lamp(1001, getMapTile(48, 96).getLocation());
+        npcs.add(lamp8);
+
+        Lamp lamp9 = new Lamp(1001, getMapTile(53, 96).getLocation());
+        npcs.add(lamp9);
+
+        Lamp lamp10 = new Lamp(1001, getMapTile(60, 96).getLocation());
+        npcs.add(lamp10);
+
+        Lamp lamp11 = new Lamp(1001, getMapTile(65, 96).getLocation());
+        npcs.add(lamp11);
+
+        Lamp lamp15 = new Lamp(1001, getMapTile(32, 101).getLocation());
+        npcs.add(lamp15);
+
+        //Lamp in between business and pathway to rec center
+        Lamp lamp13 = new Lamp(1001, getMapTile(65, 118).getLocation());
+        npcs.add(lamp13);
+
+        //Lamps from middle of quad to CCE
+        Lamp lamp20 = new Lamp(1001, getMapTile(45, 56).getLocation());
+        npcs.add(lamp20);
+
+        Lamp lamp21 = new Lamp(1001, getMapTile(54, 50).getLocation());
+        npcs.add(lamp21);
+
+        Lamp lamp22 = new Lamp(1001, getMapTile(59, 40).getLocation());
+        npcs.add(lamp22);
+
+        Lamp lamp23 = new Lamp(1001, getMapTile(62, 36).getLocation());
+        npcs.add(lamp23);
+
+        Tree tree1 = new Tree(1001, getMapTile(37, 73).getLocation());
+        npcs.add(tree1);
+
+        Tree tree6 = new Tree(1001, getMapTile(37, 69).getLocation());
+        npcs.add(tree6);
+
+        Tree tree2 = new Tree(1001, getMapTile(36, 50).getLocation());
+        npcs.add(tree2);
+
+        Tree tree3 = new Tree(1001, getMapTile(36, 40).getLocation());
+        npcs.add(tree3);
+
+        Tree tree4 = new Tree(1001, getMapTile(36, 35).getLocation());
+        npcs.add(tree4);
+
+        Tree tree7 = new Tree(1001, getMapTile(45, 73).getLocation());
+        npcs.add(tree7);
+
+        Tree tree8 = new Tree(1001, getMapTile(45, 69).getLocation());
+        npcs.add(tree8);
+
+        Tree tree9 = new Tree(1001, getMapTile(45, 50).getLocation());
+        npcs.add(tree9);
+
+        Tree tree10 = new Tree(1001, getMapTile(45, 40).getLocation());
+        npcs.add(tree10);
+
+        Tree tree11 = new Tree(1001, getMapTile(45, 35).getLocation());
+        npcs.add(tree11);
+
+        Tree tree12 = new Tree(1001, getMapTile(53, 73).getLocation());
+        npcs.add(tree12);
+
+        Tree tree13 = new Tree(1001, getMapTile(75, 96).getLocation());
+        npcs.add(tree13);
+
+        Tree tree14 = new Tree(1001, getMapTile(79, 101).getLocation());
+        npcs.add(tree14);
+
+        Tree tree15 = new Tree(1001, getMapTile(81, 105).getLocation());
+        npcs.add(tree15);
+
+        Tree tree16 = new Tree(1001, getMapTile(81, 112).getLocation());
+        npcs.add(tree16);
+
+        Tree tree17 = new Tree(1001, getMapTile(80, 117).getLocation());
+        npcs.add(tree17);
         return npcs;
     }
 
@@ -227,10 +353,33 @@ public class TestMap extends Map {
 
         //enemy vicCount = 0 trigger , robot 1
         triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
-
-        //enemy vicCount = 1 trigger, robot 2
         triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
+        
+        //2 is alex, no trigger
 
+        //first herscovici enemy
+        triggers.add(new Trigger(210, 3500, 1000, 400, new CombatBlockScript(3), "Enemy4"));
+        triggers.add(new Trigger(210, 3501, 800, 400, new CombatBlockScript(4), "Enemy5"));
+
+        //5 is hersovici, no trigger
+
+        //chefs
+        triggers.add(new Trigger(1300, 1300, 700, 700, new CombatBlockScript(6), "Enemy7"));
+        triggers.add(new Trigger(1300, 1600, 380, 300, new CombatBlockScript(7), "Enemy8"));
+
+        //8 is blake, no trigger
+
+        //SOB grunts
+        triggers.add(new Trigger(3600, 5000, 400, 600, new CombatBlockScript(9), "Enemy10"));
+        triggers.add(new Trigger(3610, 5010, 390, 590, new CombatBlockScript(10), "Enemy11"));
+
+        //11 is Dr J, no trigger
+
+        //construction workers
+        triggers.add(new Trigger(2000, 3200, 400, 600, new CombatBlockScript(12), "Enemy13"));
+        triggers.add(new Trigger(2000, 3200, 380, 590, new CombatBlockScript(13), "Enemy14"));
+
+        //JUDY! enemy index 14, no trigger
         
 
         return triggers;

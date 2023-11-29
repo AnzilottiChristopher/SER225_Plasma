@@ -71,7 +71,7 @@ public class EnemyScript extends Script<NPC>
     {
         unlockPlayer();
         hideTextbox();
-        //setFlag("startingMusic");
+        setFlag("startingMusic");
         music.stopLoop();
 
         if (entity.getId() == 6 && PlayLevelScreen.getVictoryCount() == 0)
