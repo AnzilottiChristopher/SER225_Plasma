@@ -233,10 +233,50 @@ public class CombatScreen extends Screen {
         //responds based on CombatState
         switch (combatState)
         {
-            case WIN:
-                // playLevelScreen.goBackPlayLevelScreen();
-                // break;
-            case LOSS:
+            case WIN: 
+            //flagManager.unsetFlag("hasTalkedToDinosaur");  //subsequently setCombat flag too
+
+            if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("Boss1Complete");
+                }
+            if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat"))
+            {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic"); //purely for music
+            }
+            playLevelScreen.goBackPlayLevelScreen(); //this unsets the flags
+            break; 
+
+            case LOSS: 
+            //flagManager.unsetFlag("hasTalkedToDinosaur");  //subsequently setCombat flag too
+
+            //here would go the call to switch combatScreen to a lose screen 
+            //flagManager.setFlag("hasLostBattle"); //on the right track    
+            music.stopLoop(); 
+
+            // if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
+            //     {
+            //         music.stopLoop();
+            //         //flagManager.setFlag("startingMusic");
+            //         //flagManager.setFlag("Boss1Complete");
+            //     }
+            // if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat"))
+            // {
+            //         music.stopLoop();
+            //         //flagManager.setFlag("startingMusic");
+            // }  
+            System.out.println("case loss reached on COMbatScreen, calling pause");
+            playLevelScreen.pauseCombatScreen();  
+            System.out.println("after pause in CombatScreen");
+            //flagManager.setFlag("startingMusic");
+
+            //System.out.println("Did the thing in combatScreen"); 
+            break;
+
+
             case TIE:
                 if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
                 {

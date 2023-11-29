@@ -31,7 +31,9 @@ public class PlayLevelScreen extends Screen {
     protected CombatScreen combatScreen;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected combatant playerCombatant;
+    protected combatant playerCombatant; 
+
+    protected TryAgainScreen tryAgainScreen;
     //protected static String[] enemies;
     protected static int victoryCount;
 
@@ -66,6 +68,9 @@ public class PlayLevelScreen extends Screen {
 
         //Destruction of NPC's flags
         flagManager.addFlag("Boss1Complete", false);
+
+        //try again screen 
+        flagManager.addFlag("hasLostBattle", false);
 
         //Move NPC
         flagManager.addFlag("hasPassed", false);
@@ -155,10 +160,13 @@ public class PlayLevelScreen extends Screen {
 
 
         combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount], flagManager);
-        winScreen = new WinScreen(this);
+        winScreen = new WinScreen(this); 
+
+        tryAgainScreen = new TryAgainScreen(this);
     }
 
-    public void update() {
+    public void update() { 
+        //System.out.println(playLevelScreenState);
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
@@ -174,20 +182,35 @@ public class PlayLevelScreen extends Screen {
              case SUSPENDED:
              tempScreen.setTempScreenState("RUNNING");
              tempScreen.update();
-             break;
+             break; 
 
+             case BATTLE_LOSS: 
+                //System.out.println("battle loss reached from combatScreen class"); 
+                tryAgainScreen.update(); //allows for try again screen to update
+            break;
             //UPDATES BASED ON COMBAT
-            case COMBATMODE:
+            case COMBATMODE: 
+                //tryAgainScreen.update();
                 combatScreen.update();
 
            
-                
-
-
                 //UPDATES BASED ON RESULT OF COMBAT
                 switch (combatScreen.getState())
                 {
-                    case WIN:
+                    case WIN:  
+                    map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+
+                    //incriment victories
+                    victoryCount++;
+                    //advance who the current enemy is
+                    combatScreen.setEnemy(enemies[victoryCount]);
+                    
+                    //heal player after combat
+                    playerCombatant.maxHeal();
+
+                    
+                    break; 
+                    
                     case TIE:  //tie in favor of the player... for now
 
                     //reset flag that starts combat
@@ -205,18 +228,28 @@ public class PlayLevelScreen extends Screen {
 
                     case LOSS:
 
+                    System.out.println("unsetting has Dino talked in Play switch case");
+                    map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+
                     //victory doesn't incriment
                     System.out.println("You lost... whomp whomp");
                     playerCombatant.maxHeal();
-                    enemies[victoryCount].maxHeal();
+                    enemies[victoryCount].maxHeal(); 
 
-                    
+
+                   // System.out.println("Calling tryAgainScreen here..."); 
+                   // map.getFlagManager().setFlag("hasLostBattle"); //on the right track 
+                    //System.out.println("loss flag is set"); 
+                   // tryAgainScreen.update();
+
                     break;
 
                     case PROGRESS:
                     //do nothing, no results yet
                     break;
-                }
+                } 
+
+                
         }
 
         // if flag is set at any point during gameplay, game is "won"
@@ -231,16 +264,34 @@ public class PlayLevelScreen extends Screen {
           playLevelScreenState=PlayLevelScreenState.COMBATMODE;
 
           //sets flag for when combat starts
-          map.getFlagManager().setFlag("CombatStarted");
+          map.getFlagManager().setFlag("CombatStarted");  
+
+        //   if(map.getFlagManager().isFlagSet("hasLostBattle")){
+        //     playLevelScreenState = PlayLevelScreenState.BATTLE_LOSS; 
+        //     // map.getFlagManager().setFlag("CombatFinish"); 
+        //     // map.getFlagManager().setFlag("hasTalkedToDinosaur"); 
+        //     //System.out.println(getPlayLevelScreenState());
+        // } 
+
         }
         // if flag is set it returns back to play level
-        else if(map.getFlagManager().isFlagSet("CombatFinish"))
+        else if(map.getFlagManager().isFlagSet("CombatFinish")) //this determines the WIN condition I
         {
           
           playLevelScreenState=PlayLevelScreenState.RUNNING;
-          
-          
-        }
+
+        } 
+        // else  if(map.getFlagManager().isFlagSet("hasLostBattle")){
+        //     playLevelScreenState = PlayLevelScreenState.BATTLE_LOSS; 
+        //     // map.getFlagManager().setFlag("CombatFinish"); 
+        //     // map.getFlagManager().setFlag("hasTalkedToDinosaur"); 
+        //     //System.out.println(getPlayLevelScreenState());
+        // }  
+
+        
+
+
+
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();
@@ -294,6 +345,9 @@ public class PlayLevelScreen extends Screen {
                 break;
             case COMBATMODE:
                 combatScreen.draw(graphicsHandler);
+                break; 
+            case BATTLE_LOSS:  //trying this?
+                tryAgainScreen.draw(graphicsHandler); 
                 break;
             case SUSPENDED:
                 tempScreen.draw(graphicsHandler);
@@ -316,6 +370,39 @@ public class PlayLevelScreen extends Screen {
         return playLevelScreenState;
     }
 
+
+    public void pauseCombatScreen(){   
+        System.out.println("Pause fct before"); 
+        //map.getFlagManager().unsetFlag("hasTalkedToDinosaur"); 
+        playLevelScreenState = PlayLevelScreenState.BATTLE_LOSS;   
+  
+
+       // map.getFlagManager().setFlag("hasLostBattle"); //on the right track 
+        // map.getFlagManager().unsetFlag("CombatStarted");
+       // map.getFlagManager().unsetFlag("startingMusic");
+       if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
+                {
+                    map.getFlagManager().unsetFlag("AlexBossStart");
+
+                    music.stopLoop();
+                    //flagManager.setFlag("startingMusic");
+                    //flagManager.setFlag("Boss1Complete");
+                }
+            if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat") && getVictoryCount() == 1)
+            {
+                    System.out.println("unsetting enemy2 in Pause");
+                    map.getFlagManager().unsetFlag("Enemy 2");
+                    //map.getFlagManager().unsetFlag("RoboEnemyStart"); 
+                    System.out.println("after pause for robot2");
+
+
+                    music.stopLoop();
+                    //flagManager.setFlag("startingMusic");
+            } 
+      //  map.getFlagManager().unsetFlag("CombatStarted"); 
+        System.out.println("Pause fct after");
+
+    }
 
     public  void goBackPlayLevelScreen()
     {
@@ -348,13 +435,56 @@ public class PlayLevelScreen extends Screen {
     }
 
 
-    public void goBackToMenu() {
-        screenCoordinator.setGameState(GameState.MENU);
+    public void goBackToMenu() { 
+       //initialize();
+        screenCoordinator.setGameState(GameState.MENU);  
+      //  update(); 
+        
+        //unsetting combat flags, otherwise combat doesn't work
+    } 
+
+    //method to tell playerLevelscreen to call combat again?
+    public void goBackToCombat(){     
+        System.out.println("spacebar was pressed! before...");  
+         map.getFlagManager().setFlag("hasTalkedToDinosaur");  //subsequently setCombat flag too 
+        //playLevelScreenState = PlayLevelScreenState.COMBATMODE; //check which flags trigger which enemy
+
+        // System.out.println("goBackToCombat ----- setting hasDino");
+        // System.out.println("after  hasDino");
+
+
+        //map.getFlagManager().setFlag("hasTalked");
+        //map.getFlagManager().unsetFlag("hasLostBattle"); 
+        //map.getFlagManager().setFlag("CombatStarted"); 
+        //change screen state back to 
+
+         if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
+                { 
+                    System.out.println("alex start flag");
+                    map.getFlagManager().setFlag("AlexBossStart");
+
+                    music.stopLoop();
+                    //flagManager.setFlag("startingMusic");
+                    //flagManager.setFlag("Boss1Complete");
+                }
+        if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat") && getVictoryCount() == 1)
+            {
+                    System.out.println("robo 2 flags being set again");
+                    map.getFlagManager().setFlag("Enemy 2");
+                    map.getFlagManager().setFlag("RoboEnemyStart");
+
+                    music.stopLoop();
+                    //flagManager.setFlag("startingMusic");
+            } 
+
+        System.out.println("after gobacktoCombat"); 
+
+        //screenCoordinator.setGameState(GameState.COMBATSCREEN); //probably not the right setting
     }
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
-        RUNNING, LEVEL_COMPLETED,COMBATMODE,SUSPENDED
+        RUNNING, LEVEL_COMPLETED,COMBATMODE,SUSPENDED, BATTLE_LOSS
     }
 
     public static combatant getCurrentEnemy()
