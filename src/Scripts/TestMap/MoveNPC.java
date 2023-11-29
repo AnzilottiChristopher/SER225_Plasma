@@ -17,6 +17,7 @@ public class MoveNPC extends Script<NPC>
     private boolean check = false;
     private boolean startCheck = true;
     private boolean secondStartCheck = true;
+    private boolean thirdStartCheck = true;
 
     @Override
     protected void setup()
@@ -148,9 +149,13 @@ public class MoveNPC extends Script<NPC>
         if (sequence == 1 && isTextboxQueueEmpty())
         {
             hideTextbox();
+        }
+
+        if (thirdStartCheck)
+        {
             sequence = 2;
-            //start();
-            return ScriptState.RUNNING;
+            start();
+            thirdStartCheck = !thirdStartCheck;
         }
 
         if(sequence == 2)
@@ -165,7 +170,7 @@ public class MoveNPC extends Script<NPC>
             if (amountMoved >= 650)
             {
                 sequence = 3;
-                end();
+                //end();
                 //start();
             }
             return ScriptState.RUNNING;
