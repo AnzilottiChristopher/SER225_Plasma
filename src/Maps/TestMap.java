@@ -352,32 +352,32 @@ public class TestMap extends Map {
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
         //enemy vicCount = 0 trigger , robot 1
-        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
-        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
+        triggers.add(new Trigger(4670, 800, 100, 1000, new CombatBlockScript(0), "Enemy1"));
+        triggers.add(new Trigger(4900, 800, 100, 1000, new CombatBlockScript(1), "Enemy2"));
         
         //2 is alex, no trigger
 
         //first herscovici enemy
         triggers.add(new Trigger(210, 3500, 1000, 400, new CombatBlockScript(3), "Enemy4"));
-        triggers.add(new Trigger(210, 3501, 800, 400, new CombatBlockScript(4), "Enemy5"));
+        triggers.add(new Trigger(210, 3550, 800, 400, new CombatBlockScript(4), "Enemy5"));
 
         //5 is hersovici, no trigger
 
         //chefs
-        triggers.add(new Trigger(1300, 1300, 700, 700, new CombatBlockScript(6), "Enemy7"));
+        triggers.add(new Trigger(1300, 1400, 600, 300, new CombatBlockScript(6), "Enemy7"));
         triggers.add(new Trigger(1300, 1600, 380, 300, new CombatBlockScript(7), "Enemy8"));
 
         //8 is blake, no trigger
 
         //SOB grunts
-        triggers.add(new Trigger(3600, 5000, 400, 600, new CombatBlockScript(9), "Enemy10"));
-        triggers.add(new Trigger(3610, 5010, 390, 590, new CombatBlockScript(10), "Enemy11"));
+        triggers.add(new Trigger(3600, 5300, 300, 300, new CombatBlockScript(9), "Enemy10"));
+        triggers.add(new Trigger(3600, 5000, 300, 300, new CombatBlockScript(10), "Enemy11"));
 
         //11 is Dr J, no trigger
 
         //construction workers
-        triggers.add(new Trigger(2000, 3200, 400, 600, new CombatBlockScript(12), "Enemy13"));
-        triggers.add(new Trigger(2000, 3200, 380, 590, new CombatBlockScript(13), "Enemy14"));
+        triggers.add(new Trigger(2000, 3200, 400, 300, new CombatBlockScript(12), "Enemy13"));
+        triggers.add(new Trigger(2000, 3500, 380, 200, new CombatBlockScript(13), "Enemy14"));
 
         //JUDY! enemy index 14, no trigger
         
