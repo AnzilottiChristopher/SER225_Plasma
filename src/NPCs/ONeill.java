@@ -15,7 +15,7 @@ public class ONeill extends NPC
     public ONeill(int id, Point location)
     {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("O'Neill.png"),
-                24, 34), "STAND_RIGHT");
+                24, 34), "STAND_LEFT");
     }
 
     @Override
@@ -26,6 +26,7 @@ public class ONeill extends NPC
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
                             .withBounds(0, 0, 24, 35)
+                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
 
@@ -33,7 +34,6 @@ public class ONeill extends NPC
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
                             .withBounds(0, 0, 24, 35)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
         }};
