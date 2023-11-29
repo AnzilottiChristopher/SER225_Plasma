@@ -268,11 +268,10 @@ public class CombatScreen extends Screen {
             //         music.stopLoop();
             //         //flagManager.setFlag("startingMusic");
             // }  
-            System.out.println("case loss reached on COMbatScreen, calling pause");
-            playLevelScreen.pauseCombatScreen();  
-            System.out.println("after pause in CombatScreen");
+            // System.out.println("case loss reached on COMbatScreen, calling pause");
+            // playLevelScreen.pauseCombatScreen();  
+            // System.out.println("after pause in CombatScreen");
             //flagManager.setFlag("startingMusic");
-
             //System.out.println("Did the thing in combatScreen"); 
             break;
 

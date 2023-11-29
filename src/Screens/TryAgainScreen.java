@@ -31,6 +31,7 @@ public class TryAgainScreen extends Screen {
 
     @Override
     public void update() {
+        System.out.print("updating tryagainscreen ");
         if (Keyboard.isKeyUp(Key.SPACE)) {
             keyLocker.unlockKey(Key.SPACE);
         }
@@ -40,11 +41,13 @@ public class TryAgainScreen extends Screen {
 
         // if space is pressed, reset level. if escape is pressed, go back to main menu
         if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE)) {  
-            //System.out.println("Calling goBackToCombat");
-            playLevelScreen.goBackToCombat();; //reset to combat battle  
+            System.out.println("Calling goBackToCombat");
+            playLevelScreen.goBackToCombat(); //reset to combat battle  
+
             //System.out.println("After the call");
         } else if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)) {
             playLevelScreen.goBackToMenu();
+            
         }
     }
 
