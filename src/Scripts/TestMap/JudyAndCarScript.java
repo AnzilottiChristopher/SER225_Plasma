@@ -12,9 +12,6 @@ public class JudyAndCarScript extends Script<NPC> {
 int count = 1; 
 
 Music music = new Music();
- 
-
-
 
     @Override
     protected void setup() { 
@@ -53,6 +50,12 @@ Music music = new Music();
         hideTextbox();
         setFlag("hasTalkedToJudyCar");
         setFlag("startingMusic");
+
+        if (PlayLevelScreen.getVictoryCount() == 14)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
 //        music.stopLoop();
 //        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
 //        music.playLoop();
