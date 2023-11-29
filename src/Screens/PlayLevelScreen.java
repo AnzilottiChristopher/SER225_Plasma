@@ -88,10 +88,14 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("Boss1Complete", false);
         flagManager.addFlag("Boss2Start", false);
         flagManager.addFlag("Boss2Complete", false);
-        //flagManager.addFlag("Boss3Start", false);
+        flagManager.addFlag("Boss2Pass", true);
+        flagManager.addFlag("Boss3Start", false);
         flagManager.addFlag("Boss3Complete", false);
-       // flagManager.addFlag("Boss4Start", false);
+        flagManager.addFlag("Boss3Pass", true);
+        flagManager.addFlag("Boss4Start", false);
         flagManager.addFlag("Boss4Complete", false);
+
+        flagManager.addFlag("DefaultMusic", false);
 
 
 
@@ -114,6 +118,7 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("AlexBossStart", false);
         flagManager.addFlag("RoboEnemyStart", false);
         flagManager.addFlag("HerscBossStart", false);
+        flagManager.addFlag("BlakeBossStart", false);
 
         //Alex Enemy Flag Trigger
         flagManager.addFlag("Enemy1", false);
@@ -301,6 +306,13 @@ public class PlayLevelScreen extends Screen {
             music.playLoop();
             map.getFlagManager().unsetFlag("HerscBossStart");
         }
+        if (map.getFlagManager().isFlagSet("BlakeBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/MaskedDedede.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("BlakeBossStart");
+        }
 
         //!This is main music controller
         if(map.getFlagManager().isFlagSet("startingMusic"))
@@ -314,13 +326,31 @@ public class PlayLevelScreen extends Screen {
             {
                 music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
             }
-            if (flagManager.isFlagSet("Boss2Start"))
+            if (flagManager.isFlagSet("Boss2Start") && !flagManager.isFlagSet("Boss2Complete"))
             {
                 music.background("Resources/PuzzleMusic.wav");
+                //map.getFlagManager().unsetFlag("Boss2Start");
             }
-            if (flagManager.isFlagSet("Boss2Complete"))
+            if (flagManager.isFlagSet("Boss2Complete") && !flagManager.isFlagSet("Boss3Start"))
             {
                 music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+                //map.getFlagManager().unsetFlag("Boss2Complete");
+            }
+            if (flagManager.isFlagSet("Boss3Start") && !map.getFlagManager().isFlagSet("Boss3Complete"))
+            {
+                music.background("Resources/SugarlandShimmy.wav");
+                //map.getFlagManager().unsetFlag("Boss3Start");
+            }
+            if (flagManager.isFlagSet("Boss4Start"))
+            {
+                music.background("Resources/TheWarsEnd.wav");
+                //map.getFlagManager().unsetFlag("Boss4Start");
+            }
+
+            if (flagManager.isFlagSet("DefaultMusic"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+                map.getFlagManager().unsetFlag("DefaultMusic");
             }
             music.playLoop();
 

@@ -246,11 +246,21 @@ public class CombatScreen extends Screen {
                     music.stopLoop();
                     flagManager.setFlag("startingMusic");
                 }
-                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("herscovici"))
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Herscovici"))
                 {
                     music.stopLoop();
                     flagManager.setFlag("startingMusic");
                     flagManager.setFlag("Boss2Complete");
+                    flagManager.unsetFlag("Boss2Pass");
+                    //flagManager.setFlag("Boss3Start");
+                }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Blake"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("DefaultMusic");
+                    flagManager.setFlag("hasTalkedToBlake");
+                    flagManager.setFlag("Boss3Complete");
                 }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;

@@ -358,6 +358,11 @@ public class TestMap extends Map {
         //3000 to 79 ratio X value
         triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
         triggers.add(new Trigger(1000, 2500, 6000, 50, new MoveNPC(), "hasPassed"));
+
+        triggers.add(new Trigger(400, 3500, 6000, 50, new SecondCutscene(), "Boss2Pass"));
+        triggers.add(new Trigger(1210, 3500, 50, 1000, new SecondCutscene(), "Boss2Pass"));
+
+        triggers.add(new Trigger(1800, 4000, 6000, 50, new ThirdCutscene(), "Boss3Pass"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));

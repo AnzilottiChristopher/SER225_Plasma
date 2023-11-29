@@ -91,7 +91,7 @@ public class MoveNPC extends Script<NPC>
                 }
             }
             //getNPC(4).setIsHidden(true);
-            getNPC(8).setLocation(1850, 3400);
+            getNPC(8).setLocation(1650, 3400);
             getNPC(8).setCurrentAnimationName("STAND_LEFT");
 
             getNPC(200).setIsHidden(false);
@@ -169,9 +169,9 @@ public class MoveNPC extends Script<NPC>
             if (amountMoved < 500)
             {
                 npcWalk(8, Direction.LEFT, 4);
-                System.out.println(amountMoved);
+                //System.out.println(amountMoved);
                 amountMoved += 5;
-                System.out.println("here");
+                //System.out.println("here");
             }
 
             if (amountMoved >= 500)

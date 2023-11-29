@@ -38,6 +38,7 @@ public class HerscoviciScript extends Script<NPC>
         {
             setFlag("hasTalkedToDinosaur");
         }
+        unsetFlag("Boss2Pass");
     }
 
     @Override
