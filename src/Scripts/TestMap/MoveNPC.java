@@ -42,7 +42,8 @@ public class MoveNPC extends Script<NPC>
 
         if(sequence == 2)
         {
-            amountMoved = 0;
+            System.out.println("Here");
+            //amountMoved = 0;
         }
         //System.out.println(player.getX());
 
@@ -148,29 +149,35 @@ public class MoveNPC extends Script<NPC>
 
         if (sequence == 1 && isTextboxQueueEmpty())
         {
+            end();
+            sequence = 2;
             hideTextbox();
+            return ScriptState.RUNNING;
         }
 
-        if (thirdStartCheck)
-        {
-            sequence = 2;
-            start();
-            thirdStartCheck = !thirdStartCheck;
-        }
+
 
         if(sequence == 2)
         {
-            if (amountMoved < 650)
+            if (thirdStartCheck)
+            {
+                start();
+                //sequence = 2;
+                amountMoved = 0;
+                thirdStartCheck = false;
+            }
+            if (amountMoved < 500)
             {
                 npcWalk(8, Direction.LEFT, 4);
-                //System.out.println(amountMoved);
+                System.out.println(amountMoved);
                 amountMoved += 5;
+                System.out.println("here");
             }
 
-            if (amountMoved >= 650)
+            if (amountMoved >= 500)
             {
                 sequence = 3;
-                //end();
+                end();
                 //start();
             }
             return ScriptState.RUNNING;
