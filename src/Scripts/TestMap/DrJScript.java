@@ -22,21 +22,16 @@ public class DrJScript extends Script<NPC> {
     protected void setup() {
         lockPlayer();
         showTextbox();
-        setFlag("hasTalked");
 
         if (!isFlagSet("hasTalkedToDrJ"))
         {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
+
             addTextToTextboxQueue("I HATE OBJECT ORIENTATED PROGRAMMING!");
             addTextToTextboxQueue("NEVER USE ECLIPSE!");
         }
        else
        {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
+
             addTextToTextboxQueue("I love Eclipse!");
             addTextToTextboxQueue("Best IDE of all time.");
             addTextToTextboxQueue("*A Tesla just sped onto the middle of the quad!*");
