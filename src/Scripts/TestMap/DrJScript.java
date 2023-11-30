@@ -22,23 +22,21 @@ public class DrJScript extends Script<NPC> {
     protected void setup() {
         lockPlayer();
         showTextbox();
-        setFlag("hasTalked");
 
         if (!isFlagSet("hasTalkedToDrJ"))
         {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
-            addTextToTextboxQueue("I HATE OBJECT ORIENTATED PROGRAMMING!");
-            addTextToTextboxQueue("NEVER USE ECLIPSE!");
+            setFlag("JBossStart");
+            addTextToTextboxQueue("COME JOIN THE DARKSIDE!");
+            addTextToTextboxQueue("YOU DO NOT UNDERSTAND THE POWER\n OF ECLIPSE");
+            addTextToTextboxQueue("I WILL BUILD MY NEW EMPIRE WITH ECLIPSE");
+            addTextToTextboxQueue("DONT MAKE ME DESTROY YOU!");
         }
        else
        {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
-            addTextToTextboxQueue("I love Eclipse!");
+
+            addTextToTextboxQueue("I still love Eclipse!");
             addTextToTextboxQueue("Best IDE of all time.");
+            addTextToTextboxQueue("But you can use whatever IDE you want");
             addTextToTextboxQueue("*A Tesla just sped onto the middle of the quad!*");
             addTextToTextboxQueue("*Quickly go find it!*");
             addTextToTextboxQueue("*Maybe it'll be the answer to whats going on.*");
@@ -50,10 +48,13 @@ public class DrJScript extends Script<NPC> {
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
-        setFlag("hasTalkedToDrJ");
-        setFlag("startingMusic");
+
+        if (PlayLevelScreen.getVictoryCount() == 11)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
         //getNPC(4).setIsHidden(false);
-        music.stopLoop();
     }
 
     @Override

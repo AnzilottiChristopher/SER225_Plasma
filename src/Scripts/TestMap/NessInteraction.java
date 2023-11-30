@@ -13,9 +13,13 @@ public class NessInteraction extends Script<NPC>
         lockPlayer();
         showTextbox();
 
-        if (!isFlagSet("hasPassed"))
+        if (!isFlagSet("hasPassed") && !isFlagSet("Boss1Complete"))
         {
             addTextToTextboxQueue("Boomer please help us!");
+        }
+        if (!isFlagSet("hasPassed") && isFlagSet("Boss1Complete"))
+        {
+            addTextToTextboxQueue("Thank you boomer! You were awesome!");
         }
         if (isFlagSet("hasPassed"))
         {

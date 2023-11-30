@@ -25,6 +25,7 @@ public class StudentScript extends Script<NPC>
     protected void cleanup()
     {
         setFlag("hasStartedGame");
+        setFlag("startingMusic");
         hideTextbox();
         unlockPlayer();
     }

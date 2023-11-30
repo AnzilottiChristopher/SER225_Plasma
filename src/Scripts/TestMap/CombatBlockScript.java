@@ -39,8 +39,77 @@ public class CombatBlockScript extends Script<NPC> {
                 addTextToTextboxQueue("...");
                 addTextToTextboxQueue("I'm being attacked!");
                 break;
+                
             case 2: //alex
                 break;
+
+            case 3: //herscovici grunt 1 
+                addTextToTextboxQueue("It's not a robot student");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("They keep saying...");
+                addTextToTextboxQueue("truth tables?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
+
+            case 4: //herscovici grunt 2
+                addTextToTextboxQueue("Maybe this student can tell me what's up");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue(" if p equals q OR m...");
+                addTextToTextboxQueue("and what...");
+                addTextToTextboxQueue("Boomer will be defeated?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
+
+                //chef grunts
+            case 6: 
+                addTextToTextboxQueue("Those students are cooking");
+                addTextToTextboxQueue("Can I have some?");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("The only thing I'll taste is defeat???");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
+
+            case 7:
+                addTextToTextboxQueue("Maybe this student will share!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Please???");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+
+                break;
+
+            case 9:
+                addTextToTextboxQueue("Hi Julia!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Hello Kitty?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 10:
+                addTextToTextboxQueue("Hi Peter!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Oh dear god, they got you too.");
+                addTextToTextboxQueue("...");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 12:
+                addTextToTextboxQueue("They're always building something");
+                addTextToTextboxQueue("...");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 13:
+                addTextToTextboxQueue("Maybe before building new first year housing");
+                addTextToTextboxQueue("They should think about re-building ledges.");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+
         }
     }
 
@@ -59,6 +128,54 @@ public class CombatBlockScript extends Script<NPC> {
         {
             setFlag("Enemy2");
             setFlag("RoboEnemyStart");
+        }
+
+        if (caseNum == 3)
+        {
+            setFlag("Enemy4");
+            setFlag("PQEnemyStart");
+        }
+
+        if (caseNum == 4)
+        {
+            setFlag("Enemy5");
+            setFlag("PQEnemyStart");
+        }
+
+        if (caseNum == 6)
+        {
+            setFlag("Enemy7");
+            setFlag("chefEnemyStart");
+        }
+
+        if (caseNum == 7)
+        {
+            setFlag("Enemy8");
+            setFlag("chefEnemyStart");
+        }
+
+        if (caseNum == 9)
+        {
+            setFlag("Enemy10");
+            setFlag("sobEnemyStart");
+        }
+
+        if (caseNum == 10)
+        {
+            setFlag("Enemy11");
+            setFlag("sobEnemyStart");
+        }
+
+        if (caseNum == 12)
+        {
+            setFlag("Enemy13");
+            setFlag("constructionEnemyStart");
+        }
+
+        if (caseNum == 13)
+        {
+            setFlag("Enemy14");
+            setFlag("constructionEnemyStart");
         }
 
 

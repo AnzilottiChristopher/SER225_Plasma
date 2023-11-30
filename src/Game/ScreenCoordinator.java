@@ -43,7 +43,8 @@ public class ScreenCoordinator extends Screen {
 
 	@Override
 	public void update() {
-		do {
+		do { 
+			
 			// if previousGameState does not equal gameState, it means there was a change in gameState
 			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
 			if (previousGameState != gameState) {

@@ -3,14 +3,17 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;
 import Level.ScriptState;
+import Screens.PlayLevelScreen;
 
 public class HerscoviciScript extends Script<NPC>
 {
     @Override
     protected void setup()
     {
+        //Maybe make NPCs sleepy do to his effects (Part of plot)
         lockPlayer();
         showTextbox();
+        setFlag("HerscBossStart");
         if (entity.getX() > player.getX())
         {
             entity.setCurrentAnimationName("SIT_LEFT");
@@ -30,6 +33,12 @@ public class HerscoviciScript extends Script<NPC>
     {
         hideTextbox();
         unlockPlayer();
+
+        if (PlayLevelScreen.getVictoryCount() == 5)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+        unsetFlag("Boss2Pass");
     }
 
     @Override

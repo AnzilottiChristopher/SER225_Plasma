@@ -23,22 +23,16 @@ public class BlakeScript extends Script<NPC> {
     protected void setup() {
         lockPlayer();
         showTextbox();
-        setFlag("hasTalked");
 
         if (!isFlagSet("hasTalkedToBlake"))
         {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
+            setFlag("BlakeBossStart");
             addTextToTextboxQueue("You want a snack?");
             addTextToTextboxQueue("NO WHY WOULD I GIVE YOU ONE! THEY'RE MINE!");
             addTextToTextboxQueue("GET BACK TO WORK!");
         }
        else
        {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
             addTextToTextboxQueue("What happened to me?");
             addTextToTextboxQueue("Whatever doesnt matter.");
             addTextToTextboxQueue("I can get you that snack now if you still want it.");
@@ -52,10 +46,14 @@ public class BlakeScript extends Script<NPC> {
     protected void cleanup() {
         unlockPlayer();
         hideTextbox();
-        setFlag("hasTalkedToBlake");
-        setFlag("startingMusic");
-        setFlag("Boss3Complete");
-        music.stopLoop();
+
+        if (PlayLevelScreen.getVictoryCount() == 8)
+        {
+            setFlag("hasTalkedToDinosaur");
+        }
+
+        unsetFlag("Boss3Pass");
+
     }
 
     @Override
