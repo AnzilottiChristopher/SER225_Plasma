@@ -18,7 +18,7 @@ public class ONeillScript extends Script<NPC> {
         showTextbox();
         addTextToTextboxQueue("This is my first semester teaching here and \nI have no idea whats happening.");
         addTextToTextboxQueue("This school is insane.");
-        addTextToTextboxQueue("I should have never taken the job.");
+        addTextToTextboxQueue("I should have never taken this job.");
         entity.facePlayer(player);
     }
 
