@@ -39,6 +39,7 @@ public class CombatBlockScript extends Script<NPC> {
                 addTextToTextboxQueue("...");
                 addTextToTextboxQueue("I'm being attacked!");
                 break;
+                
             case 2: //alex
                 break;
 
@@ -58,6 +59,57 @@ public class CombatBlockScript extends Script<NPC> {
                 addTextToTextboxQueue("Boomer will be defeated?");
                 addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
                 break;
+
+                //chef grunts
+            case 6: 
+                addTextToTextboxQueue("Those students are cooking");
+                addTextToTextboxQueue("Can I have some?");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("The only thing I'll taste is defeat???");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+                break;
+
+            case 7:
+                addTextToTextboxQueue("Maybe this student will share!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Please???");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+
+                break;
+
+            case 9:
+                addTextToTextboxQueue("Hi Julia!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Hello Kitty?");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 10:
+                addTextToTextboxQueue("Hi Peter!");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("Oh dear god, they got you too.");
+                addTextToTextboxQueue("...");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 12:
+                addTextToTextboxQueue("They're always building something");
+                addTextToTextboxQueue("...");
+
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+            case 13:
+                addTextToTextboxQueue("Maybe before building new first year housing");
+                addTextToTextboxQueue("They should think about re-building ledges.");
+                addTextToTextboxQueue("...");
+                addTextToTextboxQueue("OH MY GOD IM BEING ATTACKED");
+            break;
+
+
         }
     }
 

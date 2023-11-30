@@ -16,7 +16,7 @@ public class EnemyScript extends Script<NPC>
         entity.facePlayer(player);
         lockPlayer();
         showTextbox();
-        setFlag("hasTalked");
+        //setFlag("hasTalked");
         if (entity.getId() == 6)
         {
             music.stopLoop();
