@@ -285,7 +285,7 @@ public class CombatScreen extends Screen {
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
             case LOSS: 
-                music.stopLoop();
+            music.stopLoop();
                 playLevelScreen.pauseCombatScreen();
                 break;
             case TIE:

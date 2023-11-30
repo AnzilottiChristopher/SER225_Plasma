@@ -3,6 +3,7 @@ package Scripts.TestMap;
 import Level.NPC;
 import Level.Script;    
 import Level.ScriptState;
+import Screens.PlayLevelScreen;
 
 public class JudyGruntScript extends Script<NPC>
 {
@@ -11,7 +12,12 @@ public class JudyGruntScript extends Script<NPC>
     {
         entity.facePlayer(player);
         lockPlayer();
-        showTextbox();
+        showTextbox(); 
+        
+        // if(PlayLevelScreen.getVictoryCount() <= 11){
+        //     entity.setIsHidden(true);
+
+        // }
         if (entity.getId() == 50)
         {
             addTextToTextboxQueue("You may be the icon of this school Boomer..."); 

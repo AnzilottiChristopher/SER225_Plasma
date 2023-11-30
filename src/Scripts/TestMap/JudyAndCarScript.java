@@ -27,16 +27,20 @@ Music music = new Music();
             addTextToTextboxQueue( "Soo... you finally figured it out, huh?"); //students are robots, and the prof's are the opposite of how they act
             addTextToTextboxQueue( "Alex, David, Jonathan... even Chetan..."); 
             addTextToTextboxQueue( "I must say, that's quite a feat...."); 
-            addTextToTextboxQueue( "But this is MY university Boomer ");
+            addTextToTextboxQueue( "But this is MY university Boomer! ");
 
 
         }
         else {
-            addTextToTextboxQueue( "Anyways, I've got another meeting"); 
-            addTextToTextboxQueue( "Gooooo Bobcats!"); 
+            addTextToTextboxQueue( "Impossible... my plans were foiled...");  
+            addTextToTextboxQueue( "You may have defeated me for now...");  
+            addTextToTextboxQueue( "But stay on your paws..."); 
+            addTextToTextboxQueue( "I will be back again..."); 
+ 
+            //addTextToTextboxQueue( "Gooooo Bobcats!"); 
             music.stopLoop();
             setFlag("Victory");
-            // setFlag("hasTalked");
+            // //setFlag("hasTalked");
 //             if (map.getFlagManager().isFlagSet("hasTalked")){
 //                 music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
 //                 music.playLoop();
@@ -51,12 +55,22 @@ Music music = new Music();
         unlockPlayer();
         hideTextbox();
         setFlag("hasTalkedToJudyCar");
-        //setFlag("startingMusic");
+        //setFlag("startingMusic"); 
+        //setFlag("hasFoundBall");
 
         if (PlayLevelScreen.getVictoryCount() == 14)
         {
             setFlag("hasTalkedToDinosaur");
-        }
+        } 
+        
+         if (PlayLevelScreen.getVictoryCount() == 15 && !isFlagSet("hasTalkedToDinosaur") && !isFlagSet("hasFoundBall"))
+        {
+            setFlag("hasFoundBall");
+        } 
+        // if (PlayLevelScreen.getVictoryCount() == 14 && !isFlagSet("hasTalkedToDinosaur"))
+        // {
+        //     setFlag("hasFoundBall"); //flag that ends the game
+        // }
 
 //        music.stopLoop();
 //        music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
@@ -64,7 +78,8 @@ Music music = new Music();
     }
 
     @Override
-    public ScriptState execute() {
+    public ScriptState execute() { 
+        
         start();
         if (!isTextboxQueueEmpty()) {
             return ScriptState.RUNNING;
