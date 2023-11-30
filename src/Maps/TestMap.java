@@ -37,6 +37,7 @@ public class TestMap extends Map {
         placement = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision.side = CollisionState.RIGHTSIDE;
         OutOfBoundsCollision rightSide = new OutOfBoundsCollision(getMapTile(114, 19).getLocation(), placement);
+        OutOfBoundsCollision wall2 = new OutOfBoundsCollision(getMapTile(101,108).getLocation());
 
 
         SleepWall sleepWall = new SleepWall(getMapTile(40, 80).getLocation());
@@ -47,6 +48,7 @@ public class TestMap extends Map {
         enhancedMapTiles.add(sleepWall);
 
         enhancedMapTiles.add(wall);
+        enhancedMapTiles.add(wall2);
         enhancedMapTiles.add(bottomWall);
         enhancedMapTiles.add(pushableRock);
         enhancedMapTiles.add(leftSide);
@@ -73,7 +75,7 @@ public class TestMap extends Map {
         // jukebox.setInteractScript(new JukeboxScript());
         // npcs.add(jukebox);
 
-        Door door= new Door(3,getMapTile(113,23).getLocation());
+       /*  Door door= new Door(3,getMapTile(113,23).getLocation());
         door.setInteractScript(new DoorScript());
         npcs.add(door);
 
@@ -91,7 +93,7 @@ public class TestMap extends Map {
 
         Door door5=new Door(110,getMapTile(21,48).getLocation());
         door4.setInteractScript(new DoorScript());
-        npcs.add(door5);
+        npcs.add(door5);*/
 
          
 

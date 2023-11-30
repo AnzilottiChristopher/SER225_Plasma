@@ -1,6 +1,7 @@
 package Screens;
 import java.awt.Color;
 
+import Combat.combatant;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -8,8 +9,6 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Level.FlagManager;
-import Level.Map;
 import Maps.CombatMap;
 import Maps.TempMap;
 import SpriteFont.SpriteFont;
@@ -29,11 +28,17 @@ public class TempScreen extends Screen {
     //protected PLayLevelScreenState playLevelScreenState;
     protected SpriteFont goBackButton;
     protected Map map;
+    protected CombatScreen combatScreen;
+    protected static int victoryCount;
     //protected PlayLevelScreenState playLevelScreenState;
     protected int pointerLocationX, pointerLocationY;
+    protected combatant playerCombatant;
     protected int keyPressTimer;
     protected KeyLocker keyLock = new KeyLocker();
     protected FlagManager flagManager;
+
+    static Combat.combatant[] enemies = {new combatant("alex"),
+                                        };
 
     public TempScreen(PlayLevelScreen playLevelScreen)
     {
@@ -46,7 +51,10 @@ public class TempScreen extends Screen {
     public void initialize() {
         // TODO Auto-generated method stub
         
+        playerCombatant = new combatant();
+
         flagManager=playLevelScreen.flagManager;
+        flagManager.addFlag("hasTalkedToAlex", false);
         flagManager.addFlag("Teleported2", false);
 
         //setup map
@@ -92,6 +100,9 @@ public class TempScreen extends Screen {
         }
         //playLevelScreen=new PlayLevelScreen(screenCoordinator);
 
+        combatScreen = new CombatScreen(this,playerCombatant,enemies[victoryCount], flagManager);
+
+
 
 
     }
@@ -107,6 +118,41 @@ public class TempScreen extends Screen {
             case SUSPENDED:
                 playLevelScreen.update();
                 break;
+            case COMBATMODE:
+                combatScreen.update();
+        
+        switch (combatScreen.getState())
+                {
+                    case WIN:
+                    case TIE:  //tie in favor of the player... for now
+
+                    //reset flag that starts combat
+                    map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
+
+                    //incriment victories
+                    victoryCount++;
+                    //advance who the current enemy is
+                    combatScreen.setEnemy(enemies[victoryCount]);
+                    
+                    //heal player after combat
+                    playerCombatant.maxHeal();
+
+                    break;
+
+                    case LOSS:
+
+                    //victory doesn't incriment
+                    System.out.println("You lost... whomp whomp");
+                    playerCombatant.maxHeal();
+                    enemies[victoryCount].maxHeal();
+
+                    
+                    break;
+
+                    case PROGRESS:
+                    //do nothing, no results yet
+                    break;
+                }
         }
 
         if(map.getFlagManager().isFlagSet("Teleported2"))
@@ -148,6 +194,9 @@ public class TempScreen extends Screen {
             case SUSPENDED:
                 //playLevelScreen.draw(graphicsHandler);
                 break;
+            case COMBATMODE:
+                combatScreen.draw(graphicsHandler);
+                break;
         }
         //map.draw(player, graphicsHandler);
 
@@ -155,6 +204,6 @@ public class TempScreen extends Screen {
     }
     
     private enum TempScreenState {
-        RUNNING,SUSPENDED
+        RUNNING,SUSPENDED,COMBATMODE
     }
 }
