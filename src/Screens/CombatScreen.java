@@ -47,6 +47,7 @@ public class CombatScreen extends Screen {
 
     protected ScreenCoordinator screenCoordinator;
     protected PlayLevelScreen playLevelScreen;
+    protected TempScreen tempScreen;
     protected SpriteFont goBackButton;
     protected int currentCombatItemHovered = 0; // current menu item being "hovered" over
     protected int combatItemSelected = -1;
@@ -72,6 +73,16 @@ public class CombatScreen extends Screen {
 
         initialize();
     }
+
+    public CombatScreen(TempScreen tempScreen,combatant playerCombatant,combatant enemyCombatant,FlagManager flagManager)
+    {
+        this.tempScreen=tempScreen;
+        //this.screenCoordinator=playLevelScreen.screenCoordinator;
+        this.enemyCombatant = enemyCombatant;
+        this.playerCombatant = playerCombatant;
+        this.flagManager = flagManager;
+    }
+
 
     public void setEnemy(combatant enemyCombatant)
     {

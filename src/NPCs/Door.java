@@ -41,7 +41,7 @@ public class Door extends NPC {
 
 
     public void draw(GraphicsHandler graphicsHandler) {
-        //super.draw(graphicsHandler);
+        super.draw(graphicsHandler);
     }
     
 }
