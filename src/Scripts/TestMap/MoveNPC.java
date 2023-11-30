@@ -27,6 +27,8 @@ public class MoveNPC extends Script<NPC>
         if(sequence == 0)
         {
             getNPC(8).setLocation(player.getX() - 600, player.getY());
+            setFlag("Boss2Start");
+            setFlag("startingMusic");
         }
 
         if(!isFlagSet("hasPassed") && sequence == 1)
@@ -98,8 +100,7 @@ public class MoveNPC extends Script<NPC>
             getNPC(27).setIsHidden(false);
             getNPC(28).setIsHidden(false);
 
-            setFlag("Boss2Start");
-            setFlag("startingMusic");
+
         }
 
 

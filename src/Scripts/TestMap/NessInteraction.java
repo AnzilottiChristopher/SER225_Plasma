@@ -21,9 +21,24 @@ public class NessInteraction extends Script<NPC>
         {
             addTextToTextboxQueue("Thank you boomer! You were awesome!");
         }
-        if (isFlagSet("hasPassed"))
+        if (isFlagSet("hasPassed") && !isFlagSet("Boss2Complete"))
         {
             addTextToTextboxQueue("What is Herscovici doing over there?");
+        }
+        if (isFlagSet("Boss3Start") && !isFlagSet("Boss3Complete"))
+        {
+            addTextToTextboxQueue("Blake! Give us back the food!");
+            addTextToTextboxQueue("Try defeating the chefs first");
+        }
+        if (isFlagSet("Boss4Start") && !isFlagSet("Boss4Complete"))
+        {
+            addTextToTextboxQueue("Doctor J PLEASE");
+            addTextToTextboxQueue("No more eclipse");
+        }
+        if (isFlagSet("FinalBossStart") && !isFlagSet("FinalBossComplete"))
+        {
+            addTextToTextboxQueue("It's almost over");
+            addTextToTextboxQueue("School is almost back to normal");
         }
     }
 
