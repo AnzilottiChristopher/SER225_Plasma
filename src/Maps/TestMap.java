@@ -59,15 +59,15 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus walrus = new Walrus(1, getMapTile(70, 110).getLocation().subtractY(40));
-        walrus.setInteractScript(new WalrusScript());
-        npcs.add(walrus);
-
-        Dinosaur dinosaur = new Dinosaur(2, getMapTile(65, 110).getLocation());
-        dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        dinosaur.setInteractScript(new DinoScript());
+//        Walrus walrus = new Walrus(1, getMapTile(70, 110).getLocation().subtractY(40));
+//        walrus.setInteractScript(new WalrusScript());
+//        npcs.add(walrus);
+//
+//        Dinosaur dinosaur = new Dinosaur(2, getMapTile(65, 110).getLocation());
+//        dinosaur.setExistenceFlag("hasTalkedToDinosaur");
+//        dinosaur.setInteractScript(new DinoScript());
         //dinosaur.setInteractScript(new CombatScript());
-        npcs.add(dinosaur);
+        //npcs.add(dinosaur);
 
         // Jukebox jukebox = new Jukebox(3, getMapTile(70, 113).getLocation());
         // jukebox.setInteractScript(new JukeboxScript());
@@ -98,6 +98,7 @@ public class TestMap extends Map {
         JudyAndCar judycar = new JudyAndCar(4, getMapTile(40, 61).getLocation());
         //judycar.setExistenceFlag("hasTalkedToJudyCar");
         judycar.setInteractScript(new JudyAndCarScript());
+        judycar.setIsHidden(true);
         npcs.add(judycar);
 
 
@@ -122,13 +123,17 @@ public class TestMap extends Map {
 
         JudyGrunt judyGruntOne = new JudyGrunt(50, getMapTile(44, 68).getLocation());
         judyGruntOne.setInteractScript(new JudyGruntScript());
+        judyGruntOne.setIsHidden(true);
         npcs.add(judyGruntOne);
 
         JudyGrunt judyGruntTwo = new JudyGrunt(51, getMapTile(44, 73).getLocation());
         judyGruntTwo.setInteractScript(new JudyGruntScript());
+        judyGruntTwo.setIsHidden(true);
         npcs.add(judyGruntTwo);
 
-        for (int counter = 0; counter < 14; counter++)
+
+
+        for (int counter = 0; counter < 14; counter++)//9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22
         {
             StudentWall studentWall;
             if (counter % 2 == 0)
@@ -151,7 +156,7 @@ public class TestMap extends Map {
             npcs.add(studentWall);
         } //ID counter at 21
 
-        for (int counter = 0; counter < 5; counter++)
+        for (int counter = 0; counter < 5; counter++) //22, 23, 24, 25, 26
         {
             StudentWallLeft left;
             if (counter % 2 == 0)
@@ -188,26 +193,32 @@ public class TestMap extends Map {
 
         Blake blake = new Blake(39, getMapTile(21, 47).getLocation());
         blake.setInteractScript(new BlakeScript());
+        blake.setIsHidden(true);
         npcs.add(blake);
 
         DrJ j = new DrJ(40, getMapTile(85, 109).getLocation());
         j.setInteractScript(new DrJScript());
+        j.setIsHidden(true);
         npcs.add(j);
 
         Chef chef = new Chef(41, getMapTile(30, 37).getLocation());
         chef.setInteractScript(new EnemyScript());
+        chef.setIsHidden(true);
         npcs.add(chef);
 
         Chef chef2 = new Chef(42, getMapTile(35, 32).getLocation());
         chef2.setInteractScript(new EnemyScript());
+        chef2.setIsHidden(true);
         npcs.add(chef2);
 
         Peter peter = new Peter(43, getMapTile(79, 105).getLocation());
         peter.setInteractScript(new EnemyScript());
+        peter.setIsHidden(true);
         npcs.add(peter);
 
         HelloKitty kitty = new HelloKitty(44, getMapTile(79, 114).getLocation());
         kitty.setInteractScript(new EnemyScript());
+        kitty.setIsHidden(true);
         npcs.add(kitty);
 
         ONeill oneill = new ONeill(44, getMapTile(67, 35).getLocation());
@@ -347,37 +358,43 @@ public class TestMap extends Map {
         //3000 to 79 ratio X value
         triggers.add(new Trigger(3850, 500, 50, 1000, new StudentScript(), "hasStartedGame"));
         triggers.add(new Trigger(1000, 2500, 6000, 50, new MoveNPC(), "hasPassed"));
+
+        triggers.add(new Trigger(400, 3500, 6000, 50, new SecondCutscene(), "Boss2Pass"));
+        triggers.add(new Trigger(1210, 3500, 50, 1000, new SecondCutscene(), "Boss2Pass"));
+
+        triggers.add(new Trigger(1800, 4000, 6000, 50, new ThirdCutscene(), "Boss3Pass"));
+        triggers.add(new Trigger(1700, 4800, 8000, 50, new FourthCutscene(), "Boss4Pass"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
         //enemy vicCount = 0 trigger , robot 1
-        triggers.add(new Trigger(4770, 1000, 1, 1000, new CombatBlockScript(0), "Enemy1"));
-        triggers.add(new Trigger(4900, 1000, 1, 1000, new CombatBlockScript(1), "Enemy2"));
+        triggers.add(new Trigger(4670, 800, 100, 1000, new CombatBlockScript(0), "Enemy1"));
+        triggers.add(new Trigger(4900, 800, 100, 1000, new CombatBlockScript(1), "Enemy2"));
         
         //2 is alex, no trigger
 
         //first herscovici enemy
         triggers.add(new Trigger(210, 3500, 1000, 400, new CombatBlockScript(3), "Enemy4"));
-        triggers.add(new Trigger(210, 3501, 800, 400, new CombatBlockScript(4), "Enemy5"));
+        triggers.add(new Trigger(210, 3550, 800, 400, new CombatBlockScript(4), "Enemy5"));
 
         //5 is hersovici, no trigger
 
         //chefs
-        triggers.add(new Trigger(1300, 1300, 700, 700, new CombatBlockScript(6), "Enemy7"));
+        triggers.add(new Trigger(1300, 1400, 600, 300, new CombatBlockScript(6), "Enemy7"));
         triggers.add(new Trigger(1300, 1600, 380, 300, new CombatBlockScript(7), "Enemy8"));
 
         //8 is blake, no trigger
 
         //SOB grunts
-        triggers.add(new Trigger(3600, 5000, 400, 600, new CombatBlockScript(9), "Enemy10"));
-        triggers.add(new Trigger(3610, 5010, 390, 590, new CombatBlockScript(10), "Enemy11"));
+        triggers.add(new Trigger(3600, 5300, 300, 300, new CombatBlockScript(9), "Enemy10"));
+        triggers.add(new Trigger(3600, 5000, 300, 300, new CombatBlockScript(10), "Enemy11"));
 
         //11 is Dr J, no trigger
 
         //construction workers
-        triggers.add(new Trigger(2000, 3200, 400, 600, new CombatBlockScript(12), "Enemy13"));
-        triggers.add(new Trigger(2000, 3200, 380, 590, new CombatBlockScript(13), "Enemy14"));
+        triggers.add(new Trigger(2000, 3200, 400, 300, new CombatBlockScript(12), "Enemy13"));
+        triggers.add(new Trigger(2000, 3500, 380, 200, new CombatBlockScript(13), "Enemy14"));
 
         //JUDY! enemy index 14, no trigger
         
