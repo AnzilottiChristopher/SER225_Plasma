@@ -357,6 +357,10 @@ public class TestMap extends Map {
         EclipseStudent eclipse = new EclipseStudent(46, getMapTile(65, 109).getLocation());
         eclipse.setInteractScript(new EclipseStudentScript());
         npcs.add(eclipse);
+
+        HungryStudent hungry = new HungryStudent(47, getMapTile(33, 54).getLocation());
+        hungry.setInteractScript(new HungryStudentScript());
+        npcs.add(hungry);
         
         return npcs;
     }
