@@ -129,5 +129,7 @@ public class GamePanel extends JPanel {
 		// when called, it will setup the graphics handler and then call this class's draw method
 		graphicsHandler.setGraphics((Graphics2D) g);
 		draw();
+		
+
 	}
 }

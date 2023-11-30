@@ -28,6 +28,7 @@ public class PlayLevelScreen extends Screen {
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected TempScreen tempScreen;
+    //protected StudentCenterScreen studentCenterScreen;
     protected CombatScreen combatScreen;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
@@ -94,6 +95,10 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("TeleportCompleted", false);
         flagManager.addFlag("PlayerHasTeleportedBack", false);
 
+        //teleporting into student center
+        flagManager.addFlag("TeleportStC",false);
+
+
 
         //SleepWall Visibility
         flagManager.addFlag("Boss3Complete", false);
@@ -151,6 +156,7 @@ public class PlayLevelScreen extends Screen {
             }
         }
         tempScreen=new TempScreen(this);
+        //studentCenterScreen=new StudentCenterScreen(this);
         //combatScreen=new CombatScreen(this);
 
 
@@ -171,10 +177,11 @@ public class PlayLevelScreen extends Screen {
                 winScreen.update();
                 break;
              // bring up a temporary screen
-             case SUSPENDED:
+            case TEMP:
              tempScreen.setTempScreenState("RUNNING");
              tempScreen.update();
              break;
+             //brings up student center screen
 
             //UPDATES BASED ON COMBAT
             case COMBATMODE:
@@ -268,19 +275,18 @@ public class PlayLevelScreen extends Screen {
 
 
 
-
-
-        //if the player interacts with the door the they are teleported
+        //if the player interacts with the door the they are teleported to CCE
         if(map.getFlagManager().isFlagSet("TeleportCompleted"))
         {
            
-            playLevelScreenState=PlayLevelScreenState.SUSPENDED;
+            playLevelScreenState=PlayLevelScreenState.TEMP;
         }
-        
+        // came back from CCE
         if(map.getFlagManager().isFlagSet("PlayerHasTeleportedBack"))
         {
             playLevelScreenState=PlayLevelScreenState.RUNNING;
         }
+       
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -295,21 +301,14 @@ public class PlayLevelScreen extends Screen {
             case COMBATMODE:
                 combatScreen.draw(graphicsHandler);
                 break;
-            case SUSPENDED:
+            case TEMP:
                 tempScreen.draw(graphicsHandler);
+            
+
         }
     }
 
-    /*public void loadMap()
-    {
-        Map map;
-        int MapID=0;
-        switch(MapID)
-        {
-            case 0:
-                map
-        }
-    }*/
+   
 
 
     public PlayLevelScreenState getPlayLevelScreenState() {
@@ -354,7 +353,7 @@ public class PlayLevelScreen extends Screen {
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
-        RUNNING, LEVEL_COMPLETED,COMBATMODE,SUSPENDED
+        RUNNING, LEVEL_COMPLETED,COMBATMODE,TEMP,
     }
 
     public static combatant getCurrentEnemy()
