@@ -262,6 +262,15 @@ public class CombatScreen extends Screen {
                     flagManager.setFlag("hasTalkedToBlake");
                     flagManager.setFlag("Boss3Complete");
                 }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Doctor J"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("DefaultMusic");
+                    flagManager.setFlag("hasTalkedToDrJ");
+                    flagManager.setFlag("Boss4Complete");
+                    flagManager.unsetFlag("Boss4Pass");
+                }
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
             case LOSS:

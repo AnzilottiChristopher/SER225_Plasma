@@ -363,6 +363,7 @@ public class TestMap extends Map {
         triggers.add(new Trigger(1210, 3500, 50, 1000, new SecondCutscene(), "Boss2Pass"));
 
         triggers.add(new Trigger(1800, 4000, 6000, 50, new ThirdCutscene(), "Boss3Pass"));
+        triggers.add(new Trigger(1700, 4800, 8000, 50, new FourthCutscene(), "Boss4Pass"));
 //        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 //        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
