@@ -142,7 +142,7 @@ public class PlayLevelScreen extends Screen {
 
         music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
         music.playLoop();
-        music.setCount(1);
+        //music.setCount(1);
 
         
         // define/setup map
@@ -416,8 +416,9 @@ public class PlayLevelScreen extends Screen {
   
 
        // map.getFlagManager().setFlag("hasLostBattle"); //on the right track 
-        // map.getFlagManager().unsetFlag("CombatStarted");
-       // map.getFlagManager().unsetFlag("startingMusic");
+         map.getFlagManager().unsetFlag("CombatFinish"); //needed this here
+       // map.getFlagManager().unsetFlag("startingMusic"); 
+
        if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
                 {
                     map.getFlagManager().unsetFlag("AlexBossStart");
@@ -474,7 +475,8 @@ public class PlayLevelScreen extends Screen {
 
 
     public void goBackToMenu() { 
-       //initialize();
+        initialize(); 
+        music.stopLoop();
         screenCoordinator.setGameState(GameState.MENU);  
       //  update(); 
         
