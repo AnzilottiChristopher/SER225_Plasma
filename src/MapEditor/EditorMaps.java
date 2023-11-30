@@ -15,6 +15,7 @@ public class EditorMaps {
             add("TempMap");
             add("TitleScreen");
             add("CombatScreen");
+            //add("StudentCenter");
             
         }};
     }
@@ -29,6 +30,8 @@ public class EditorMaps {
                 return new TitleScreenMap();
             case "CombatScreen":
                 return new CombatMap();
+            //case "StudentCenter":
+                //return new StudentCenterMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }
