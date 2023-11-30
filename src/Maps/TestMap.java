@@ -29,7 +29,7 @@ public class TestMap extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
         CollisionState placement = CollisionState.LEFTSIDE;
-        PushableRock pushableRock = new PushableRock(getMapTile(70, 115).getLocation());
+        //PushableRock pushableRock = new PushableRock(getMapTile(70, 115).getLocation());
         OutOfBoundsCollision wall = new OutOfBoundsCollision(getMapTile(13, 19).getLocation());
         OutOfBoundsCollision bottomWall = new OutOfBoundsCollision(getMapTile(13, 122).getLocation());
         OutOfBoundsCollision.side = CollisionState.LEFTSIDE;
@@ -50,7 +50,7 @@ public class TestMap extends Map {
         enhancedMapTiles.add(wall);
         enhancedMapTiles.add(wall2);
         enhancedMapTiles.add(bottomWall);
-        enhancedMapTiles.add(pushableRock);
+        //enhancedMapTiles.add(pushableRock);
         enhancedMapTiles.add(leftSide);
         enhancedMapTiles.add(rightSide);
 
