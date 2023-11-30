@@ -29,7 +29,7 @@ public class CombatScreen extends Screen {
     private Color moveTextBox = new Color(204, 204, 204, 50); //makes a transparent color
 
 
-    private Font moveFont = new Font("Monospaced", Font.PLAIN, 14);  
+    private Font moveFont = new Font("Monospaced", Font.PLAIN, 14);
     private Font nameFont = new Font("Monospaced", Font.BOLD, 20); 
 
 
@@ -117,13 +117,13 @@ public class CombatScreen extends Screen {
 
 
 
-        if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
-        {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
-            flagManager.unsetFlag("AlexBossStart");
-        }
+//        if (flagManager.isFlagSet("AlexBossStart") && !flagManager.isFlagSet("Boss1Complete"))
+//        {
+////            music.stopLoop();
+////            music.background("Resources/ObstacleInPath.wav");
+////            music.playLoop();
+//            flagManager.unsetFlag("AlexBossStart");
+//        }
 
         if (flagManager.isFlagSet("RoboEnemyStart"))
         {
@@ -233,51 +233,8 @@ public class CombatScreen extends Screen {
         //responds based on CombatState
         switch (combatState)
         {
-            case WIN: 
-            //flagManager.unsetFlag("hasTalkedToDinosaur");  //subsequently setCombat flag too
-
-            if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
-                {
-                    music.stopLoop();
-                    flagManager.setFlag("startingMusic");
-                    flagManager.setFlag("Boss1Complete");
-                }
-            if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat"))
-            {
-                    music.stopLoop();
-                    flagManager.setFlag("startingMusic"); //purely for music
-            }
-            playLevelScreen.goBackPlayLevelScreen(); //this unsets the flags
-            break; 
-
-            case LOSS: 
-            //flagManager.unsetFlag("hasTalkedToDinosaur");  //subsequently setCombat flag too
-
-            //here would go the call to switch combatScreen to a lose screen 
-            //flagManager.setFlag("hasLostBattle"); //on the right track    
-            music.stopLoop(); 
-
-            // if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
-            //     {
-            //         music.stopLoop();
-            //         //flagManager.setFlag("startingMusic");
-            //         //flagManager.setFlag("Boss1Complete");
-            //     }
-            // if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("CyberBobcat"))
-            // {
-            //         music.stopLoop();
-            //         //flagManager.setFlag("startingMusic");
-            // }  
-            System.out.println("case loss reached on COMbatScreen, calling pause");
-            playLevelScreen.pauseCombatScreen();  
-            System.out.println("after pause in CombatScreen");
-            //flagManager.setFlag("startingMusic");
-
-            //System.out.println("Did the thing in combatScreen"); 
-            break;
-
-
-            case TIE:
+            case WIN:
+                // playLevelScreen.goBackPlayLevelScreen();
                 if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Alex"))
                 {
                     music.stopLoop();
@@ -289,11 +246,41 @@ public class CombatScreen extends Screen {
                     music.stopLoop();
                     flagManager.setFlag("startingMusic");
                 }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Herscovici"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("Boss2Complete");
+                    flagManager.unsetFlag("Boss2Pass");
+                    //flagManager.setFlag("Boss3Start");
+                }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Professor Blake"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("DefaultMusic");
+                    flagManager.setFlag("hasTalkedToBlake");
+                    flagManager.setFlag("Boss3Complete");
+                }
+                if (PlayLevelScreen.getCurrentEnemy().getName().equalsIgnoreCase("Doctor J"))
+                {
+                    music.stopLoop();
+                    flagManager.setFlag("startingMusic");
+                    flagManager.setFlag("DefaultMusic");
+                    flagManager.setFlag("hasTalkedToDrJ");
+                    flagManager.setFlag("Boss4Complete");
+                    flagManager.unsetFlag("Boss4Pass");
+                }
+                playLevelScreen.goBackPlayLevelScreen();
+                break;
+            case LOSS:
+                break;
+            case TIE:
+
                 playLevelScreen.goBackPlayLevelScreen();
                 break;
 
             case PROGRESS:
-
                 break;
         }
 
@@ -326,8 +313,8 @@ public class CombatScreen extends Screen {
 
         if(checkMove1 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
-            
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName1() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
+
             graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
             graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName1() + "!", 60, 170, moveFont, Color.WHITE); //drawing text in white
             moveTimer--;
@@ -338,7 +325,7 @@ public class CombatScreen extends Screen {
         }
         else if(checkMove2 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 300, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName2() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
 
             graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
             graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName2() + "!", 60, 170, moveFont, Color.WHITE);
@@ -350,7 +337,7 @@ public class CombatScreen extends Screen {
         }
         else if(checkMove3 == true){
             graphicsHandler.drawFilledRectangleWithBorder(420, 360, 330, 40, moveTextBox, Color.WHITE, 5);
-            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white 
+            graphicsHandler.drawString("Boomer used " + playerCombatant.moveName3() + "!", 440, 380, moveFont, Color.WHITE); //drawing text in white
 
            graphicsHandler.drawFilledRectangleWithBorder(50, 150, 350, 40, moveTextBox, Color.RED, 5);
             graphicsHandler.drawString(enemyCombatant.getName() + " used " + enemyCombatant.moveName3() + "!", 60, 170, moveFont, Color.WHITE);
@@ -378,7 +365,7 @@ public class CombatScreen extends Screen {
         graphicsHandler.drawFilledRectangle(40, 65, 250, 36, new Color(225, 225, 255)); //white rect outline 
         graphicsHandler.drawString(enemyCombatant.getName(), 40, 94, nameFont, Color.BLACK); //name text  
         graphicsHandler.drawFilledRectangle(40, 70, (enemyCombatant.getHealth()*2), 10, green); //enemy healthbar  
-         //THIS DOES THE THING!!!! 
+         //THIS DOES THE THING!!!!
        graphicsHandler.drawImage(enemyCombatant.getBattleImage(), 420, 110);
 
 

@@ -63,7 +63,7 @@ public class PlayLevelScreen extends Screen {
                                         new combatant("construction"), //13
                                         new combatant("judy"), //14
                                         new combatant("random"), //never used, used to stop array length error
-                                    }; 
+                                    };
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -86,8 +86,24 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("enemy1Interaction", false);
         flagManager.addFlag("enemy2Interaction", false);
 
-        //Destruction of NPC's flags
+        //Boss completion flags
         flagManager.addFlag("Boss1Complete", false);
+        flagManager.addFlag("Boss2Start", false);
+        flagManager.addFlag("Boss2Complete", false);
+        flagManager.addFlag("Boss2Pass", true);
+        flagManager.addFlag("Boss3Start", false);
+        flagManager.addFlag("Boss3Complete", false);
+        flagManager.addFlag("Boss3Pass", true);
+        flagManager.addFlag("Boss4Start", false);
+        flagManager.addFlag("Boss4Complete", false);
+        flagManager.addFlag("Boss4Pass", true);
+
+        flagManager.addFlag("FinalBossStart", false);
+        flagManager.addFlag("FinalBossComplete", false);
+
+        flagManager.addFlag("DefaultMusic", false);
+
+
 
         //try again screen 
         flagManager.addFlag("hasLostBattle", false);
@@ -110,6 +126,12 @@ public class PlayLevelScreen extends Screen {
         //Combat Screen Music
         flagManager.addFlag("AlexBossStart", false);
         flagManager.addFlag("RoboEnemyStart", false);
+        flagManager.addFlag("HerscBossStart", false);
+        flagManager.addFlag("BlakeBossStart", false);
+        flagManager.addFlag("JBossStart", false);
+        flagManager.addFlag("JudyBossStart", false);
+
+        flagManager.addFlag("Victory", false);
 
         //Alex Enemy Flag Trigger
         flagManager.addFlag("Enemy1", false);
@@ -133,7 +155,7 @@ public class PlayLevelScreen extends Screen {
 
 
         //SleepWall Visibility
-        flagManager.addFlag("Boss3Complete", false);
+        //flagManager.addFlag("Boss3Complete", false);
 
         flagManager.addFlag("hasTalked", false);
         flagManager.addFlag("startingMusic", false);
@@ -232,7 +254,7 @@ public class PlayLevelScreen extends Screen {
                     case WIN:  
                     map.getFlagManager().unsetFlag("hasTalkedToDinosaur");
 
-                    //incriment victories
+                    //increment victories
                     victoryCount++;
                     //advance who the current enemy is
                     combatScreen.setEnemy(enemies[victoryCount]);
@@ -332,12 +354,90 @@ public class PlayLevelScreen extends Screen {
         // if flag is set at any point during gameplay, initiial soundtrack will not play
         if (map.getFlagManager().isFlagSet("hasTalked")) {
             music.stopLoop();
+            music.background("Resources/ObstacleInPath.wav");
+            music.playLoop();
             map.getFlagManager().unsetFlag("hasTalked");
         }
+        if(map.getFlagManager().isFlagSet("HerscBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/SoulMaster.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("HerscBossStart");
+        }
+        if (map.getFlagManager().isFlagSet("BlakeBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/MaskedDedede.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("BlakeBossStart");
+        }
+        if (map.getFlagManager().isFlagSet("JBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/DuelOfFates.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("JBossStart");
+        }
+        if (map.getFlagManager().isFlagSet("JudyBossStart"))
+        {
+            music.stopLoop();
+            music.background("Resources/OMNIS LACRIMA.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("JudyBossStart");
+        }
+        if (map.getFlagManager().isFlagSet("Victory"))
+        {
+            music.stopLoop();
+            music.background("Resources/HopesAndDreams.wav");
+            music.playLoop();
+            map.getFlagManager().unsetFlag("Victory");
+        }
+
+        //!This is main music controller
         if(map.getFlagManager().isFlagSet("startingMusic"))
         {
-            music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            music.stopLoop();
+            if (!flagManager.isFlagSet("Boss1Complete"))
+            {
+                music.background("Resources/RoboticMusic.wav");
+            }
+            if (flagManager.isFlagSet("Boss1Complete") && !flagManager.isFlagSet("Boss2Start"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+            }
+            if (flagManager.isFlagSet("Boss2Start") && !flagManager.isFlagSet("Boss2Complete"))
+            {
+                music.background("Resources/PuzzleMusic.wav");
+                //map.getFlagManager().unsetFlag("Boss2Start");
+            }
+            if (flagManager.isFlagSet("Boss2Complete") && !flagManager.isFlagSet("Boss3Start"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+                //map.getFlagManager().unsetFlag("Boss2Complete");
+            }
+            if (flagManager.isFlagSet("Boss3Start") && !map.getFlagManager().isFlagSet("Boss3Complete"))
+            {
+                music.background("Resources/SugarlandShimmy.wav");
+                //map.getFlagManager().unsetFlag("Boss3Start");
+            }
+            if (flagManager.isFlagSet("Boss4Start") && !flagManager.isFlagSet("Boss4Complete"))
+            {
+                music.background("Resources/TheWarsEnd.wav");
+                //map.getFlagManager().unsetFlag("Boss4Start");
+            }
+            if (flagManager.isFlagSet("FinalBossStart") && !flagManager.isFlagSet("FinalBossComplete"))
+            {
+                music.background("Resources/EmbraceYourDreams.wav");
+            }
+
+            if (flagManager.isFlagSet("DefaultMusic"))
+            {
+                music.background("Resources/Pokemon RubySapphireEmerald- Littleroot Town.wav");
+                map.getFlagManager().unsetFlag("DefaultMusic");
+            }
             music.playLoop();
+
             map.getFlagManager().unsetFlag("startingMusic");
             //System.out.println("We are here Flags");
         }

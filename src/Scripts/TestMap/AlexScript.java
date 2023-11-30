@@ -26,9 +26,9 @@ public class AlexScript extends Script<NPC> {
 
         if (!isFlagSet("hasTalkedToAlex"))
         {
-            music.stopLoop();
-            music.background("Resources/ObstacleInPath.wav");
-            music.playLoop();
+//            music.stopLoop();
+//            music.background("Resources/ObstacleInPath.wav");
+//            music.playLoop();
             addTextToTextboxQueue("FASTER FASTER");
             addTextToTextboxQueue("CODE FASTER");
             addTextToTextboxQueue("YOU WORTHLESS FOOLS CAN'T \nCODE TO SAVE YOU");
