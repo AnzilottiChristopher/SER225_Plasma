@@ -338,6 +338,15 @@ public class TestMap extends Map {
 
         Tree tree17 = new Tree(1001, getMapTile(80, 117).getLocation());
         npcs.add(tree17);
+
+        SleepingStudent sleep = new SleepingStudent(45, getMapTile(19, 69).getLocation());
+        sleep.setInteractScript(new SleepingStudentScript());
+        npcs.add(sleep);
+
+        EclipseStudent eclipse = new EclipseStudent(46, getMapTile(65, 109).getLocation());
+        eclipse.setInteractScript(new EclipseStudentScript());
+        npcs.add(eclipse);
+        
         return npcs;
     }
 
